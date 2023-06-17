@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: tennis_club_db_development
+  database: tennis_club_db
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
