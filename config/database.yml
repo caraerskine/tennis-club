@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: bball-dunking_development
+  database: bball-dunking
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
