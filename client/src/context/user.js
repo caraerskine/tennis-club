@@ -5,6 +5,7 @@ const UserContext = React.createContext();
 
 function UserProvider({ children }) {
 
+    const [loginError, setLoginError] = useState([]);
     //have a clubs context and a match context?
     //what would go in these? any fns related to each
     //separate concerns
@@ -21,6 +22,10 @@ function UserProvider({ children }) {
     //addNewMatch
 
 
+    const logout = () => {
+        setUser(false)
+      }
+    
     return (
         <UserContext.Provider
           value={{
