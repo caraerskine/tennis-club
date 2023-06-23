@@ -17,33 +17,27 @@ function NavBar() {
             navigate('/')
         })
     }
-    //takes user out of session hash
-    //navigate to the home
-
-    //should i say, if user && !games then show the "Home" page?
 
     if (user) {
         return (
             <div>
                 <h2>Hello {user.username} </h2>
                 <h4>Click "Logout" to logout</h4>
-                <h4>Click "Games" to see all your basketball games</h4>
-                <h4>Click "All Courts" to see all the basketball courts and add a new court or a game</h4>
-                <p>🗽🍎🏀</p>
+                <p></p>
                 <br/>
                 <button onClick={logoutUser}>Logout</button>
-                <NavLink to='/games'>
-                    <button>Games</button>
+                <NavLink to='/matches/accepted'>
+                    <button>Matches</button>
                 </NavLink>
-                <NavLink to='/courts'>
-                    <button>All Courts</button>
+                <NavLink to='/clubs'>
+                    <button>Clubs</button>
                 </NavLink>
             </div>
         )          
     } else {
         return (
             <div>
-                <h3>Welcome to the NYC Hoop Scheduler🗽🍎🏀</h3>
+                <h3>Welcome to the NYC Tennis Match Booking App🎾</h3>
                 <NavLink to='/login'>
                     <button>Login</button>
                 </NavLink>

@@ -2,13 +2,15 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 
+//make styling
+
 const link = {
         width: '100px',
         padding: '12px',
         margin: '0 6px 6px',
         textDecoration: 'none',
         color: 'white',
-        background: 'orange'
+        background: 'yellow'
 }
 
 function Navigation () {
@@ -17,20 +19,39 @@ function Navigation () {
             <NavLink
                 to="/"
                 style={link}
-                activestyle={{background: 'blue'}}                
+                activestyle={{background: 'fuchsia'}}                
             >Home</NavLink>
             
           <NavLink
-                to="/games"
+                to="/matches/pending"
                 style={link}
-                activestyle={{background: 'blue'}}
-            >Games</NavLink>
+                activestyle={{background: 'fuchsia'}}
+            >Pending Matches</NavLink>
 
            <NavLink
-                to="/courts"
+                to="/matches/accepted"
                 style={link}
-                activestyle={{background: 'blue'}}
-            >Courts</NavLink> 
+                activestyle={{background: 'fuchsia'}}
+            >🎾Accepted Matches🎾</NavLink> 
+
+            <NavLink
+                to="/clubs"
+                style={link}
+                activestyle={{background: 'fuchsia'}}
+            >Tennis Clubs</NavLink> 
+
+            <NavLink
+                to="/login"
+                style={link}
+                activestyle={{background: 'fuchsia'}}
+            >Login</NavLink> 
+             
+            <NavLink
+                to="/signup"
+                style={link}
+                activestyle={{background: 'fuchsia'}}
+            >Signup</NavLink> 
+
         </div>
     )
 }

@@ -7,14 +7,14 @@ function Home() {
     if (user) {
         return(
             <div>
-                <h3>{user.username}'s Home Page</h3>
+                <h3>🎾{user.username}'s Home Page🎾</h3>
             </div>
         )
     } 
         
     return (
         <ul>
-            <h4>Please login to see your games!</h4>
+            <h4>Please login to see your matches!</h4>
             {autoLoginError}
         </ul>
     )
