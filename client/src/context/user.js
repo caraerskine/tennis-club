@@ -7,7 +7,7 @@ function UserProvider({ children }) {
     const [user, setUser] = useState(false);
     const [errors, setErrors] = useState([]);
     const [loginError, setLoginError] = useState([]);
-    // const [signUpError, setSignUpError] = useState([]);
+    const [signUpError, setSignUpError] = useState([]);
 
     const navigate = useNavigate()
 
@@ -30,7 +30,7 @@ function UserProvider({ children }) {
       }, []);
 
       const fetchUser = async (url, method, body = false) => {
-        // setSignUpError([])
+        setSignUpError([])
         setLoginError([])
     
         const messages = (url, err) => {
@@ -90,7 +90,7 @@ function UserProvider({ children }) {
             user,
             setUser,
             fetchUser,
-            // signUpError,
+            signUpError,
             loginError,
             logout,
             // editMatch,
