@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+Welcome to Public Tennis Club!
+NYC Tennis Match Booking App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is an SPA to schedule tennis matches at various clubs all over New York City!
 
-## Available Scripts
+The cost of this booking app is a $5 one-time flat fee. It is payable through
+the Stripe API. For purposes of the App, this is in testing mode and is functional,
+but no money is exchanged and all account information is "blank" in test mode.
 
-In the project directory, you can run:
+The app has 5 navigation buttons at the top: home, clubs, pending matches, accepted mathces,   
+The site is secure and requires a login to see your individual games. All users can see all the basketball courts. You can add a game to a court, delete a game, and edit your game. You can also add a court to the list of courts.
 
-### `npm start`
+GOALS ACHIEVED
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+MVP: As a user, I can:
+Sign up for an account
+Log in to the site & remain logged in
+Log out
+View a list of all available games in my area and their respective courts
+Create a new court
+Modify or delete a game
+Create a new game
+CREATE -Allow users to add a new court -Allow users to add a new game
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+READ -Display data of courts -Display data of games
 
-### `npm test`
+UPDATE -Allow users to edit a game
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+DELETE -Allow users to delete a game
 
-### `npm run build`
+-DEPLOYED This app is deployed on Render as a publicly available app: https://bball-courts.onrender.com/
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-MY GIT URL of repo https://github.com/caraerskine/pickup-bball.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+How to run it: -You must have the backend running to make this project work. In the console, run rails s from within the directory pickup-bball
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-You need React to run the front end from within the directory pickup-bball Run npm install and npm run server Open a second terminal window and run npm start
 
-### `npm run eject`
+STRETCH GOALS: -Add photo of park/court
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+-A user can make a 5 on 5 game and a user of the same skill level can join the game
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-Have a user profile with a photo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+-Request to join a game Say there are 9 people signed up, and you need a 10th for 5 on 5, you could be the 10th person and complete the game. I'm thinking you could send a request to the person who created the game, and then they can decide to add you or not, based on skill level, etc. A little like "choosing teams".
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+-Have your skill level on you profile public, and others at that skill level can invite you to join a game and you can invite others as well.
 
-## Learn More
+-Show how many people have joined a game
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Let's hoop! 🏀
