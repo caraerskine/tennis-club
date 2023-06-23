@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  
+
+  post '/login', to: 'sessions#create'
+
+
+
   resources :comments
   resources :users
   resources :matches
