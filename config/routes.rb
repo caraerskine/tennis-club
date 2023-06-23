@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :users
   resources :matches
   resources :clubs
   # Routing logic: fallback requests for React Router.
