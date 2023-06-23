@@ -5,6 +5,21 @@ const UserContext = React.createContext();
 
 function UserProvider({ children }) {
 
+    //have a clubs context and a match context?
+    //what would go in these? any fns related to each
+    //separate concerns
+
+    //user
+    //fetchUser fn w/error handling
+    //get for user
+
+    //clubs
+    //setClubs
+
+    //match
+    //editMatch
+    //addNewMatch
+
 
     return (
         <UserContext.Provider
