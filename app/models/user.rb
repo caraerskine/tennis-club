@@ -1,7 +1,10 @@
 class User < ApplicationRecord
     has_secure_password
 
-    has_many :matches
+    # validates :username, uniqueness: true 
+    # validates :password, :password_confirmation, :username, presence: true
+
+    has_many :matches, dependent: :destroy
     has_many :clubs, through: :matches
 
 end

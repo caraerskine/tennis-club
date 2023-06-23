@@ -1,6 +1,9 @@
 class Club < ApplicationRecord
 
-    has_many :matches
+    # validates :park, presence: true
+    # validates :park, uniqueness: true
+
+    has_many :matches, dependent: :destroy
     has_many :users, through: :matches
 
 end
