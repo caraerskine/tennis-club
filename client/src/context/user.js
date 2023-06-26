@@ -74,7 +74,6 @@ function UserProvider({ children }) {
       };
 
 
-
     const logout = () => {
         setUser(false)
       }
@@ -87,13 +86,13 @@ function UserProvider({ children }) {
             setUser,
             fetchUser,
             signUpError,
+            setSignUpError,
             loginError,
-            logout,
-            // editMatch,
+            setLoginError,
             errors,
             setErrors,
-            setLoginError,
-            setSignUpError,
+            logout,
+            // editMatch,
             // addMatch,
             // clubs,
             // setClubs
