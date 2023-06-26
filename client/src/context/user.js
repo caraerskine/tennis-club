@@ -4,12 +4,14 @@ import { useNavigate } from "react-router-dom";
 const UserContext = React.createContext();
 
 function UserProvider({ children }) {
+
+    const navigate = useNavigate()
     const [user, setUser] = useState(false);
     const [errors, setErrors] = useState([]);
     const [loginError, setLoginError] = useState([]);
     const [signUpError, setSignUpError] = useState([]);
 
-    const navigate = useNavigate()
+  
 
     //have a clubs context and a match context?
     //what would go in these? any fns related to each
@@ -30,16 +32,25 @@ function UserProvider({ children }) {
       }, []);
 
       const fetchUser = async (url, method, body = false) => {
-        setSignUpError([])
         setLoginError([])
+        setSignUpError([])
+        
     
         const messages = (url, err) => {
-          if (url === "/signup"){
-          setSignUpError(err)
-        } else if (url === "/login") {
+          if (url === "/login"){
           setLoginError(err)
+        } else if (url === "/signup") {
+          setSignUpError(err)
         }
       } 
+
+    //   const messages = (url, err) => {
+    //     if (url === "/signup"){
+    //     setSignUpError(err)
+    //   } else if (url === "/login") {
+    //     setLoginError(err)
+    //   }
+    // } 
     
         try {
           const options = {
@@ -83,6 +94,7 @@ function UserProvider({ children }) {
     const logout = () => {
         setUser(false)
       }
+
     
     return (
         <UserContext.Provider
@@ -95,6 +107,9 @@ function UserProvider({ children }) {
             logout,
             // editMatch,
             errors,
+            setErrors,
+            setLoginError,
+            setSignUpError,
             // addMatch,
             // clubs,
             // setClubs
