@@ -73,7 +73,7 @@ function UserProvider({ children }) {
         }
       };
 
-
+  
     const logout = () => {
         setUser(false)
       }
