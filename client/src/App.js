@@ -4,6 +4,7 @@ import Navigation from './components/Navigation'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import Login from './components/Login'
+import SignUp from './components/SignUp'
 import './App.css';
 
 function App() {

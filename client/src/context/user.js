@@ -91,11 +91,7 @@ function UserProvider({ children }) {
             setLoginError,
             errors,
             setErrors,
-            logout,
-            // editMatch,
-            // addMatch,
-            // clubs,
-            // setClubs
+            logout
           }}
         >
           {children}
