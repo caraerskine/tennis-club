@@ -11,22 +11,7 @@ function UserProvider({ children }) {
     const [loginError, setLoginError] = useState([]);
     const [signUpError, setSignUpError] = useState([]);
 
-  
 
-    //have a clubs context and a match context?
-    //what would go in these? any fns related to each
-    //separate concerns
-
-    //user
-    //fetchUser fn w/error handling
-    //get for user
-
-    //clubs
-    //setClubs
-
-    //match
-    //editMatch
-    //addNewMatch
     useEffect(() => {
         fetchUser('/me', 'GET')
       }, []);
@@ -35,7 +20,6 @@ function UserProvider({ children }) {
         setLoginError([])
         setSignUpError([])
         
-    
         const messages = (url, err) => {
           if (url === "/login"){
           setLoginError(err)
@@ -71,7 +55,7 @@ function UserProvider({ children }) {
             setUser(data);
             navigate('/');
             //changes to /matches/pending or whatever
-            //should matches be it's own page, and then on it are there buttons to see pending 
+            //should matches be its own page, and then on it are there buttons to see pending 
             //matches and accepted matches and a prompt to create a new match?
     
           } else if (response.status === 401) {
@@ -121,3 +105,19 @@ function UserProvider({ children }) {
 }
 
 export { UserContext, UserProvider };
+
+
+    //have a clubs context and a match context?
+    //what would go in these? any fns related to each
+    //separate concerns
+
+    //user
+    //fetchUser fn w/error handling
+    //get for user
+
+    //clubs
+    //setClubs
+
+    //match
+    //editMatch
+    //addNewMatch
