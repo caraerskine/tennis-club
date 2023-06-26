@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
+  #sessions ctrlr
   post '/login', to: 'sessions#create'
+  delete "/logout", to: "sessions#destroy"
 
+  #users crtlr
+  post "/signup", to: "users#create" 
   get '/me', to: 'users#show'
 
 
