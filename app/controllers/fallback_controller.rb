@@ -10,3 +10,5 @@ class FallbackController < ActionController::Base
     # render file: 'public/index.html'
   end
 end
+
+#otherwise I get a fallback controller error
