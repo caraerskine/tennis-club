@@ -19,10 +19,11 @@ const AllClubs = () => {
                 </div>
               <br></br>
             </Link> 
-              {/* <MyCourt /> */}
             </>
       )
     }
   }
 
 export default AllClubs
+
+//took <MyCourt /> our refer to bball

@@ -26,12 +26,10 @@ function NavBar() {
                 <p></p>
                 <br/>
                 <button onClick={logoutUser}>Logout</button>
-                {/* <NavLink to='/matches/accepted'> */}
                     <button>Matches</button>
-                {/* </NavLink> */}
-                {/* <NavLink to='/clubs'> */}
+                <NavLink to='/clubs'>
                     <button>Clubs</button>
-                {/* </NavLink> */}
+                </NavLink>
             </div>
         )          
     } else {

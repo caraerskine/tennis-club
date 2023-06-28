@@ -5,17 +5,16 @@ const UserContext = React.createContext();
 
 function UserProvider({ children }) {
 
-    const navigate = useNavigate()
     const [user, setUser] = useState(false);
     const [errors, setErrors] = useState([]);
     const [loginError, setLoginError] = useState([]);
     const [signUpError, setSignUpError] = useState([]);
+    const navigate = useNavigate()
 
 
     useEffect(() => {
         fetchUser('/me', 'GET')
-      });
-      //was asked to remove dep array idfk
+      }, []);
 
       const fetchUser = async (url, method, body = false) => {
         setLoginError([])
@@ -46,9 +45,6 @@ function UserProvider({ children }) {
           if (response.ok) {
             setUser(data);
             navigate('/clubs');
-            //changes to /matches/pending or whatever
-            //should matches be its own page, and then on it are there buttons to see pending 
-            //matches and accepted matches and a prompt to create a new match?
     
           } else if (response.status === 401) {
           

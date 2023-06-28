@@ -8,7 +8,9 @@ function Home() {
     if (user) {
         return(
             <div>
-                <h3>🎾{user.username}'s Home Page🎾</h3>
+                <h3>🎾{user.name}'s Home Page🎾</h3>
+                <h3>{user.avatar_url}</h3>
+                <h3>{user.username}</h3>
             </div>
         )
     } 
