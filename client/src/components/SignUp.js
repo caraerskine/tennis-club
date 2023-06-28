@@ -4,6 +4,8 @@ import { UserContext } from '../context/user';
 function SignUp() {
 
     const [form, setForm] = useState({
+        name: "",
+        avatar_url: "",
         username: "",
         password: "",
         password_confirmation: ""
@@ -25,6 +27,24 @@ function SignUp() {
     <div className="signup-form">
         <h2>Sign-up</h2>
         <form onSubmit={(e) => signUp(e)}>
+        <label>Name:</label>
+            <input 
+                type="text" 
+                id="name"
+                value={form.name} 
+                onChange={handleUpdate}
+        />
+          <br></br>
+          <br></br>
+        <label>Avatar:</label>
+            <input 
+                type="text" 
+                id="avatar_url"
+                value={form.avatar_url} 
+                onChange={handleUpdate}
+        />
+          <br></br>
+          <br></br>
             <label>Username:</label>
             <input 
                 type="text" 
