@@ -14,7 +14,8 @@ function UserProvider({ children }) {
 
     useEffect(() => {
         fetchUser('/me', 'GET')
-      }, []);
+      });
+      //was asked to remove dep array idfk
 
       const fetchUser = async (url, method, body = false) => {
         setLoginError([])
@@ -26,16 +27,7 @@ function UserProvider({ children }) {
         } else if (url === "/signup") {
           setSignUpError(err)
         }
-      } 
-
-    //   const messages = (url, err) => {
-    //     if (url === "/signup"){
-    //     setSignUpError(err)
-    //   } else if (url === "/login") {
-    //     setLoginError(err)
-    //   }
-    // } 
-    
+      }     
         try {
           const options = {
             method: method,
@@ -53,7 +45,7 @@ function UserProvider({ children }) {
     
           if (response.ok) {
             setUser(data);
-            navigate('/');
+            navigate('/clubs');
             //changes to /matches/pending or whatever
             //should matches be its own page, and then on it are there buttons to see pending 
             //matches and accepted matches and a prompt to create a new match?
@@ -100,19 +92,3 @@ function UserProvider({ children }) {
 }
 
 export { UserContext, UserProvider };
-
-
-    //have a clubs context and a match context?
-    //what would go in these? any fns related to each
-    //separate concerns
-
-    //user
-    //fetchUser fn w/error handling
-    //get for user
-
-    //clubs
-    //setClubs
-
-    //match
-    //editMatch
-    //addNewMatch

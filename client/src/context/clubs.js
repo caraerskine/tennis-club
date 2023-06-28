@@ -6,6 +6,7 @@ function ClubsProvider({ children }){
 
     const [clubs, setClubs] = useState([])
 
+    //init fetch of all tennis clubs
     useEffect(() => {
      fetch('/clubs')
         .then(response => {
@@ -28,6 +29,8 @@ function ClubsProvider({ children }){
                 // addMatch,
                 // editMatch,
                 // newMatch
+                //match
+                //etc
             }}
         >
             {children}
