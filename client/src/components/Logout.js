@@ -21,8 +21,8 @@ const logoutUser = () => {
 if (user) {
     return (
         <div>
-              <h2>Hello {user.name} </h2>
-                    <h4>Click "Logout" to logout</h4>
+              <h2>{user.name} </h2>
+                    <h4>or click "Logout" to logout</h4>
                     <p></p>
                     <br/>
                     <button onClick={logoutUser}>Logout</button> 
@@ -31,7 +31,7 @@ if (user) {
 } else {
     return(
         <div>
-            <h3>If you don't wish to logout, click any link on the menu</h3>
+            <h3>Hey Player! Click Login or Signup to get started!</h3>
         </div>
     )
   }

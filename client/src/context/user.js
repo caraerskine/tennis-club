@@ -44,7 +44,7 @@ function UserProvider({ children }) {
     
           if (response.ok) {
             setUser(data);
-            navigate('/clubs');
+            navigate('/matches');
     
           } else if (response.status === 401) {
           

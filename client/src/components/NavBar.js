@@ -7,11 +7,17 @@ function NavBar() {
     const {user} = useContext(UserContext)
     // const navigate = useNavigate()
 
+    //should I show the profile here?
+    //if user, show profile card
+    //if no user, show welcome message line
+
+    //if user, show a <UserProfileCard />
+
     if (user) {
         return (
             <div>
-                <h3>test NavBar test</h3>
-                {user.avatar_url} 
+                <h3>Hello {user.username}</h3>
+                    <h4>Click on the menu to get started</h4>
             </div>
         )          
     } else {

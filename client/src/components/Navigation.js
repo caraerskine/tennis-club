@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 //make styling
 
 const link = {
+        left: '0px',
         width: '100px',
         padding: '12px',
         margin: '0 6px 6px',
@@ -26,13 +27,13 @@ function Navigation () {
                 to="/matches/pending"
                 style={link}
                 activestyle={{background: '#dfff4f'}}
-            >Pending Matches</NavLink>
+            >Pending Matches⏳</NavLink>
 
            <NavLink
                 to="/matches/accepted"
                 style={link}
                 activestyle={{background: '#dfff4f'}}
-            >🎾Accepted Matches🎾</NavLink> 
+            >Accepted Matches 🎾</NavLink> 
 
             <NavLink
                 to="/clubs"
