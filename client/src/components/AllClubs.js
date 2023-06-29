@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom' 
 import { useContext } from 'react'
 import { UserContext } from '../context/user'
-import { ClubsContext } from '../context/clubs'
+// import { ClubsContext } from '../context/clubs'
 
 const AllClubs = () => {
     const { user } = useContext(UserContext)

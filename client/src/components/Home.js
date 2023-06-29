@@ -2,15 +2,19 @@ import React, { useContext } from 'react'
 import { UserContext } from '../context/user'
 
 function Home() {
+
+    //do i want buttons that are like...
+    //create a new match
+    //click on the menu above to see 
     
     const { user } = useContext(UserContext)
 
     if (user) {
         return(
             <div>
-                <h3>🎾{user.username}'s Home Page🎾</h3>
+                <h3>🎾{user.name}'s Home Page🎾</h3>
                 <div>
-                    <h3>{user.avatar_url}</h3>
+                    <img src={user.avatar_url} alt="your avatar" style={{width:"200px"}}/>
                 </div>
                 <h3>Welcome to the NYC Tennis Match Booking App!</h3>
             </div>

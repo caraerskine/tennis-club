@@ -1,15 +1,15 @@
 class UsersController < ApplicationController
-skip_before_action :authorize, only: [:create, :index] 
+skip_before_action :authorize, only: [:create] 
 
 #POST /signup
     def create
         user = User.create(user_params)
+        # byebug
         if user.valid?
             session[:user_id] = user.id
             render json: user, status: :created
         else
-            render json: {errors: user.errors.full_messages}
-            # , status: :unprocessable_entity  -- not sure if i need this line back on line 13
+            render json: {errors: user.errors.full_messages}, status: :unauthorized
         end
     end
 
@@ -29,7 +29,7 @@ skip_before_action :authorize, only: [:create, :index]
 private
 
     def user_params
-        params.permit(:username, :password, :password_confirmation)
+        params.permit(:name, :avatar_url, :username, :password, :password_confirmation)
     end
 
 end

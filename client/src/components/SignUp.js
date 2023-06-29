@@ -22,7 +22,9 @@ function SignUp() {
         e.preventDefault()
         fetchUser('/signup', 'POST', form)
     }
-  
+
+  console.log("looking for name", form)
+
     return (
     <div className="signup-form">
         <h2>Sign-up</h2>
@@ -72,6 +74,7 @@ function SignUp() {
           />
           <br></br>
           <br></br>
+          <div>Checking...</div>
           <input type="submit"/>
           </form>
             <ul>

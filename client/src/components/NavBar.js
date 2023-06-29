@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../context/user';
 import { NavLink } from 'react-router-dom'
+import Home from './Home';
 
 
 function NavBar() {
@@ -13,18 +14,18 @@ function NavBar() {
 
     //if user, show a <UserProfileCard />
 
-    if (user) {
-        return (
-            <div>
-                <h3>Hello {user.username}</h3>
-                    <h4>Click on the menu to get started</h4>
-            </div>
-        )          
-    } else {
+    console.log(user)
+    if (!user) {
         return (
             <div>
                 <h3>🎾Welcome to the NYC Tennis Match Booking App🎾</h3>
-            </div>
+            </div>    
+        )
+    } else {
+        return (
+            <>
+            <Home />
+            </>
         )
     }
 }
@@ -41,3 +42,8 @@ export default NavBar
 
 //If user...return something that lets them know they are "in"
 //pic of their avatar?
+
+//<div>
+//<h3>Hello {user.name}</h3>
+  //  <h4>Click on the menu to get started</h4>
+//</div>

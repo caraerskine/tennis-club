@@ -19,6 +19,7 @@ function UserProvider({ children }) {
       const fetchUser = async (url, method, body = false) => {
         setLoginError([])
         setSignUpError([])
+        console.log("body", body)
         
         const messages = (url, err) => {
           if (url === "/login"){
@@ -41,16 +42,21 @@ function UserProvider({ children }) {
     
           const response = await fetch(url, options);
           const data = await response.json();
+         
     
           if (response.ok) {
             setUser(data);
             navigate('/matches');
+
+            console.log("responseOkUser", data)
     
           } else if (response.status === 401) {
           
             let err = data.errors.map((e, i) => <li key={i}>{e}</li>)
             
             messages(url, err)
+
+            console.log("response401User", data)
           }
     
       } catch (error) {
@@ -58,6 +64,7 @@ function UserProvider({ children }) {
           let message = [<li>Server Unresponsive</li>]
              
             messages(url, message)
+            console.log("catchBlock", error)
         }
       };
 
