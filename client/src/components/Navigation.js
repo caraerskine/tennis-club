@@ -51,6 +51,12 @@ function Navigation () {
                 style={link}
                 activestyle={{background: '#dfff4f'}}
             >Signup</NavLink> 
+            
+            <NavLink
+                to="/logout"
+                style={link}
+                activestyle={{background: '#dfff4f'}}
+            >Logout</NavLink> 
 
         </div>
     )
