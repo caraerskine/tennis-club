@@ -15,19 +15,19 @@ function NavBar() {
     //if user, show a <UserProfileCard />
 
     console.log(user)
+
     if (!user) {
         return (
             <div>
                 <h3>🎾Welcome to the NYC Tennis Match Booking App🎾</h3>
             </div>    
         )
-    } else {
-        return (
-            <>
-            <Home />
-            </>
-        )
     }
+        return (
+            <ul>
+                <h4>Not Sure</h4>
+            </ul>
+        )
 }
 
 export default NavBar
@@ -43,7 +43,3 @@ export default NavBar
 //If user...return something that lets them know they are "in"
 //pic of their avatar?
 
-//<div>
-//<h3>Hello {user.name}</h3>
-  //  <h4>Click on the menu to get started</h4>
-//</div>
