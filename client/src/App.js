@@ -28,7 +28,7 @@ function App() {
 
             <Route path="/clubs" element={<AllClubs />} />
 
-            <Route path="/matches" element={<Matches />} />
+            {/* <Route path="/matches" element={<Matches />} /> */}
 
           </Routes>      
         </div>

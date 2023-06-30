@@ -1,22 +1,25 @@
 import React from 'react'
-// import { Link } from 'react-router-dom' 
 import { useContext } from 'react'
-// import { UserContext } from '../context/user'
 import { ClubsContext } from '../context/clubs'
+import ClubCard from './ClubCard'
 
-const AllClubs = () => {
+//need addMatch function in clubs context and import here
+
+function AllClubs() {
+
     const { clubs } = useContext(ClubsContext)
+    const displayClubs = clubs.map((club) => 
+      <ClubCard 
+        key={club.id} 
+        club_name={club.club_name} 
+        street={club.street} 
+        description={club.description}
+      />
+    )
 
 return (
   <>
-    {clubs.map(club => (
-      <div key={club.id}>
-        🎾 🎾 🎾 
-        <h1>{club.club_name}</h1>
-        <h2>{club.street}</h2>
-        <p>{club.description}</p>
-      </div>
-    ))}
+   {displayClubs}
   </>
   )
 }
@@ -40,3 +43,13 @@ return (
 export default AllClubs
 
 //took <MyCourt /> our refer to bball
+
+//put in club card
+// {clubs.map(club => (
+//   <div key={club.id}>
+//     🎾 🎾 🎾 
+//     <h1>{club.club_name}</h1>
+//     <h2>{club.street}</h2>
+//     <p>{club.description}</p>
+//   </div>
+// ))}
