@@ -1,10 +1,40 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { UserContext } from "../context/user";
+import { Link } from "react-router-dom";
 
-const Matches = () => {
+function Matches() {
+
+  const { user } = useContext(UserContext);
+
+  if (user.matches && user.matches.length === 0) 
+
+  //below would take them to clubs to the addMatchForm
+
   return (
-    <div>Let's Play! Add a Match to a Club!</div>
-  )
+    <div>
+      <p>Let's Play! Add a Match to a Club!</p>
+          <Link to={`/matches/new`}>
+            <button>Add a Match to a Club</button>
+          </Link>
+    </div>
+  );
 }
+
+//This logic would display their current matches on their current match cards
+//need mui styling 
+
+// if (user.matches && user) {
+//   const displayMatches = user.matches.map((m) => {
+    
+//   return (
+//       <div key={m.id}>
+//         <ol>
+
+//         </ol>
+//       </div>
+//         )
+//   })
+// }
 
 export default Matches
 
