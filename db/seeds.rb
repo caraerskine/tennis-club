@@ -11,23 +11,26 @@ Match.destroy_all
 
 puts "seeding clubs 🎾..."
 
-Club.create(club_name: 'Manhattan Tennis Club', street: '42nd St.', description: 'basement of Grand Central Station')
-Club.create(club_name: 'Brooklyn Tennis Club', street: 'Flatbush Ave.', description: 'near Prospect Park')
-Club.create(club_name: 'Queens Tennis Club', street: '12th Ave.', description: 'by the grocery store')
-Club.create(club_name: 'Bronx Tennis Club', street: '161st St.', description: 'next to Yankee Stadium')
-Club.create(club_name: 'Staten Island Tennis Club', street: 'Marine Ave.', description: 'near the fire station')
+Club.create(club_name: 'Manhattan Tennis Club', street: '42nd St.', description: 'behind Grand Central Station', club_img:'https://i0.wp.com/thecitylife.org/wp-content/uploads/2023/06/52991725163_90da35260a_b.jpg?fit=1024%2C767&ssl=1')
+Club.create(club_name: 'Brooklyn Tennis Club', street: 'Flatbush Ave.', description: 'near Prospect Park', club_img:'https://mphc.com/wp-content/uploads/2014/10/tennis2.jpg')
+Club.create(club_name: 'Queens Tennis Club', street: '12th Ave.', description: 'by the grocery store', club_img:'https://images.squarespace-cdn.com/content/v1/5b9ffe0f1137a680c2c08250/1629407688846-TD5ROZ5ULC4GGNVUCXD8/kith.jpeg?format=1000w')
+Club.create(club_name: 'Bronx Tennis Club', street: '161st St.', description: 'next to Yankee Stadium', club_img:'https://nypost.com/wp-content/uploads/sites/2/2016/08/tennis_hudson1a.jpg?quality=80&strip=all')
+Club.create(club_name: 'Staten Island Tennis Club', street: 'Marine Ave.', description: 'near the fire station', club_img: 'https://images.ctfassets.net/cgcah00ul21b/7fq8ksGpfSoCuOcDYLvsPF/f9cb3119d1d8c712556566b8954ec4c2/Riverside_Park_Tennis.jpg')
 
 
 # User.all.each do |user| 
 #     (1..3).each do |i| 
-#         court = Court.order('RANDOM()').first
-#         user.games.create!({
+#         club = Club.order('RANDOM()').first
+#         user.matches.create!({
+#            sender_id:
+#            receiver_id:
+#            date: Date.at(rand * Date.now.to_i).to_s,
 #            time: Time.at(rand * Time.now.to_i).to_s,
-#            bring_ball: rand(2).zero?,
 #            skill_level: rand(1..10),
 #            contact_info: Faker::PhoneNumber.cell_phone,
+#            status: (pending, accepted, rejected)
 #            user_id: user.id,
-#            court_id: court.id
+#            club_id: club.id
 #         })
 #     end
 # end
