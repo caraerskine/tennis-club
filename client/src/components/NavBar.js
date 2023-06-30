@@ -25,7 +25,7 @@ function NavBar() {
     }
         return (
             <ul>
-                <h4>Not Sure</h4>
+                <h4>🎾 🎾 🎾 🎾 🎾</h4>
             </ul>
         )
 }

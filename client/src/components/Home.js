@@ -6,6 +6,7 @@ function Home() {
     //do i want buttons that are like...
     //create a new match
     //click on the menu above to see 
+    //do i want to show user's matches
     
     const { user } = useContext(UserContext)
 
@@ -16,7 +17,6 @@ function Home() {
                 <div>
                     <img src={user.avatar_url} alt="your avatar" style={{width:"200px"}}/>
                 </div>
-                <h3>Welcome to the NYC Tennis Match Booking App!</h3>
             </div>
         )
     } 
