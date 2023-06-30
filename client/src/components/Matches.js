@@ -7,3 +7,7 @@ const Matches = () => {
 }
 
 export default Matches
+
+//if no matches, prompt to add button 
+
+//if matches, show pending matches and accepted matches buttons
