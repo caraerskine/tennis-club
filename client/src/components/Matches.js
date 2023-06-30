@@ -13,12 +13,14 @@ function Matches() {
   return (
     <div>
       <p>Let's Play! Add a Match to a Club!</p>
-          <Link to={`/matches/new`}>
+          {/* <Link to={`/matches/new`}>
             <button>Add a Match to a Club</button>
-          </Link>
+          </Link> */}
     </div>
   );
 }
+//Your match cards are empty
+//render <MatchCard />
 
 //This logic would display their current matches on their current match cards
 //need mui styling 
