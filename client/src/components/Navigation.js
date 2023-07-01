@@ -1,9 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-
-//make styling
-
 const link = {
         left: '0px',
         width: '100px',
