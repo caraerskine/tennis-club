@@ -2,8 +2,8 @@ import React from 'react'
 import { Card, CardContent, CardMedia, CardActions } from '@mui/material';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { ClubsContext } from '../context/clubs';
-import { useContext } from 'react';
+// import { ClubsContext } from '../context/clubs';
+// import { useContext } from 'react';
 
 function ClubCard( club_img, club_name, street, description  ) {
 //pass addmatch fn
@@ -40,3 +40,8 @@ function ClubCard( club_img, club_name, street, description  ) {
 }
 
 export default ClubCard
+
+// club_img={club.club_img}
+// club_name={club.club_name} 
+// street={club.street} 
+// description={club.description}

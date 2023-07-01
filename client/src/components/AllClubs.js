@@ -7,6 +7,7 @@ function AllClubs(){
 
     const { clubs } = useContext(ClubsContext)
 
+
     const displayClubs = clubs.map((club) => 
       <ClubCard 
         key={club.id} 

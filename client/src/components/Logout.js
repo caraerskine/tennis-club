@@ -21,7 +21,7 @@ const logoutUser = () => {
 if (user) {
     return (
         <div>
-                    <h4>Click "Logout" to logout</h4>
+                    <h4>{user.name}, click "Logout" to logout</h4>
                     <p></p>
                     <br/>
                     <button onClick={logoutUser}>Logout</button> 
