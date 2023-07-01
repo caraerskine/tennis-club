@@ -13,15 +13,17 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { NavLink, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
-const pages = ['Home', 'Pending Matches', 'Accepted Matches', 'Tennis Clubs'];
-const settings = ['Logout', 'Login', 'Signup'];
+const pages = ['Home', 'Pending Matches', 'Accepted Matches', 'Completed Matches', 'Tennis Clubs'];
+// const settings = ['Logout', 'Login', 'Signup'];
 
 function ResponsiveAppBar() {
 
   const {user} = useContext(UserContext)
+
+  const navigate = useNavigate();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -62,7 +64,7 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-             NYC🎾TC 
+            NYC🎾TC 
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -94,22 +96,35 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                   <Link to="/" onClick={handleCloseNavMenu}>
-                    <Typography href="/" textAlign="center">{page}Home</Typography>
-                  </Link>
-                  <Link to="/clubs" onClick={handleCloseNavMenu}>
-                    <Typography href="/clubs" textAlign="center">{page}Clubs</Typography>
-                  </Link>
-                  <Link to="/matches/accepted" onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}Accepted Matches</Typography>
-                  </Link> 
-                  <Link to="/matches/pending" onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{page}Pending Matches</Typography>
-                  </Link>
-                </MenuItem>
-              ))}
+            <MenuItem onClick={handleCloseNavMenu}>
+                <Link to="/" onClick={handleCloseNavMenu}>
+                   <Typography textAlign="center">Home</Typography>
+                </Link>
+                </ MenuItem >
+
+                <MenuItem onClick={handleCloseNavMenu}>
+                <Link to="/clubs" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Clubs</Typography>
+                </Link>
+                </ MenuItem >
+
+                <MenuItem onClick={handleCloseNavMenu}>
+                <Link to="/matches/accepted" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Accepted Matches</Typography>
+                </Link>
+                </ MenuItem >
+                
+                <MenuItem onClick={handleCloseNavMenu}>
+                <Link to="/matches/pending" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Pending Matches</Typography>
+                </Link>
+                </ MenuItem >
+
+                <MenuItem onClick={handleCloseNavMenu}>
+                <Link to="/matches/completed" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Completed Matches</Typography>
+                </Link>
+                </ MenuItem >
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -140,7 +155,7 @@ function ResponsiveAppBar() {
               >
                 {page}
               </Button>
-            ))}
+            ))} 
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -165,22 +180,21 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  
+                <MenuItem onClick={handleCloseUserMenu}>
                   <Link to="/login" onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </Link>  
-                  
-                  <Link to="/logout" onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Typography textAlign="center">Login</Typography>
                   </Link>
-                  
+                </ MenuItem>
+                <MenuItem >
                   <Link to="/signup" onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </Link>             
-                </MenuItem>
-              ))}
+                  <Typography textAlign="center">Signup</Typography>
+                  </Link>
+                </ MenuItem>
+                <MenuItem >
+                  <Link to="/logout" onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">Logout</Typography>
+                  </Link>
+                </ MenuItem>
             </Menu>
           </Box>
         </Toolbar>
@@ -188,4 +202,6 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
+
+
 export default ResponsiveAppBar;

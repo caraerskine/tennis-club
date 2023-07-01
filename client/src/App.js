@@ -8,6 +8,7 @@ import SignUp from './components/SignUp'
 import Logout from './components/Logout'
 import AllClubs from './components/AllClubs'
 import Matches from './components/Matches';
+import CompletedMatches from './components/CompletedMatches';
 import './App.css';
 
 
@@ -31,6 +32,8 @@ function App() {
               <Route path="/clubs" element={<AllClubs />} />
 
               <Route path="/matches" element={<Matches />} />
+
+              
 
             </Routes>      
         </div>
