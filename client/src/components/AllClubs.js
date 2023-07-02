@@ -7,6 +7,7 @@ function AllClubs(){
 
     const { clubs } = useContext(ClubsContext)
 
+    console.log("clubs", clubs)
 
     const displayClubs = clubs.map((club) => 
       <ClubCard 
@@ -17,6 +18,8 @@ function AllClubs(){
         description={club.description}
       />
     )
+
+    console.log("dispClubs", displayClubs)
 
 return (
   <div className="App" >

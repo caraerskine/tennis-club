@@ -12,6 +12,9 @@ function ClubCard( {club_img, club_name, street, description}  ) {
     // const displayClubs = {displayClubs}
 
     // const { clubs } = useContext(ClubsContext)
+    console.log("img", club_img)
+    console.log(club_img, club_name, street, description);
+
 
     
   return (
@@ -19,7 +22,7 @@ function ClubCard( {club_img, club_name, street, description}  ) {
         <CardMedia
             component="div"
             sx={{ height:500 }}
-            club_img={club_img}
+            image={club_img}
             title="club"
         />
         <CardContent>
