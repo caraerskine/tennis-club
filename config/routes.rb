@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
 
-  #sessions ctrlr
+  #sessions ctrllr
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  #users crtlr
+  #users crtllr
   post '/signup', to: 'users#create'
   get '/me', to: 'users#show'
+
+  #matches ctrllr
+
+  
+  #clubs ctrllr
+
 
 
   resources :comments

@@ -44,11 +44,13 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+//bug icon on line 53 has been commented out
+
   return (
     <AppBar position="static" sx={{ backgroundColor: '#dfff4f' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
