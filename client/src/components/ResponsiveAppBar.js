@@ -45,10 +45,10 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static"sx={{ backgroundColor: '#dfff4f' }}>
+    <AppBar position="static" sx={{ backgroundColor: '#dfff4f' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
+          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -74,7 +74,7 @@ function ResponsiveAppBar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="black"
             >
               <MenuIcon />
             </IconButton>
@@ -120,14 +120,14 @@ function ResponsiveAppBar() {
                 </Link>
                 </ MenuItem >
 
-                {/* <MenuItem onClick={handleCloseNavMenu}>
+                <MenuItem onClick={handleCloseNavMenu}>
                 <Link to="/matches/completed" onClick={handleCloseNavMenu}>
                 <Typography textAlign="center">Completed Matches</Typography>
                 </Link>
-                </ MenuItem > */}
+                </ MenuItem >
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           <Typography
             variant="h5"
             noWrap
@@ -140,11 +140,11 @@ function ResponsiveAppBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: 'black',
               textDecoration: 'none',
             }}
           >
-            LOGO
+               NYC🎾TC 
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (

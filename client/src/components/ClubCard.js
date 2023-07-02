@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 // import { ClubsContext } from '../context/clubs';
 // import { useContext } from 'react';
 
-function ClubCard( club_img, club_name, street, description  ) {
+function ClubCard( {club_img, club_name, street, description}  ) {
 //pass addmatch fn
 //comments should be on the card too but only appear after the match is completed?
 //logic for that
@@ -13,20 +13,21 @@ function ClubCard( club_img, club_name, street, description  ) {
 
     // const { clubs } = useContext(ClubsContext)
 
+    
   return (
     <Card sx={{ maxWidth: 500}}>
         <CardMedia
             component="div"
             sx={{ height:500 }}
             club_img={club_img}
-            club_name={club_name}
+            title="club"
         />
         <CardContent>
             <Typography gutterBottom variant="h6" component="div">
-                  {street}
+                {club_name} 
                 </Typography>
                 <Typography>
-                {description}
+                {street}, {description}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   {} {}
@@ -37,6 +38,7 @@ function ClubCard( club_img, club_name, street, description  ) {
         </CardActions>
     </Card>
   )
+
 }
 
 export default ClubCard
