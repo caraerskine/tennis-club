@@ -9,12 +9,15 @@ Rails.application.routes.draw do
   get '/me', to: 'users#show'
 
   #matches ctrllr
-  #need completed, pending and accepted custom routes
-  # get '/matches/pending', to: 'matches'
+  #need completed, pending and accepted custom routes ?
+  get '/matches/pending', to: 'matches#pending'
+  get '/matches/completed', to: 'matches#completed'
+  get '/matches/accepted', to: 'matches#accepted'
   
   #clubs ctrllr
   #have resources so have crud
 
+  #have resources for have full crud capability on these
   resources :comments
   resources :users
   resources :matches

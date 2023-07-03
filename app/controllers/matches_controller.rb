@@ -26,12 +26,25 @@ class MatchesController < ApplicationController
         head :no_content
     end
 
-    #thoughts
-    #need method for /matches/pending
+    #custom methods for corresponding custom routes
 
-    #need method for /matches/accepted
+    #if a current_user has a match that has not yet been accepted by the receiver or rejected it is pending
+    #user_id and #sender_id
+    def pending
+        @pending_matches = Match.where(sender_id: current_user.id, status: 'pending')
+    end
 
-    #need method for /matches/completed
+#if a current_user has a match that has been accepted by the receiver
+    #user_id and #sender_id    
+    def accepted
+        @accepted_matches = Match.where(receiver_id: current_user.id, status: 'accepted')
+    end
+
+    #if a current_user has a match that has been completed    
+    #user_id and #sender_id
+    def completed
+        @completed_matches = Match.where(receiver_id: current_user.id, status: 'completed')
+    end
 
 
     private
