@@ -55,14 +55,14 @@ function ResponsiveAppBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/about"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'black',
+              color: 'green',
               textDecoration: 'none',
             }}
           >
@@ -105,7 +105,7 @@ function ResponsiveAppBar() {
                 </ MenuItem >
 
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Link to="/clubs" onClick={handleCloseNavMenu}>
+                  <Link to="/clubs" onClick={() => navigate('/clubs')}>
                     <Typography textAlign="center">Clubs</Typography>
                   </Link>
                 </ MenuItem >
@@ -129,6 +129,12 @@ function ResponsiveAppBar() {
                 </ MenuItem >
             </Menu>
           </Box>
+
+
+
+
+
+
           {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           <Typography
             variant="h5"
@@ -142,23 +148,28 @@ function ResponsiveAppBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'black',
+              color: 'purple',
               textDecoration: 'none',
             }}
           >
-               TEST 🎾
+               NYC🎾TC Small
+               
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'black', display: 'block' }}
+                sx={{ my: 2, color: 'red', display: 'block' }}
               >
                 {page}
               </Button>
             ))} 
           </Box>
+
+
+
+
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
@@ -207,3 +218,5 @@ function ResponsiveAppBar() {
 
 
 export default ResponsiveAppBar;
+
+//line 149 is little logo when menu gets shrunken

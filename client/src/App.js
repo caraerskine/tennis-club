@@ -16,7 +16,6 @@ function App() {
     <div>
       <ResponsiveAppBar />
         <div className="App">
-      
             <Routes>
                         
               <Route path="/" element={<Home />} />
@@ -32,8 +31,6 @@ function App() {
               <Route path="/matches" element={<Matches />} />
 
               <Route path="/about" element={<About />} />
-
-              
 
             </Routes>      
         </div>

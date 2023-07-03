@@ -8,7 +8,11 @@ the Stripe API. For purposes of the App, this is in testing mode and is function
 but no money is exchanged and all account information is "blank" in test mode.
 
 The app has 5 navigation buttons at the top: home, clubs, pending matches, accepted mathces,   
-The site is secure and requires a login to see your individual games. All users can see all the basketball courts. You can add a game to a court, delete a game, and edit your game. You can also add a court to the list of courts.
+The site is secure and requires a login to see your individual matches. 
+All users can see all the tennis clubs. 
+You can add a match to a club, delete a match, and edit your match. 
+You can invite another user to play a tennis match. You can see if your match is pending, accepted, or rejected.
+These invites are handled with ActionMailer.
 
 GOALS ACHIEVED
 
@@ -16,36 +20,19 @@ MVP: As a user, I can:
 Sign up for an account
 Log in to the site & remain logged in
 Log out
-View a list of all available games in my area and their respective courts
-Create a new court
-Modify or delete a game
-Create a new game
-CREATE -Allow users to add a new court -Allow users to add a new game
+View a list of all tennis clubs
+Modify or delete a match
+Create a new match
 
-READ -Display data of courts -Display data of games
+CREATE -Allow users to create a new match
 
-UPDATE -Allow users to edit a game
+READ -Display data of clubs
 
-DELETE -Allow users to delete a game
+UPDATE -Allow current user to edit a match
 
--DEPLOYED This app is deployed on Render as a publicly available app: https://bball-courts.onrender.com/
+DELETE -Allow current user to delete a match
 
--MY GIT URL of repo https://github.com/caraerskine/pickup-bball.git
+-DEPLOYED This app is deployed on Render as a publicly available app: https://tennis-club.onrender.com/
 
-How to run it: -You must have the backend running to make this project work. In the console, run rails s from within the directory pickup-bball
+-MY GIT URL of repo https://github.com/caraerskine/tennis-club.git
 
--You need React to run the front end from within the directory pickup-bball Run npm install and npm run server Open a second terminal window and run npm start
-
-STRETCH GOALS: -Add photo of park/court
-
--A user can make a 5 on 5 game and a user of the same skill level can join the game
-
--Have a user profile with a photo
-
--Request to join a game Say there are 9 people signed up, and you need a 10th for 5 on 5, you could be the 10th person and complete the game. I'm thinking you could send a request to the person who created the game, and then they can decide to add you or not, based on skill level, etc. A little like "choosing teams".
-
--Have your skill level on you profile public, and others at that skill level can invite you to join a game and you can invite others as well.
-
--Show how many people have joined a game
-
-Let's hoop! 🏀
