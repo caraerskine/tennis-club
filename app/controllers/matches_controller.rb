@@ -26,6 +26,13 @@ class MatchesController < ApplicationController
         head :no_content
     end
 
+    #thoughts
+    #need method for /matches/pending
+
+    #need method for /matches/accepted
+
+    #need method for /matches/completed
+
 
     private
 
