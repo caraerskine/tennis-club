@@ -22,6 +22,8 @@ function Matches() {
 //This logic would display their current matches on their current match cards
 //need mui styling 
 
+//need to render <MatchCard /> and put below on match card
+
 if (user.matches && user) {
   const displayMatches = user.matches.map((m) => {
     
