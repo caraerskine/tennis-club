@@ -29,7 +29,7 @@ const styles = {
     <Card style={styles.card} >
         <CardMedia
             component="div"
-            sx={{ height:350}}
+            sx={{ height:350 }}
             image={club_img}
             title="club"
         />
