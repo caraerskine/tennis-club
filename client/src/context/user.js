@@ -74,6 +74,25 @@ function UserProvider({ children }) {
         setUser(false)
       }
 
+      const onAddMatch = (match) => {
+        fetch("/matches", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(match),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.errors) {
+              const errorLis = data.errors.map((e) => <li>{e}</li>);
+              setErrors(errorLis);
+            } else {
+              setUser({...user, matches: [...user.matches, data]})
+              alert("Match added!");
+              setErrors([]);
+            }
+          });
+      };
+
     
     return (
         <UserContext.Provider
@@ -87,7 +106,8 @@ function UserProvider({ children }) {
             setLoginError,
             errors,
             setErrors,
-            logout
+            logout,
+            onAddMatch
           }}
         >
           {children}

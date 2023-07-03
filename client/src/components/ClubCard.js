@@ -3,13 +3,16 @@ import { Card, CardContent, CardMedia, CardActions } from '@mui/material';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { ClubsContext } from '../context/clubs';
+import { UserContext } from '../context/user';
 import { useContext } from 'react';
-
+import { NavLink } from 'react-router-dom'
 
 function ClubCard( {club_img, club_name, street, description}  ) {
 //pass addmatch fn
 //comments should be on the card too but only appear after the match is completed?
 //logic for that
+
+const { clubs } = useContext(ClubsContext)
 
 const styles = {
   container: {
@@ -23,9 +26,12 @@ const styles = {
   },
 };
 
+console.log(typeof(clubs))
     
   return (
-    <div style={styles.container}>
+    <>
+    {clubs.map(club => (
+        <div key={club.id} style={styles.container}>
     <Card style={styles.card} >
         <CardMedia
             component="div"
@@ -44,17 +50,16 @@ const styles = {
             </Typography>
         </CardContent>
         <CardActions>
-            <Button>Add a tennis match to this club</Button>
+          <NavLink to={`/clubs/${club.id}/newmatch`}>
+            <Button>Add a tennis match to {club.club_name}</Button>
+          </NavLink>
         </CardActions>
     </Card>
     </div>
+  ))}
+  </>
   )
-
 }
 
 export default ClubCard
 
-// club_img={club.club_img}
-// club_name={club.club_name} 
-// street={club.street} 
-// description={club.description}

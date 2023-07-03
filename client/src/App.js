@@ -8,6 +8,7 @@ import SignUp from './components/SignUp'
 import Logout from './components/Logout'
 import AllClubs from './components/AllClubs'
 import Matches from './components/Matches';
+import NewMatchForm from './components/NewMatchForm';
 import './App.css';
 
 
@@ -31,6 +32,8 @@ function App() {
               <Route path="/matches" element={<Matches />} />
 
               <Route path="/about" element={<About />} />
+
+              <Route path="/clubs/:id/newmatch" element={<NewMatchForm />} />
 
             </Routes>      
         </div>

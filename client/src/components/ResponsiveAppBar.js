@@ -44,7 +44,7 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-//bug icon on line 53 has been commented out
+//bug icon on line 53 has been commented out, not part of my styling
 
   return (
     <AppBar position="static" sx={{ backgroundColor: '#dfff4f' }}>
