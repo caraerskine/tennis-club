@@ -55,7 +55,7 @@ function ResponsiveAppBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/about"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -105,27 +105,27 @@ function ResponsiveAppBar() {
                 </ MenuItem >
 
                 <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/clubs" onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">Clubs</Typography>
-                </Link>
+                  <Link to="/clubs" onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Clubs</Typography>
+                  </Link>
                 </ MenuItem >
 
                 <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/matches/accepted" onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">Accepted Matches</Typography>
-                </Link>
+                  <Link to="/matches/accepted" onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Accepted Matches</Typography>
+                  </Link>
                 </ MenuItem >
                 
                 <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/matches/pending" onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">Pending Matches</Typography>
-                </Link>
+                  <Link to="/matches/pending" onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Pending Matches</Typography>
+                  </Link>
                 </ MenuItem >
 
                 <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/matches/completed" onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">Completed Matches</Typography>
-                </Link>
+                  <Link to="/matches/completed" onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Completed Matches</Typography>
+                  </Link>
                 </ MenuItem >
             </Menu>
           </Box>
@@ -134,7 +134,7 @@ function ResponsiveAppBar() {
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/about"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -146,7 +146,7 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-               NYC🎾TC 
+               TEST 🎾
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (

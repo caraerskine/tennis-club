@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom'
 import ResponsiveAppBar from './components/ResponsiveAppBar'
+import About from './components/About';
 import Home from './components/Home'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
@@ -29,6 +30,10 @@ function App() {
               <Route path="/clubs" element={<AllClubs />} />
 
               <Route path="/matches" element={<Matches />} />
+
+              <Route path="/about" element={<About />} />
+
+              
 
             </Routes>      
         </div>
