@@ -13,9 +13,10 @@ Rails.application.routes.draw do
   get '/matches/pending', to: 'matches#pending'
   get '/matches/completed', to: 'matches#completed'
   get '/matches/accepted', to: 'matches#accepted'
-  
+
   #clubs ctrllr
   #have resources so have crud
+
 
   #have resources for have full crud capability on these
   resources :comments

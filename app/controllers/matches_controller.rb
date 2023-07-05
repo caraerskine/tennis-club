@@ -1,7 +1,7 @@
 class MatchesController < ApplicationController
 
     def create
-        game = @current_user.matches.create!(match_params)
+        match = @current_user.matches.create!(match_params)
         render json: match, status: :created
     end
 

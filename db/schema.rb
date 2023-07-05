@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_02_190712) do
+ActiveRecord::Schema.define(version: 2023_07_05_192039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 2023_07_02_190712) do
     t.string "sender_id"
     t.string "receiver_id"
     t.string "club"
-    t.datetime "date"
     t.datetime "time"
     t.string "skill_level"
     t.string "contact_info"
