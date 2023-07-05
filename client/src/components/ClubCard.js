@@ -26,7 +26,7 @@ const styles = {
   },
 };
 
-console.log(typeof(clubs))
+console.log(typeof(club))
     
   return (
     <>
@@ -62,4 +62,8 @@ console.log(typeof(clubs))
 }
 
 export default ClubCard
+
+//add a match to a club via the ClubCard
+
+
 

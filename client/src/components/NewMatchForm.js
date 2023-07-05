@@ -3,7 +3,7 @@ import { UserContext } from '../context/user'
 import { useParams } from 'react-router-dom'
 
 
-function NewMatchForm(){
+function AddMatchForm(){
     const [date, setDate] = useState("")
     const [time, setTime] = useState("")
     const [skill, setSkill] = useState(false)
@@ -81,7 +81,7 @@ function NewMatchForm(){
   )
 }
 
-export default NewMatchForm
+export default AddMatchForm
 
 //sender_id, receiver_id, user_id and club_id
 

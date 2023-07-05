@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { UserProvider } from './context/user';
 import { ClubsProvider } from './context/clubs';
+import { MatchesProvider } from './context/matches';
 import { BrowserRouter as Router } from 'react-router-dom'
 
 function Wrap() {
@@ -12,7 +13,9 @@ function Wrap() {
         <Router>
             <UserProvider>
                 <ClubsProvider>
-                    <App />
+                    <MatchesProvider>
+                        <App />
+                    </MatchesProvider>
                 </ClubsProvider>
             </UserProvider>
         </Router>
@@ -24,3 +27,5 @@ ReactDOM.render(
     <Wrap />, 
     root
 )
+
+//added MatchesProvider because I added a matches.js file for Match Concerns
