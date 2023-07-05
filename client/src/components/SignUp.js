@@ -8,7 +8,8 @@ function SignUp() {
         avatar_url: "",
         username: "",
         password: "",
-        password_confirmation: ""
+        password_confirmation: "",
+        email: ""
     })
 
     const {fetchUser, signUpError} = useContext(UserContext);
@@ -53,7 +54,16 @@ function SignUp() {
                 id="username"
                 value={form.username} 
                 onChange={handleUpdate}
-        />
+        />   
+          <br></br>
+          <br></br>
+            <label>Email:</label>
+            <input 
+                type="email" 
+                id="email"
+                value={form.email} 
+                onChange={handleUpdate}
+            />
           <br></br>
           <br></br>
           <label>Password:</label>

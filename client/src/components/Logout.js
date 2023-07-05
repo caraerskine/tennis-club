@@ -18,6 +18,8 @@ const logoutUser = () => {
         })
     }
 
+    console.log("logout", user.name)
+
 if (user) {
     return (
         <div>

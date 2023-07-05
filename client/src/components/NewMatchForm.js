@@ -4,10 +4,9 @@ import { useParams } from 'react-router-dom'
 
 
 function AddMatchForm(){
-    const [date, setDate] = useState("")
-    const [time, setTime] = useState("")
+    const [datetime, setDatetime] = useState("")
     const [skill, setSkill] = useState(false)
-    const [contact, setContact] = useState("")
+    const [phone, setPhone] = useState("")
     const { id } = useParams()
     const { onAddMatch, errors } = useContext(UserContext)
 
@@ -15,10 +14,9 @@ function AddMatchForm(){
     const handleSubmit = (e) => {
         e.preventDefault();
         onAddMatch({
-            date: date,
-            time: time,
+            datetime: datetime,
             skill_level: false,
-            contact_info: contact,
+            phone: phone,
             club_id: id
         })
     }
@@ -30,25 +28,14 @@ function AddMatchForm(){
     <br></br>
     <form onSubmit={handleSubmit}>
           <br/>
-        <label>Date: </label>
+        <label>Date and Time: </label>
         <input 
-            type="text"
-            id="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            placeholder="MM/DD/YYYY"  
+            type="datetime-local"
+            id="datetime"
+            value={datetime}
+            onChange={(e) => setDatetime(e.target.value)}
+            placeholder="09/21/2023, 7:30"  
         /> <br/>
-        <br/>
-        <br/>
-        <label>Time: </label>
-        <input 
-            type="text"
-            id="time"
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-            placeholder="i.e., 2:00 pm"  
-        /> <br/>
-        <br/>
         <br/>
         <label>Skill Level: </label>
         <select
@@ -59,12 +46,15 @@ function AddMatchForm(){
                 <option value={"intermediate"}>intermediate</option>
         </select> <br/>
         <br/>
-        <label>Contact Info: </label>
+        <label>Phone Number: </label>
         <input 
-            type="text"
-            id="contact_info"
-            value={contact}
-            onChange={(e) => setContact(e.target.value)}
+            type="tel"
+            id="phone"
+            name="phone"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" 
+            required
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             placeholder="phone number"
         />  <br/>
         <br/>

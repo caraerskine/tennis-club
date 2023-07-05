@@ -48,6 +48,7 @@ function UserProvider({ children }) {
             setUser(data);
             navigate('/');
             //takes user to their home page with their avatar
+            //or should it take them to /matches
 
             console.log("responseOkUser", data)
     

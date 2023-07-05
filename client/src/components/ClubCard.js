@@ -64,6 +64,8 @@ console.log(typeof(club))
 export default ClubCard
 
 //add a match to a club via the ClubCard
+//aka MyCourt from bball app
+//This is the ClubCard and it shows each club and has a button to add a match to a particular club
 
 
 
