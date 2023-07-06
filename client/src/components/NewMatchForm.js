@@ -24,7 +24,7 @@ function AddMatchForm(){
   return (
    <>
    <br></br>
-    New Match Form
+    Create a New Match 🎾
     <br></br>
     <form onSubmit={handleSubmit}>
           <br/>
@@ -80,3 +80,5 @@ export default AddMatchForm
 //would there need to be a field for that? what would it be called?
 
 //how do i know what users are available to invite?
+
+//how do I have the club name on there as well? bc u click on a particular club card

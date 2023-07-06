@@ -2,14 +2,14 @@ import React, { useContext } from "react";
 import { UserContext } from "../context/user";
 import MatchCard from './MatchCard'
 import { Link } from 'react-router-dom'
-// import { MatchesContext } from '../context/matches'
+import { MatchesContext } from '../context/matches'
 // import { ClubsContext } from '../context/clubs'
 
 function Matches() {
 
   const { user } = useContext(UserContext);
   // const { clubs } = useContext(ClubsContext);
-  // const { matches } = useContext(MatchesContext);
+  const { matches } = useContext(MatchesContext);
 
   if (!user || !user.matches) {
     return <div>Loading...</div>;
@@ -38,6 +38,7 @@ if (user.matches && user) {
       status={match.status}
     />
     console.log("user matches", user.matches)
+    console.log(typeof user.matches)
 })
   return <div className="App"> 
             {displayMatches} 
