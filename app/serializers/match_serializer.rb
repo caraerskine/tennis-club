@@ -1,3 +1,11 @@
 class MatchSerializer < ActiveModel::Serializer
-  attributes :id, :sender_id, :receiver_id, :club, :date, :time, :skill_level, :contact_info, :user_id, :club_id, :status
+  attributes :id, :sender_id, :receiver_id, :club, :datetime, :skill_level, :phone, :user_id, :club_id, :status
+
+  def club_name
+    object.club.match
+  end
+
+  belongs_to :club
+  nelongs_to :user
+
 end
