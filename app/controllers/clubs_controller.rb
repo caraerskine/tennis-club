@@ -20,7 +20,7 @@ class ClubsController < ApplicationController
     private
     
     def club_params
-            params.permit(:club_name, :street, :description)
+            params.permit(:club_name, :street, :description, :club_img)
     end        
 
 end
