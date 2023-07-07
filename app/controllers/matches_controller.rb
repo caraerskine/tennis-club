@@ -50,7 +50,7 @@ class MatchesController < ApplicationController
     private
 
     def match_params
-        params.permit(:club, :datetime, :match_date, :skill_level, :status)
+        params.permit(:club, :match, :datetime, :phone, :club_id, :skill_level, :status)
     end
   
 

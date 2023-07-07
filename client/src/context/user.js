@@ -87,14 +87,35 @@ function UserProvider({ children }) {
               const errorLis = data.errors.map((e) => <li>{e}</li>);
               setErrors(errorLis);
             } else {
-              setUser({...user, matches: [...user.matches, data]})
+              // setUser({...user, matches: [...user.matches, data]})
+              setUser(prevUser => {
+                const updatedMatches = [...prevUser.matches || [], data];
+                return { ...prevUser, matches: updatedMatches };
+              });
               alert("Match added!");
               setErrors([]);
             }
           });
       };
 
+      const [matches, setMatches] = useState([])
 
+      useEffect(() => {
+       fetch('/matches')
+          .then(response => {
+              if (response.ok){
+               response.json().then(data => {
+                  setMatches(data)
+              })
+          } else {
+              response.json().then(error => {
+              })
+          } 
+          })
+      }, [])
+  
+  console.log("matches", matches)
+     
     
     return (
         <UserContext.Provider
@@ -109,7 +130,9 @@ function UserProvider({ children }) {
             errors,
             setErrors,
             logout,
-            onAddMatch
+            onAddMatch, 
+            matches,
+            setMatches
           }}
         >
           {children}
