@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
 
-function MatchCard() {
+function MatchCard( {id, club, datetime, skill_level, phone, status}) {
   // const { clubs } = useContext(ClubsContext)
   const { user } = useContext(UserContext);
 
@@ -36,16 +36,19 @@ function MatchCard() {
             />
             <CardContent>
               <Typography gutterBottom variant="h6" component="div">
-                {match.club.name}
+                {match.club}
               </Typography>
               <Typography>
-                {match.date}, {match.time}
+                {match.datetime}
               </Typography>
               <Typography>
                 {match.skill_level ? "beginner" : "intermediate"}
               </Typography>
               <Typography>
-                {match.contact_info}
+                {match.phone}
+              </Typography>
+              <Typography>
+                {match.status}
               </Typography>
               <Typography variant="body2" color="text.secondary"></Typography>
             </CardContent>
