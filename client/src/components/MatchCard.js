@@ -30,9 +30,8 @@ function MatchCard( {id, club, datetime, skill_level, phone, status}) {
             <CardMedia
               component="div"
               sx={{ height: 350 }}
-            //   image={club_img}
-            //   title="club"
-            //should this have avatars of both users to id this match?
+              image={user.avatar_url}
+       
             />
             <CardContent>
               <Typography gutterBottom variant="h6" component="div">

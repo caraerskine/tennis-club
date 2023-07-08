@@ -18,7 +18,7 @@ function Matches({id, club, datetime, skill_level, phone, status}) {
   // if (user.matches && user.matches.length === 0) 
   if (user.matches.length === 0) {
     return (
-    <div>
+    <div key = {club.id}>
       <h3>{user.name} it looks like you don't have any matches scheduled yet.</h3>
           <Link to={`/clubs`}>
             <button>Add a Match to a Club</button>
