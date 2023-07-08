@@ -9,6 +9,7 @@ function UserProvider({ children }) {
     const [errors, setErrors] = useState([]);
     const [loginError, setLoginError] = useState([]);
     const [signUpError, setSignUpError] = useState([]);
+    const [matches, setMatches] = useState([])
     const navigate = useNavigate()
 
 
@@ -98,8 +99,7 @@ function UserProvider({ children }) {
           });
       };
 
-      const [matches, setMatches] = useState([])
-
+  
       useEffect(() => {
        fetch('/matches')
           .then(response => {

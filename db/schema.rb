@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_08_140610) do
+ActiveRecord::Schema.define(version: 2023_07_08_202309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,25 +25,24 @@ ActiveRecord::Schema.define(version: 2023_07_08_140610) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "user_id"
-    t.string "match_id"
+    t.integer "user_id"
+    t.integer "match_id"
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "matches", force: :cascade do |t|
-    t.string "sender_id"
-    t.string "receiver_id"
-    t.string "club"
-    t.string "skill_level"
-    t.string "user_id"
-    t.string "club_id"
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.integer "user_id"
+    t.integer "club_id"
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "datetime"
     t.string "phone"
+    t.boolean "skill_level"
   end
 
   create_table "users", force: :cascade do |t|

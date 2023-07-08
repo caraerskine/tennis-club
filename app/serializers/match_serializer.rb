@@ -6,6 +6,6 @@ class MatchSerializer < ActiveModel::Serializer
   # end
 
   belongs_to :club
-  nelongs_to :user
+  belongs_to :user
 
 end

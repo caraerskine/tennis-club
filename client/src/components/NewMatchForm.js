@@ -15,11 +15,13 @@ function AddMatchForm(){
         e.preventDefault();
         onAddMatch({
             datetime: datetime,
-            skill_level: false,
+            skill_level: skill,
             phone: phone,
             club_id: id
         })
     }
+
+    console.log("skill", skill)
 
   return (
    <>
@@ -40,8 +42,8 @@ function AddMatchForm(){
         <label>Skill Level: </label>
         <select
             id="skill_level"
-            value={skill}
-            onChange={(e) => setSkill(e.target.value === "true")}>
+            value={skill ? "intermediate" : "beginner"}
+            onChange={(e) => setSkill(e.target.value === "beginner" ? false : true)}>
                 <option value={"beginner"}>beginner</option>
                 <option value={"intermediate"}>intermediate</option>
         </select> <br/>
@@ -82,3 +84,5 @@ export default AddMatchForm
 //how do i know what users are available to invite?
 
 //how do I have the club name on there as well? bc u click on a particular club card
+
+//shoudl skill_level be a boolean??

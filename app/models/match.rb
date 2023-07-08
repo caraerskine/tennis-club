@@ -1,7 +1,6 @@
 class Match < ApplicationRecord
 
-    validates :date, :time, :skill_level, :contact_info, presence: true
-    validates :date, :time, presence: true
+    validates :skill_level, :phone, presence: true
 
     belongs_to :club
     belongs_to :user
@@ -9,9 +8,4 @@ class Match < ApplicationRecord
 
 end
 
-
-# validates :time, :skill_level, :contact_info, presence: true
-# validates :time, presence: true
-
-# belongs_to :user
-# belongs_to :court
+#datetime

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 // import { MatchesContext } from '../context/matches'
 // import { ClubsContext } from '../context/clubs'
 
-function Matches({id, club, datetime, skill_level, phone, status}) {
+function Matches() {
 
   const { user } = useContext(UserContext);
   // const { clubs } = useContext(ClubsContext);
@@ -18,7 +18,7 @@ function Matches({id, club, datetime, skill_level, phone, status}) {
   // if (user.matches && user.matches.length === 0) 
   if (user.matches.length === 0) {
     return (
-    <div key = {club.id}>
+    <div>
       <h3>{user.name} it looks like you don't have any matches scheduled yet.</h3>
           <Link to={`/clubs`}>
             <button>Add a Match to a Club</button>
@@ -27,29 +27,19 @@ function Matches({id, club, datetime, skill_level, phone, status}) {
   );
  }
 
-//   const displayMatches = user.matches.map((match) => (
-//     <MatchCard 
-//       key={match.id}
-//       club={match.club}
-//       datetime={match.datetime}
-//       skill_level={match.skill_level}
-//       phone={match.phone}
-//       status={match.status}
-//     />
-// ));
   return (
     <div className="App"> 
-            {/* {displayMatches}  */}
-            {user.matches.map((match) => (
-        <MatchCard
+            {user.matches.map((match) => {
+     return <MatchCard
           key={match.id}
-          club={match.club}
+          club={match.club.club_name}
           datetime={match.datetime}
           skill_level={match.skill_level}
           phone={match.phone}
           status={match.status}
-        />
-      ))}
+          avatar={user.avatar_url}
+        /> 
+      })}
               <div>
                 <Link to={`/matches/pending`}>
                 <button>Pending Matches</button>

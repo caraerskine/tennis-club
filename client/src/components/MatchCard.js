@@ -6,9 +6,9 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
 
-function MatchCard( {id, club, datetime, skill_level, phone, status}) {
+function MatchCard( {avatar, id, club, datetime, phone, status} ) {
   // const { clubs } = useContext(ClubsContext)
-  const { user } = useContext(UserContext);
+  // const { user } = useContext(UserContext);
 
   const styles = {
     container: {
@@ -23,43 +23,39 @@ function MatchCard( {id, club, datetime, skill_level, phone, status}) {
   };
 
   return (
-    <>
-      {user.matches.map((match) => (
-        <div key={match.id} style={styles.container}>
+        <div style={styles.container}>
           <Card style={styles.card}>
             <CardMedia
               component="div"
               sx={{ height: 350 }}
-              image={user.avatar_url}
-       
+              image={avatar}
+              title="user avatar"
             />
             <CardContent>
               <Typography gutterBottom variant="h6" component="div">
-                {match.club}
+                {club}
               </Typography>
               <Typography>
-                {match.datetime}
+                {datetime}
               </Typography>
               <Typography>
-                {match.skill_level ? "beginner" : "intermediate"}
+                {/* {skill_level ? "beginner" : "intermediate"} */}
               </Typography>
               <Typography>
-                {match.phone}
+                {phone}
               </Typography>
               <Typography>
-                {match.status}
+                {status}
               </Typography>
               <Typography variant="body2" color="text.secondary"></Typography>
             </CardContent>
             <CardActions>
-              <NavLink to={`/matches/${match.id}`}>
+              <NavLink to={`/matches/${id}`}>
                 <Button>Edit this match</Button>
               </NavLink>
             </CardActions>
           </Card>
         </div>
-      ))}
-    </>
   );
 }
 
@@ -76,10 +72,12 @@ export default MatchCard;
                          <b>Time:</b> {match.time} <br />
                         <b>Skill Level:</b> {match.skill_level ? "beginner" : "intermediate"}
                          <br />
-                        <b>Contact info:</b> {match.contact_info} <br />
+                        <b>Phone:</b> {match.phone} <br />
                         <Link to={`/matches/${match.id}`}>
                        <button>Edit this Match</button>
                       </Link>
         
           </ol> */
   }
+
+  //skill_level needs to be a boolean

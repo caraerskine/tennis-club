@@ -17,6 +17,7 @@ Club.create(club_name: 'Queens Tennis Club', street: '12th Ave.', description: '
 Club.create(club_name: 'Bronx Tennis Club', street: '161st St.', description: 'next to Yankee Stadium', club_img: 'https://nypost.com/wp-content/uploads/sites/2/2016/08/tennis_hudson1a.jpg?quality=80&strip=all')
 Club.create(club_name: 'Staten Island Tennis Club', street: 'Marine Ave.', description: 'near the fire station', club_img: 'https://assets.website-files.com/6238f3c220d25d1180edadee/623e4007ffc9ced479f6b31c_AdobeStock_23409792.jpeg')
 
+#put an exception handler
 
 # User.all.each do |user| 
 #     (1..3).each do |i| 
