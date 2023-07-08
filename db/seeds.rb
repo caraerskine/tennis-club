@@ -31,7 +31,7 @@ Club.create(club_name: 'Staten Island Tennis Club', street: 'Marine Ave.', descr
 #            receiver_id: receiver_id,
 #            club: club,
 #            datetime: datetime,
-#            skill_level: rand(1..2),
+#            skill_level: rand(2).zero?,
 #            phone: Faker::PhoneNumber.cell_phone,
 #            status: ['pending', 'accepted', 'rejected'].sample,
 #            user_id: user.id,
