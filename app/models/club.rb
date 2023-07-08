@@ -9,9 +9,4 @@ class Club < ApplicationRecord
 end
 
 
-# validates :park, presence: true
-# validates :park, uniqueness: true
-
-# has_many :games, dependent: :destroy
-# has_many :users, through: :games 
 

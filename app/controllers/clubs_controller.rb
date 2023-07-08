@@ -7,11 +7,13 @@ class ClubsController < ApplicationController
     end
     
     
+    
     def index
-        render json: Club.all
+       render json: Club.all
     end
-    
-    
+          
+
+
     def show
         club = Club.find(params[:id])
         render json: club

@@ -3,8 +3,8 @@ class UserSerializer < ActiveModel::Serializer
   has_many :matches
   has_many :clubs, through: :matches
 
-  def clubs_uniq
-    object.clubs.uniq 
-  end
+  # def clubs_uniq
+  #   object.clubs.uniq 
+  # end
 
 end

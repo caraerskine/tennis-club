@@ -4,6 +4,7 @@ class CreateClubs < ActiveRecord::Migration[6.1]
       t.string :club_name
       t.string :street
       t.string :description
+      t.string :club_img
 
       t.timestamps
     end
