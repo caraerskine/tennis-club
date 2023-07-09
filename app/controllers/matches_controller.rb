@@ -46,6 +46,13 @@ class MatchesController < ApplicationController
         @completed_matches = Match.where(receiver_id: current_user.id, status: 'completed')
     end
 
+     #if a current_user has a match that has been rejected   
+    #user_id and #sender_id
+    def rejected
+        @rejected_matches = Match.where(receiver_id: current_user.id, status: 'rejected')
+    end
+      
+
 
     private
 
