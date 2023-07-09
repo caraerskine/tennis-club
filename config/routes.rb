@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/matches/completed', to: 'matches#completed'
   get '/matches/accepted', to: 'matches#accepted'
   get '/matches/rejected', to: 'matches#rejected'
-  post '/matches/:id/newmatch', to: 'matches#create'
+  # post '/matches/:id/newmatch', to: 'matches#create'
 
   #clubs ctrllr
   #have resources so have crud
