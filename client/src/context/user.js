@@ -115,6 +115,32 @@ function UserProvider({ children }) {
       }, [])
   
   console.log("matches", matches)
+
+  const onEditMatch = (editedMatch) => {
+    fetch(`/matches/${editedMatch.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(editedMatch),
+    })
+      .then((response) => response.json())
+      .then((editedMatchData) => {
+        if (editedMatchData.errors) {
+          const errorLis = editedMatchData.errors.map((error) => <li>{error}</li>);
+          setErrors(errorLis);
+        } else {
+          const newMatches = user.matches.map((match) => {
+            if (match.id === editedMatch.id) {
+              return editedMatchData;
+            } else {
+              return match;
+            }
+          });
+          setUser({...user, matches: newMatches});
+          alert("match updated!");
+          setErrors([]);
+        }
+      });
+  };
      
     
     return (
@@ -132,7 +158,8 @@ function UserProvider({ children }) {
             logout,
             onAddMatch, 
             matches,
-            setMatches
+            setMatches,
+            onEditMatch
           }}
         >
           {children}

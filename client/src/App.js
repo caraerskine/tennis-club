@@ -12,6 +12,7 @@ import AddMatchForm from './components/NewMatchForm';
 import RejectedMatches from './components/RejectedMatches'
 import CompletedMatches from './components/CompletedMatches'
 import PendingMatches from './components/PendingMatches'
+import EditMatch from './components/EditMatch';
 import './App.css';
 
 
@@ -33,6 +34,8 @@ function App() {
               <Route path="/clubs" element={<AllClubs />} />
 
               <Route path="/matches" element={<Matches />} />
+
+              <Route path="/matches/:id" element={<EditMatch />} />
 
               <Route path="/matches/pending-matches" element={<PendingMatches />} />  
 
