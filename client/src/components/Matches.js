@@ -41,14 +41,8 @@ function Matches() {
         /> 
       })}
               <div>
-                <Link to={`/matches/pending`}>
-                <button>Pending Matches</button>
-                </Link>
-                <Link to={`/matches/accepted`}>
-                <button>Accepted Matches</button>
-                </Link>
-                <Link to={`/matches/completed`}>
-                  <button>Completed Matches</button>
+                <Link to={`/matches/:id`}>
+                <button>My Matches</button>
                 </Link>
               </div>
           </div>

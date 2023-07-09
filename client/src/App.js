@@ -8,9 +8,7 @@ import SignUp from './components/SignUp'
 import Logout from './components/Logout'
 import AllClubs from './components/AllClubs'
 import Matches from './components/Matches';
-import PendingMatches from './components/PendingMatches';
-import AcceptedMatches from './components/AcceptedMatches';
-import CompletedMatches from './components/CompletedMatches';
+import MyMatches from './components/MyMatches';
 import AddMatchForm from './components/NewMatchForm';
 import './App.css';
 
@@ -34,11 +32,7 @@ function App() {
 
               <Route path="/matches" element={<Matches />} />
 
-              <Route path="/matches/pending" element={<PendingMatches />} />
-
-              <Route path="/matches/accepted" element={<AcceptedMatches />} />
-
-              <Route path="/matches/completed" element={<CompletedMatches />} />
+              <Route path="/matches/:id" element={<MyMatches />} />
 
               <Route path="/about" element={<About />} />
 
