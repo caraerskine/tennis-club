@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/user";
 import MatchCard from './MatchCard'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -17,6 +17,8 @@ function Matches() {
 
   const { user } = useContext(UserContext);
   const options = ['Completed Matches', 'Accepted Matches', 'Pending Matches', 'Rejected Matches'];
+  const navigate = useNavigate()
+
 
   if (!user || !user.matches) {
     return <div>Loading...</div>;
@@ -45,6 +47,9 @@ function SplitButton() {
   const handleMenuItemClick = (event, index) => {
     setSelectedIndex(index);
     setOpen(false);
+
+    const route = `/${options[index].toLowerCase().replace(" ", "-")}`;
+    navigate(route);
   };
 
   const handleToggle = () => {
@@ -102,7 +107,7 @@ function SplitButton() {
                       selected={index === selectedIndex}
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
-                      {option}
+                     {option}
                     </MenuItem>
                   ))}
                 </MenuList>

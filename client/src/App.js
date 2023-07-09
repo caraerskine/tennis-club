@@ -9,6 +9,9 @@ import Logout from './components/Logout'
 import AllClubs from './components/AllClubs'
 import Matches from './components/Matches';
 import AddMatchForm from './components/NewMatchForm';
+import RejectedMatches from './components/RejectedMatches'
+import CompletedMatches from './components/CompletedMatches'
+import PendingMatches from './components/PendingMatches'
 import './App.css';
 
 
@@ -30,6 +33,12 @@ function App() {
               <Route path="/clubs" element={<AllClubs />} />
 
               <Route path="/matches" element={<Matches />} />
+
+              <Route path="/matches/pending-matches" element={<PendingMatches />} />  
+
+              <Route path="/matches/rejected-matches" element={<RejectedMatches />} />  
+
+              <Route path="/matches/completed" element={<CompletedMatches />} />            
 
               <Route path="/about" element={<About />} />
 
