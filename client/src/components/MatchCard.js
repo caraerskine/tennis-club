@@ -1,14 +1,10 @@
-import { React, useContext } from "react";
-// import { ClubsContext } from '../context/clubs';
-import { UserContext } from "../context/user";
+import React from "react";
 import { Card, CardContent, CardMedia, CardActions } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
 
-function MatchCard( {avatar, id, club, datetime, phone, status} ) {
-  // const { clubs } = useContext(ClubsContext)
-  // const { user } = useContext(UserContext);
+function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
 
   const styles = {
     container: {
@@ -39,7 +35,7 @@ function MatchCard( {avatar, id, club, datetime, phone, status} ) {
                 {datetime}
               </Typography>
               <Typography>
-                {/* {skill_level ? "beginner" : "intermediate"} */}
+                {skill_level ? "beginner" : "intermediate"}
               </Typography>
               <Typography>
                 {phone}
@@ -61,23 +57,4 @@ function MatchCard( {avatar, id, club, datetime, phone, status} ) {
 
 export default MatchCard;
 
-//this is to view a match a user already has made
-//the button allows the user to edit the match
-
-
-{
-    /* <ol>
-               <b>Club:</b> {match.club.name} <br />
-                         <b>Date:</b> {match.date} <br />
-                         <b>Time:</b> {match.time} <br />
-                        <b>Skill Level:</b> {match.skill_level ? "beginner" : "intermediate"}
-                         <br />
-                        <b>Phone:</b> {match.phone} <br />
-                        <Link to={`/matches/${match.id}`}>
-                       <button>Edit this Match</button>
-                      </Link>
-        
-          </ol> */
-  }
-
-  //skill_level needs to be a boolean
+//have logic show a "leave a comment shows up" when the match is in completed status

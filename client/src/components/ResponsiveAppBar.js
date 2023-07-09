@@ -16,7 +16,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-const pages = ['Home', 'Matches', 'Pending Matches', 'Accepted Matches', 'Tennis Clubs'];
+const pages = ['Home', 'Tennis Clubs', 'Matches'];
 // const settings = ['Logout', 'Login', 'Signup'];
 
 function ResponsiveAppBar() {
@@ -111,32 +111,12 @@ function ResponsiveAppBar() {
                 </ MenuItem >
 
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Link to="/matches/accepted" onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">Accepted Matches</Typography>
-                  </Link>
-                </ MenuItem >
-                
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Link to="/matches/pending" onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">Pending Matches</Typography>
-                  </Link>
-                </ MenuItem >
-
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Link to="/matches/completed" onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">Completed Matches</Typography>
-                  </Link>
-                </ MenuItem >
-
-                <MenuItem onClick={handleCloseNavMenu}>
                   <Link to="/matches" onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">Matches</Typography>
                   </Link>
                 </ MenuItem >
             </Menu>
           </Box>
-
-
 
 
 

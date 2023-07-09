@@ -8,7 +8,6 @@ import SignUp from './components/SignUp'
 import Logout from './components/Logout'
 import AllClubs from './components/AllClubs'
 import Matches from './components/Matches';
-import MyMatches from './components/MyMatches';
 import AddMatchForm from './components/NewMatchForm';
 import './App.css';
 
@@ -31,8 +30,6 @@ function App() {
               <Route path="/clubs" element={<AllClubs />} />
 
               <Route path="/matches" element={<Matches />} />
-
-              <Route path="/matches/:id" element={<MyMatches />} />
 
               <Route path="/about" element={<About />} />
 
