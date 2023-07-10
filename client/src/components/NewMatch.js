@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { MatchesContext } from '../context/matches'
 
 
-function NewMatchForm(){
+function NewMatch(){
     const [datetime, setDatetime] = useState("2023-09-21T07:30")
     const [skill, setSkill] = useState(false)
     const [phone, setPhone] = useState("")
@@ -88,7 +88,7 @@ function NewMatchForm(){
   )
 }
 
-export default NewMatchForm
+export default NewMatch
 
 //sender_id, receiver_id, user_id and club_id
 
