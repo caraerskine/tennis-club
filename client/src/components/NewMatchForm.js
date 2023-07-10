@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 
 
 function AddMatchForm(){
-    const [datetime, setDatetime] = useState("")
+    const [datetime, setDatetime] = useState("2023-09-21T07:30")
     const [skill, setSkill] = useState(false)
     const [phone, setPhone] = useState("")
     const { id } = useParams()
@@ -14,14 +14,28 @@ function AddMatchForm(){
     const handleSubmit = (e) => {
         e.preventDefault();
         onAddMatch({
-            datetime: datetime,
+            datetime: formattedDatetime(datetime),
             skill_level: skill,
             phone: phone,
             club_id: id
         })
     }
 
+        const formattedDatetime = (date) => {
+          
+          return date.toLocaleString('en-US', {
+          
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+        });
+      };
+    
+
     console.log("skill", skill)
+      console.log("datetime", typeof(datetime))
 
   return (
    <>
@@ -36,7 +50,6 @@ function AddMatchForm(){
             id="datetime"
             value={datetime}
             onChange={(e) => setDatetime(e.target.value)}
-            placeholder="09/21/2023, 7:30"  
         /> <br/>
         <br/>
         <label>Skill Level: </label>

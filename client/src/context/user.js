@@ -9,7 +9,6 @@ function UserProvider({ children }) {
     const [errors, setErrors] = useState([]);
     const [loginError, setLoginError] = useState([]);
     const [signUpError, setSignUpError] = useState([]);
-    const [matches, setMatches] = useState([])
     const navigate = useNavigate()
 
 
@@ -76,73 +75,7 @@ function UserProvider({ children }) {
         setUser(false)
       }
 
-      const onAddMatch = (match) => {
-        fetch("/matches", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(match),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.errors) {
-              const errorLis = data.errors.map((e) => <li>{e}</li>);
-              setErrors(errorLis);
-            } else {
-              // setUser({...user, matches: [...user.matches, data]})
-              setUser(prevUser => {
-                const updatedMatches = [...prevUser.matches || [], data];
-                return { ...prevUser, matches: updatedMatches };
-              });
-              alert("Match added!");
-              setErrors([]);
-            }
-          });
-      };
 
-  
-      useEffect(() => {
-       fetch('/matches')
-          .then(response => {
-              if (response.ok){
-               response.json().then(data => {
-                  setMatches(data)
-              })
-          } else {
-              response.json().then(error => {
-              })
-          } 
-          })
-      }, [])
-  
-  console.log("matches", matches)
-
-  const onEditMatch = (editedMatch) => {
-    fetch(`/matches/${editedMatch.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(editedMatch),
-    })
-      .then((response) => response.json())
-      .then((editedMatchData) => {
-        if (editedMatchData.errors) {
-          const errorLis = editedMatchData.errors.map((error) => <li>{error}</li>);
-          setErrors(errorLis);
-        } else {
-          const newMatches = user.matches.map((match) => {
-            if (match.id === editedMatch.id) {
-              return editedMatchData;
-            } else {
-              return match;
-            }
-          });
-          setUser({...user, matches: newMatches});
-          alert("match updated!");
-          setErrors([]);
-        }
-      });
-  };
-     
-    
     return (
         <UserContext.Provider
           value={{
@@ -155,11 +88,7 @@ function UserProvider({ children }) {
             setLoginError,
             errors,
             setErrors,
-            logout,
-            onAddMatch, 
-            matches,
-            setMatches,
-            onEditMatch
+            logout
           }}
         >
           {children}

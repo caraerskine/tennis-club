@@ -2,11 +2,13 @@ import React from 'react'
 import { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../context/user'
 import { useNavigate, useParams } from 'react-router-dom'
+import { MatchesContext } from '../context/matches'
 
 
 function EditMatch() {
     const { id } = useParams()   
-    const {onEditMatch, user, setUser, errors} = useContext(UserContext)
+    const {user, setUser, errors} = useContext(UserContext)
+    const { onEditMatch } = useContext(MatchesContext)
     const navigate = useNavigate()
 
     const obj = {
@@ -16,14 +18,20 @@ function EditMatch() {
         id: id
     }
     
+    console.log("the id", typeof(id))
+    console.log("the obj", obj)
+
     const [myMatch, setMyMatch] = useState(obj)
 
     useEffect(() => {
-      let m = user.matches.find((e) => {        
-        return e.id == id})
+      let m = user.matches.find((e) => {
+        return e.id === parseInt(id, 10)
+    });
+      
+        m ? setMyMatch(m) : setMyMatch(obj);
+    }, [user, id]);
 
-        m ? setMyMatch(m) : setMyMatch(obj)
-    }, [user, id])
+    console.log("m", typeof(m))
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -67,11 +75,11 @@ function EditMatch() {
                 <h4>Edit match</h4>
                 <label>Datetime: </label>
                 <input 
-                    type="datetime"
+                    type="datetime-local"
                     id="datetime"
                     value={myMatch.datetime}
                     onChange={updateMyMatch}
-                    placeholder="MM_DD_YYYY, 2:00 pm"  
+                    placeholder="09/21/2023, 7:30"  
                 /> <br/>
                    <br/>
                   <label>Skill Level: </label>
