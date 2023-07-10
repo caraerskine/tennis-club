@@ -31,9 +31,10 @@ return (
 
    return <MatchCard
         key={match.id}
-        // club={match.club.club_name}
+        club={match.club.club_name}
         id={match.id}
         datetime={match.datetime}
+        // formattedDateTime={formattedDatetime(match.datetime)}
         skill_level={match.skill_level}
         phone={match.phone}
         status={match.status}

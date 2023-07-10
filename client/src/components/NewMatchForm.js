@@ -14,8 +14,21 @@ function NewMatchForm(){
 
     // "2023-09-21T07:30"
 
+ function formattedDatetime() { 
+    datetime.toLocaleString('en-US', {
+          
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+   
+    })};
+  
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log("skill", skill)
         onAddMatch({
             datetime: formattedDatetime(datetime),
             skill_level: skill,
@@ -24,15 +37,6 @@ function NewMatchForm(){
         })
     }
 
-        const formattedDatetime = datetime.toLocaleString('en-US', {
-          
-          year: 'numeric',
-          month: '2-digit',
-          day: '2-digit',
-          hour: '2-digit',
-          minute: '2-digit',
-        });
-    
 
     console.log("skill", skill)
       console.log("datetime", typeof(datetime))
@@ -55,7 +59,6 @@ function NewMatchForm(){
             value={datetime.toISOString().slice(0,-8)}
             onChange={handleDatetimeChange}
         /> <br/>
-        <p>Formatted Date: {formattedDatetime} </p>
         <br/>
         <label>Skill Level: </label>
         <select

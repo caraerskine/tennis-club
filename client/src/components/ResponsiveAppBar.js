@@ -16,8 +16,8 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-const pages = ['Home', 'Tennis Clubs', 'Matches'];
-// const settings = ['Logout', 'Login', 'Signup'];
+const pages = ['About', '', 'Clubs', 'Matches'];
+const settings = ['Logout', 'Login', 'Signup'];
 
 function ResponsiveAppBar() {
 
@@ -54,8 +54,8 @@ function ResponsiveAppBar() {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/about"
+            component={Link}
+            to="/about"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -98,28 +98,15 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-            <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/" onClick={handleCloseNavMenu}>
-                   <Typography textAlign="center">Home</Typography>
-                </Link>
-                </ MenuItem >
-
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Link to="/clubs" onClick={() => navigate('/clubs')}>
-                    <Typography textAlign="center">Clubs</Typography>
+               {pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Link to={`/${page ? page : page}`} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page ? page : "Home"}</Typography>
                   </Link>
-                </ MenuItem >
-
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Link to="/matches" onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">Matches</Typography>
-                  </Link>
-                </ MenuItem >
+                </MenuItem>
+              ))}
             </Menu>
           </Box>
-
-
-
 
           {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           <Typography
@@ -146,17 +133,15 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
+                component={Link}
+                to={`/${page ? page : page}`}
                 sx={{ my: 2, color: 'red', display: 'block' }}
               >
-                {page}
+                {page ? page : "home"}
               </Button>
             ))} 
           </Box>
-
-
-
-
-
+{/* is page home a / or  */}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -179,21 +164,15 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Link to="/login" onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">Login</Typography>
-                  </Link>
-                </ MenuItem>
-                <MenuItem >
-                  <Link to="/signup" onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Signup</Typography>
-                  </Link>
-                </ MenuItem>
-                <MenuItem >
-                  <Link to="/logout" onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">Logout</Typography>
-                  </Link>
-                </ MenuItem>
+              {settings.map((setting) => {
+                return (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Link to={`/${setting}`} onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">{setting}</Typography>
+                    </Link>
+                  </ MenuItem>
+                )}
+              )}
             </Menu>
           </Box>
         </Toolbar>
@@ -205,4 +184,3 @@ function ResponsiveAppBar() {
 
 export default ResponsiveAppBar;
 
-//line 149 is little logo when menu gets shrunken

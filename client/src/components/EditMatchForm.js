@@ -85,7 +85,7 @@ function EditMatchForm() {
                   <label>Skill Level: </label>
                 <select
                     id="skill_level"
-                    value={myMatch.skill_level}
+                    value={myMatch.skill_level || ""}
                     onChange={updateMyMatch}>
                         <option value={"beginner"}>beginner</option>
                         <option value={"intermediate"}>intermediate</option>
