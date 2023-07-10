@@ -1,3 +1,6 @@
 class ClubMatchSerializer < ActiveModel::Serializer
-  attributes :id, :club, :datetime, :phone, :status, :skill_level, :user_id, :user
+  attributes :id, :club_id, :datetime, :phone, :skill_level, :user_id, :user
+
+  
+
 end

@@ -57,7 +57,7 @@ class MatchesController < ApplicationController
     private
 
     def match_params
-        params.permit(:datetime, :phone, :club_id, :skill_level, :status)
+        params.permit(:datetime, :phone, :club_id, :id, :skill_level)
     end
   
 
