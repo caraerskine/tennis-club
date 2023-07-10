@@ -4,14 +4,15 @@ import { useParams } from 'react-router-dom'
 import { MatchesContext } from '../context/matches'
 
 
-function NewMatch(){
-    const [datetime, setDatetime] = useState("2023-09-21T07:30")
+function NewMatchForm(){
+    const [datetime, setDatetime] = useState(new Date());
     const [skill, setSkill] = useState(false)
     const [phone, setPhone] = useState("")
     const { id } = useParams()
     const { errors } = useContext(UserContext)
     const { onAddMatch } = useContext(MatchesContext)
 
+    // "2023-09-21T07:30"
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,9 +24,7 @@ function NewMatch(){
         })
     }
 
-        const formattedDatetime = (date) => {
-          
-          return date.toLocaleString('en-US', {
+        const formattedDatetime = datetime.toLocaleString('en-US', {
           
           year: 'numeric',
           month: '2-digit',
@@ -33,11 +32,14 @@ function NewMatch(){
           hour: '2-digit',
           minute: '2-digit',
         });
-      };
     
 
     console.log("skill", skill)
       console.log("datetime", typeof(datetime))
+
+      const handleDatetimeChange = (e) => {
+        setDatetime(new Date(e.target.value));
+      };
 
   return (
    <>
@@ -50,9 +52,10 @@ function NewMatch(){
         <input 
             type="datetime-local"
             id="datetime"
-            value={datetime}
-            onChange={(e) => setDatetime(e.target.value)}
+            value={datetime.toISOString().slice(0,-8)}
+            onChange={handleDatetimeChange}
         /> <br/>
+        <p>Formatted Date: {formattedDatetime} </p>
         <br/>
         <label>Skill Level: </label>
         <select
@@ -88,7 +91,7 @@ function NewMatch(){
   )
 }
 
-export default NewMatch
+export default NewMatchForm
 
 //sender_id, receiver_id, user_id and club_id
 

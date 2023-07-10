@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { MatchesContext } from '../context/matches'
 
 
-function EditMatch() {
+function EditMatchForm() {
     const { id } = useParams()   
     const {user, setUser, errors} = useContext(UserContext)
     const { onEditMatch } = useContext(MatchesContext)
@@ -112,4 +112,4 @@ function EditMatch() {
             </form>
         )
     }
-export default EditMatch
+export default EditMatchForm

@@ -8,11 +8,11 @@ import SignUp from './components/SignUp'
 import Logout from './components/Logout'
 import AllClubs from './components/AllClubs'
 import Matches from './components/Matches';
-import NewMatch from './components/NewMatch';
+import NewMatchForm from './components/NewMatchForm';
 import RejectedMatches from './components/RejectedMatches'
 import CompletedMatches from './components/CompletedMatches'
 import PendingMatches from './components/PendingMatches'
-import EditMatch from './components/EditMatch';
+import EditMatchForm from './components/EditMatchForm';
 import './App.css';
 
 
@@ -35,7 +35,7 @@ function App() {
 
               <Route path="/matches" element={<Matches />} />
 
-              <Route path="/matches/:id" element={<EditMatch />} />
+              <Route path="/matches/:id" element={<EditMatchForm />} />
 
               <Route path="/matches/pending-matches" element={<PendingMatches />} />  
 
@@ -45,7 +45,7 @@ function App() {
 
               <Route path="/about" element={<About />} />
 
-              <Route path="/clubs/:id/newmatch" element={<NewMatch />} />
+              <Route path="/clubs/:id/newmatch" element={<NewMatchForm />} />
 
             </Routes>      
         </div>
