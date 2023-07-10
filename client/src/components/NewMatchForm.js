@@ -1,14 +1,16 @@
 import React, { useContext, useState } from 'react'
 import { UserContext } from '../context/user'
 import { useParams } from 'react-router-dom'
+import { MatchesContext } from '../context/matches'
 
 
-function AddMatchForm(){
+function NewMatchForm(){
     const [datetime, setDatetime] = useState("2023-09-21T07:30")
     const [skill, setSkill] = useState(false)
     const [phone, setPhone] = useState("")
     const { id } = useParams()
-    const { onAddMatch, errors } = useContext(UserContext)
+    const { errors } = useContext(UserContext)
+    const { onAddMatch } = useContext(MatchesContext)
 
 
     const handleSubmit = (e) => {
@@ -86,7 +88,7 @@ function AddMatchForm(){
   )
 }
 
-export default AddMatchForm
+export default NewMatchForm
 
 //sender_id, receiver_id, user_id and club_id
 
