@@ -25,15 +25,24 @@ function Matches() {
 
  console.log("Club object:", user)
 
+ //for each match get the opponent name that is equal to recevier_id
+ //grab info about the opponent and the name
+ //set recevier id and set opponent name
+ //use association belongs to the user and the receiver (both users)
+ //how do i get the user that hthe match belogns to to belong to two different users
+
 return (
   <div className="App"> 
           {user.matches.map((match) => {
+
+            // user.opponents.find()
 
    return <MatchCard
         key={match.id}
         club={match.club.club_name}
         id={match.id}
         datetime={match.datetime}
+        //want to show name of opponent
         // formattedDateTime={formattedDatetime(match.datetime)}
         skill_level={match.skill_level}
         phone={match.phone}

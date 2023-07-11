@@ -4,18 +4,44 @@ import { useParams } from 'react-router-dom'
 import { MatchesContext } from '../context/matches'
 
 
+//need to show available users with which to schedule a match
+
+
 function NewMatchForm(){
-    const [datetime, setDatetime] = useState(new Date());
+    const [datetime, setDatetime] = useState("2023-09-21T07:30");
     const [skill, setSkill] = useState(false)
     const [phone, setPhone] = useState("")
+    const [opponent, setOpponent] = useState("")
     const { id } = useParams()
-    const { errors } = useContext(UserContext)
+    const { errors, user } = useContext(UserContext)
     const { onAddMatch } = useContext(MatchesContext)
 
+    //iso format
     // "2023-09-21T07:30"
 
- function formattedDatetime() { 
-    datetime.toLocaleString('en-US', {
+    // const date = new Date("2023-07-25T11:50:00.000Z");
+    // const formattedDatetime = new Date(datetime).toLocaleString('en-CA', {
+    //   year: 'numeric',
+    //   month: '2-digit',
+    //   day: '2-digit',
+    //   hour: '2-digit',
+    //   minute: '2-digit'
+    // }).replace(/[/.,]/g, '-');
+    
+    // console.log("formatted", formattedDatetime); 
+
+    // const c = {time: '2021-12-08T13:52:16.043' }
+    // console.log(new Date(c.time).toLocaleDateString());
+
+    // const handleDatetimeChange = (e) => {
+      //   setDatetime(new Date(e.target.value));
+      // };
+    
+
+// style w/ Igor
+ const formattedDatetime = (date) => { 
+
+   return date.toLocaleString('en-US', {
           
       year: 'numeric',
       month: '2-digit',
@@ -41,14 +67,25 @@ function NewMatchForm(){
     console.log("skill", skill)
       console.log("datetime", typeof(datetime))
 
-      const handleDatetimeChange = (e) => {
-        setDatetime(new Date(e.target.value));
-      };
+  //fn to filter over users 
+  //then i map over it in the dropdown
+  //conditions: filter over users and do NOT include current user
+  //need user_id, sender_id and receiver_id -?
 
+//status should be automatically set to pending when match is created
+//and then it can change to 'accepted' or 'rejected'
+//and when the match is completed it should be set to 'completed'-- vould
+//that be auto-set after the date and time of the match passes?
+
+  // const availableUsers = users.filter(user => user !== currentUser.user_id)
+
+
+
+    
   return (
    <>
    <br></br>
-    Create a New Match 🎾
+    Create a new match 🎾
     <br></br>
     <form onSubmit={handleSubmit}>
           <br/>
@@ -56,9 +93,29 @@ function NewMatchForm(){
         <input 
             type="datetime-local"
             id="datetime"
-            value={datetime.toISOString().slice(0,-8)}
-            onChange={handleDatetimeChange}
+            value={datetime}
+            onChange={(e) => setDatetime(e.target.value)}
         /> <br/>
+        <br/>
+
+        <label>Choose Opponent:</label>
+        <select 
+        id="opponent" 
+        name="opponent" 
+        value={opponent} 
+        onChange={(e) => setOpponent(e.target.value)}
+        > <br/>
+        <br/>
+        <option value="">Select a user</option>
+          {user.opponents.map((user, index) => (
+        <option key={index} value={user.id}>
+          {user.name}
+          {user.avatar_url && <img src={user.avatar_url} alt='Opponent avatar'/>}
+          </option>
+      ))}
+    </select> 
+  
+    <br/>
         <br/>
         <label>Skill Level: </label>
         <select

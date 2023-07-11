@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
 
-function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
+function MatchCard( {avatar, opponent, skill_level, id, club, datetime, phone, status} ) {
 
   const styles = {
     container: {
@@ -39,6 +39,9 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
               </Typography>
               <Typography>
                 {phone}
+              </Typography>
+              <Typography>
+                {opponent}
               </Typography>
               <Typography>
                 {status}
