@@ -22,7 +22,7 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
 
   
 
-  const formattedDatetime = format(new Date(datetime), 'MM/dd/yyyy h:mm a');
+  const formattedDatetime = format(new Date(datetime), 'MM/dd/yyyy hh:mm a');
 
   return (
         <div style={styles.container}>

@@ -5,8 +5,10 @@ function About() {
   return (
     <div>
       <h3>All About NYC🎾TC</h3>
-        <h4>NYC TC is a premier match booking App</h4>
-        <h4>Write more later...</h4>
+        <p>NYC TC is a premier tennis match booking App! Book all your tennis matches here at NYC Clubs.
+          Only $5 to join the booking service via Stripe. 
+        </p>
+       
     </div>
   )
 }

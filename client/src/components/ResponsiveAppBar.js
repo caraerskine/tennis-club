@@ -16,7 +16,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-const pages = ['', 'Clubs', 'Matches'];
+const pages = ['About', '', 'Clubs', 'Matches'];
 const settings = ['Logout', 'Login', 'Signup'];
 //took out 'about' beause the logo goes there
 //history page, about me programming?
