@@ -34,7 +34,7 @@ const onAddMatch = (match) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.errors) {
+        if (Array.isArray(data.errors)) {
           const errorLis = data.errors.map((e) => <li>{e}</li>);
           setErrors(errorLis);
         } else {

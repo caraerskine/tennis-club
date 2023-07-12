@@ -2,13 +2,13 @@ import React, { useContext } from 'react'
 import { UserContext } from '../context/user'
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
+import Typography from "@mui/material/Typography";
 
 function Home() {
 
-   
-    
     const { user } = useContext(UserContext)
 
+  
     if (user) {
         return(
             <div>
@@ -17,9 +17,18 @@ function Home() {
                     <Avatar 
                         alt="your avatar" 
                         src={user.avatar_url}
-                        sx={{ width: 200, height: 200, margin: "auto" }} 
+                        sx={{ width: 150, height: 150, margin: "auto" }} 
                     />
                 </Stack>
+                <br></br>
+                <div key={user.id} >
+                        <Typography align="center">
+                            Pending Matches: {user.matches.length}
+                        </Typography>
+                        <Typography>
+                            Clubs: {user.clubs.length}
+                        </Typography>
+                    </div>
             </div>
         )
     } 

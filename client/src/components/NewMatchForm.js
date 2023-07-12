@@ -30,20 +30,27 @@ function NewMatchForm(){
     })};
   
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("skill", skill)
+        const selectedOpponent = user.opponents.find((opponent) => opponent.id === parseInt(opponent, 10) && opponent.id !== user.id);
+        const receiverId = selectedOpponent ? selectedOpponent.id : 0;
         onAddMatch({
             datetime: formattedDatetime(datetime),
             skill_level: skill,
             phone: phone,
-            club_id: id
+            club_id: id,
+            sender_id: user.id,
+            receiver_id: receiverId
         })
     }
 
 
     console.log("skill", skill)
       console.log("datetime", typeof(datetime))
+      console.log("user.opponents", user.opponents);
+console.log("receiver_id", typeof(receiver_id))
 
 //status should be automatically set to pending when match is created
 //and then it can change to 'accepted' or 'rejected'
@@ -51,7 +58,7 @@ function NewMatchForm(){
 //that be auto-set after the date and time of the match passes?
 
 
-console.log("user.opponents", user.opponents);
+
 
   return (
    <>
@@ -75,7 +82,7 @@ console.log("user.opponents", user.opponents);
         id="opponent" 
         name="opponent" 
         value={opponent} 
-        onChange={(e) => setOpponent(e.target.value)}
+        onChange={(e) => setOpponent(parseInt(e.target.value, 10))}
         > 
         <option value="">Select a user</option>
           {user.opponents.map((user, index) => (

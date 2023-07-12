@@ -11,3 +11,6 @@ class MatchSerializer < ActiveModel::Serializer
   end
 
 end
+
+
+#add club_name > maybe redundant????

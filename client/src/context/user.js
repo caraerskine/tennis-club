@@ -53,13 +53,25 @@ function UserProvider({ children }) {
             console.log("responseOkUser", data)
     
           } else if (response.status === 401) {
-          
+
             let err = data.errors.map((e, i) => <li key={i}>{e}</li>)
             
             messages(url, err)
 
             console.log("response401User", data)
           }
+
+        // } else if (response.status === 401) {
+        //   let err;
+        //   if (Array.isArray(data.errors)) {
+        //     err = data.errors.map((e, i) => <li key={i}>{e}</li>);
+        //   } else {
+        //     err = <li>{data.errors}</li>;
+        //   }
+          
+        //   messages(url, err);
+        //   console.log("response401User", data);
+        // }
     
       } catch (error) {
      

@@ -1,9 +1,19 @@
 class MatchesController < ApplicationController
 
+    # def create
+    #     match = @current_user.matches.create!(match_params)
+    #     render json: match, status: :created
+    # end
+
     def create
-        match = @current_user.matches.create!(match_params)
-        render json: match, status: :created
-    end
+        match = @current_user.matches.build(match_params)
+    
+        if match.save
+          render json: match, status: :created
+        else
+          render json: { errors: match.errors }, status: :unprocessable_entity
+        end
+      end
 
     def index
         render json: @current_user.matches
@@ -57,7 +67,7 @@ class MatchesController < ApplicationController
     private
 
     def match_params
-        params.permit(:datetime, :phone, :club_id, :id, :skill_level, :receiver_id, :sender_id )
+        params.require(:match).permit(:datetime, :phone, :club_id, :id, :skill_level, :receiver_id, :sender_id)
     end
   
 
