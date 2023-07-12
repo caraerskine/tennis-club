@@ -3,8 +3,10 @@ import { Card, CardContent, CardMedia, CardActions } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
+import { format } from 'date-fns';
 
-function MatchCard( {avatar, opponent, skill_level, id, club, datetime, phone, status} ) {
+
+function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
 
   const styles = {
     container: {
@@ -17,6 +19,8 @@ function MatchCard( {avatar, opponent, skill_level, id, club, datetime, phone, s
       maxWidth: 600,
     },
   };
+
+  const formattedDatetime = format(new Date(datetime), 'MM-dd-yyyy hh:mm a');
 
   return (
         <div style={styles.container}>
@@ -32,7 +36,7 @@ function MatchCard( {avatar, opponent, skill_level, id, club, datetime, phone, s
                 {club}
               </Typography>
               <Typography>
-                {datetime}
+                {formattedDatetime}
               </Typography>
               <Typography>
                 {skill_level ? "beginner" : "intermediate"}
@@ -40,9 +44,9 @@ function MatchCard( {avatar, opponent, skill_level, id, club, datetime, phone, s
               <Typography>
                 {phone}
               </Typography>
-              <Typography>
+              {/* <Typography>
                 {opponent}
-              </Typography>
+              </Typography> */}
               <Typography>
                 {status}
               </Typography>

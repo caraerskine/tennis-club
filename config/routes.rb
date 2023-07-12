@@ -10,11 +10,13 @@ Rails.application.routes.draw do
 
   #matches ctrllr
   #need completed, pending and accepted custom routes ?
+  #http://localhost:4000/rejected-matches
+  #hmmmm
   get '/matches/pending', to: 'matches#pending'
   get '/matches/completed', to: 'matches#completed'
   get '/matches/accepted', to: 'matches#accepted'
   get '/matches/rejected', to: 'matches#rejected'
-  # post '/matches/:id/newmatch', to: 'matches#create'
+
 
   #clubs ctrllr
   #have resources so have crud

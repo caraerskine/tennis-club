@@ -7,6 +7,8 @@ import SplitButton from "./SplitButton";
 function Matches() {
 
   const { user } = useContext(UserContext);
+
+  const datetime = '2023-09-21T07:30:00.000Z';
  
   if (!user || !user.matches) {
     return <div>Loading...</div>;
@@ -41,6 +43,7 @@ return (
         key={match.id}
         club={match.club.club_name}
         id={match.id}
+        // datetime={match.datetime}
         datetime={match.datetime}
         //want to show name of opponent
         // formattedDateTime={formattedDatetime(match.datetime)}

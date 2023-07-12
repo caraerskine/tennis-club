@@ -66,7 +66,7 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            NYC🎾TC full menu
+            NYC🎾TC 
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -125,7 +125,7 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-               NYC🎾TC Small menu
+               NYC🎾TC 
                
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
