@@ -16,8 +16,10 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-const pages = ['About', '', 'Clubs', 'Matches'];
+const pages = ['', 'Clubs', 'Matches'];
 const settings = ['Logout', 'Login', 'Signup'];
+//took out 'about' beause the logo goes there
+//history page, about me programming?
 
 function ResponsiveAppBar() {
 
@@ -62,7 +64,7 @@ function ResponsiveAppBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'green',
+              color: 'purple',
               textDecoration: 'none',
             }}
           >
@@ -135,7 +137,7 @@ function ResponsiveAppBar() {
                 onClick={handleCloseNavMenu}
                 component={Link}
                 to={`/${page ? page : page}`}
-                sx={{ my: 2, color: 'red', display: 'block' }}
+                sx={{ my: 2, color: 'green', display: 'block' }}
               >
                 {page ? page : "home"}
               </Button>
