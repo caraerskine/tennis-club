@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
     validates :username, uniqueness: true 
     validates :password, :password_confirmation, :username, presence: true
+    # validates :avatar_url, presence: true
 
     has_many :matches, dependent: :destroy
     has_many :clubs, through: :matches
