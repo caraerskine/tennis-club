@@ -4,9 +4,6 @@ import { useParams } from 'react-router-dom'
 import { MatchesContext } from '../context/matches'
 
 
-//need to show available users with which to schedule a match
-
-
 function NewMatchForm(){
     const [datetime, setDatetime] = useState("2023-09-21T07:30");
     const [skill, setSkill] = useState(false)
@@ -51,7 +48,7 @@ function NewMatchForm(){
 
     console.log("skill", skill)
       console.log("datetime", typeof(datetime))
-      console.log("user obj", user)
+      console.log("user object", user)
       console.log("user.opponents", user.opponents);
 console.log("receiver_id", typeof(receiver_id))
 
@@ -70,26 +67,27 @@ console.log("receiver_id", typeof(receiver_id))
     <br/>
     <form onSubmit={handleSubmit}>
           <br/>
-        <label>Date and Time: </label>
+        {/* <label>Date and Time: </label> */}
         <input 
             type="datetime-local"
             id="datetime"
+            placeholder="Type in here…"
             value={datetime}
             onChange={(e) => setDatetime(e.target.value)}
         /> 
         <br/>
         <br/>
 
-        <label>Choose Opponent:</label>
+        {/* <label>Choose Opponent:</label> */}
         <select 
         id="opponent" 
         name="opponent" 
         value={opponent} 
         onChange={(e) => setOpponent(parseInt(e.target.value, 10))}
         > 
-        <option value="">Select a user</option>
+        <option value="">Select an opponent</option>
           {user.opponents.map((opponent, index) => (
-        <option key={index} value={user.id}>
+        <option key={opponent.avatar_url.substring(0,5)} value={opponent.id}>
           {opponent.name}
           {opponent.avatar_url ? <img src={opponent.avatar_url} alt="Opponent avatar"/> : null }
           </option>
@@ -97,7 +95,7 @@ console.log("receiver_id", typeof(receiver_id))
          </select> 
         <br/>
         <br/>
-        <label>Skill Level: </label>
+        {/* <label>Skill Level: </label> */}
         <select
             id="skill_level"
             value={skill ? "intermediate" : "beginner"}
@@ -108,7 +106,7 @@ console.log("receiver_id", typeof(receiver_id))
         </select> 
         <br/>
         <br/>
-        <label>Phone Number: </label>
+        {/* <label>Phone Number: </label> */}
         <input 
             type="tel"
             id="phone"
@@ -117,7 +115,7 @@ console.log("receiver_id", typeof(receiver_id))
             required
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            placeholder="phone number"
+            placeholder="555-555-5555…"
         />  
         <br/>
         <br/>

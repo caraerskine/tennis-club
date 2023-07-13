@@ -74,8 +74,8 @@ function EditMatchForm() {
     }
         return ( 
             <form onSubmit={handleSubmit}>
-                <h4>Edit match</h4>
-                <label>Datetime: </label>
+                <p>Edit match</p>
+                {/* <label>Datetime: </label> */}
                 <input 
                     type="datetime-local"
                     id="datetime"
@@ -84,7 +84,7 @@ function EditMatchForm() {
                     placeholder="09/21/2023, 7:30"  
                 /> <br/>
                    <br/>
-                  <label>Skill Level: </label>
+                  {/* <label>Skill Level: </label> */}
                 <select
                     id="skill_level"
                     value={myMatch.skill_level || ''}
@@ -93,7 +93,7 @@ function EditMatchForm() {
                         <option value={"intermediate"}>intermediate</option>
                 </select> <br/>
                 <br/>    
-                <label>Phone:</label>
+                {/* <label>Phone:</label> */}
                 <input 
                       type="text"
                       id="phone"

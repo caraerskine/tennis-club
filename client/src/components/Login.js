@@ -20,22 +20,26 @@ function Login(){
 }
 
     return (
+
+      
     <div className="login-form">
         <h2>Login</h2>
         <form onSubmit={(e) => login(e)}>
-            <label>Username:</label>
+            <label>Username: </label>
             <input 
                 type="text" 
                 id="username"
+                placeholder="Type in here…"
                 value={form.username} 
                 onChange={handleUpdate}
         />
           <br></br>
           <br></br>
-          <label>Password:</label>
+          <label>Password: </label>
           <input 
                 type="password" 
                 id="password"
+                placeholder="Type in here…"
                 value={form.password} 
                 onChange={handleUpdate}
           />

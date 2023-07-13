@@ -18,7 +18,7 @@ function Matches() {
   if (user.matches.length === 0) {
     return (
     <div>
-      <h3>{user.name} it looks like you don't have any matches scheduled yet.</h3>
+      <h4>{user.name}, it looks like you don't have any matches scheduled yet.</h4>
           <Link to={`/clubs`}>
             <button>Add a Match to a Club</button>
           </Link>
@@ -42,7 +42,7 @@ return (
 
    return <MatchCard
         key={match.id}
-        club={match.club.club_name}
+        // club={match.club.club_name}
         id={match.id}
         datetime={formattedDatetime}
         //want to show name of opponent?

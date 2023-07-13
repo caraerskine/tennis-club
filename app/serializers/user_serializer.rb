@@ -9,7 +9,7 @@ class UserSerializer < ActiveModel::Serializer
   end
 
   def matches
-    object.matches.map do |match|
+    object.sent_matches + object.received_matches.map do |match|
       match_serialized = match.serializable_hash
       match_serialized['club'] = match.club
       match_serialized
@@ -37,12 +37,14 @@ class UserSerializer < ActiveModel::Serializer
           id: user.id,
           name: user.name,
           avatar_url: user.avatar_url,
-          username: user.username
+          username: user.username,
         }
       end
     end
   
 end
+
+# do i need opponents in here?
 
 
 #fancy srlze

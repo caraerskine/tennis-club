@@ -45,6 +45,7 @@ function UserProvider({ children }) {
          
     
           if (response.ok) {
+            console.log("data", data)
             setUser(data);
             navigate('/');
             //takes user to their home page with their avatar which is '/'
@@ -82,7 +83,8 @@ function UserProvider({ children }) {
         }
       };
 
-  
+  console.log("user dot js", user)
+
     const logout = () => {
         setUser(false)
       }

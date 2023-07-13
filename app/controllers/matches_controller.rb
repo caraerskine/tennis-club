@@ -1,19 +1,19 @@
 class MatchesController < ApplicationController
 
-    # def create
-    #     match = @current_user.matches.create!(match_params)
-    #     render json: match, status: :created
-    # end
-
     def create
-        match = @current_user.matches.build(match_params)
+        match = @current_user.matches.create!(match_params)
+        render json: match, status: :created
+    end
+
+    # def create
+    #     match = @current_user.matches.build(match_params)
     
-        if match.save
-          render json: match, status: :created
-        else
-          render json: { errors: match.errors }, status: :unprocessable_entity
-        end
-      end
+    #     if match.save
+    #       render json: match, status: :created
+    #     else
+    #       render json: { errors: match.errors }, status: :unprocessable_entity
+    #     end
+    #   end
 
     def index
         render json: @current_user.matches
