@@ -40,15 +40,15 @@ avatar_imgs = [avatar1, avatar2, avatar3, avatar4, avatar5]
 
     User.create(
         name: users[i-1],
-        # avatar_url: avatar_imgs[i-1],
+        avatar_url: avatar_imgs[i-1],
         username: Faker::Internet.username,
         email: Faker::Internet.email,
         password: password,
         password_confirmation: password
     )
 
-    user.avatar_url = avatar_imgs[i-1]
-    user.save
+    # user.avatar_url = avatar_imgs[i-1]
+    # user.save
 
     Club.create(
         clubs[i-1],

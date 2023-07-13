@@ -33,9 +33,11 @@ function NewMatchForm(){
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
         console.log("skill", skill)
-        const selectedOpponent = user.opponents.find((opponent) => opponent.id === parseInt(opponent, 10) && opponent.id !== user.id);
+        const selectedOpponent = user.opponents.find((opponentItem) => opponentItem.id === parseInt(opponent, 10) && opponentItem.id !== user.id);
         const receiverId = selectedOpponent ? selectedOpponent.id : 0;
+        
         onAddMatch({
             datetime: formattedDatetime(datetime),
             skill_level: skill,
