@@ -9,7 +9,7 @@ function Matches() {
 
   const { user } = useContext(UserContext);
 
-  // const datetime = '2023-09-21T07:30:00.000Z';
+
  
   if (!user || !user.matches) {
     return <div>Loading...</div>;
@@ -25,7 +25,7 @@ function Matches() {
     </div>
   );
  }
-
+console.log("User:", user)
  console.log("Club object:", user)
  console.log("matches", user.matches)
 
@@ -38,15 +38,14 @@ function Matches() {
 return (
   <div className="App"> 
           {user.matches.map((match) => {
-      const formattedDatetime = format(new Date(match.datetime), 'MM/dd/yyyy, HH:mm')
+            
+   const formattedDatetime = format(new Date(match.datetime), 'MM/dd/yyyy, HH:mm')
 
    return <MatchCard
-        key={match.id}
+        key={match.created_at}
         // club={match.club.club_name}
         id={match.id}
         datetime={formattedDatetime}
-        //want to show name of opponent?
-        // formattedDateTime={formattedDatetime}
         skill_level={match.skill_level}
         phone={match.phone}
         status={match.status}

@@ -9,6 +9,7 @@ function AllClubs(){
 
     console.log("clubs", clubs)
 
+  
     const displayClubs = clubs.map((club) => 
       <ClubCard 
         key={club.id} 

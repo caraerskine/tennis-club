@@ -15,9 +15,21 @@ class MatchesController < ApplicationController
     #     end
     #   end
 
+    #index method it suggested to get club_name to show up on match card
+    # def index
+    #     @matches = Match.includes(:club).all
+    #     render json: @matches.to_json(include: { club: { only: :club_name } })
+    #   end
+      
     def index
-        render json: @current_user.matches
+        match = @current_user.includes(:club).where(user_id: user.id)
+        render json: match, each_serializer: ClubMatchSerializer, include: ['club']
     end
+      
+   #og index
+    # def index
+    #     render json: @current_user.matches
+    # end
   
     def show
         match = @current_user.matches.find(params[:id])

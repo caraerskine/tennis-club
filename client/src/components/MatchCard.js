@@ -5,7 +5,6 @@ import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
 import { format } from 'date-fns';
 
-
 function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
 
   const styles = {
@@ -20,7 +19,6 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
     },
   };
 
-  
 
   const formattedDatetime = format(new Date(datetime), 'MM/dd/yyyy hh:mm a');
 
@@ -35,7 +33,7 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
             />
             <CardContent>
               <Typography gutterBottom variant="h6" component="div">
-                {club}
+                {club ? club.club_name : ""}
               </Typography>
               <Typography>
                 {formattedDatetime}
