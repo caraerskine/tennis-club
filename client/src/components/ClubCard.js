@@ -51,7 +51,7 @@ console.log(typeof(club))
         </CardContent>
         <CardActions>
           <NavLink to={`/clubs/${club.id}/newmatch`}>
-            <Button>Add a tennis match to {club.club_name}</Button>
+            <Button>Add a match to {club.club_name}</Button>
           </NavLink>
         </CardActions>
     </Card>

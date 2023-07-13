@@ -2,13 +2,14 @@ import React, { useContext } from "react";
 import { UserContext } from "../context/user";
 import MatchCard from './MatchCard'
 import { Link } from 'react-router-dom'
+import { format } from 'date-fns' 
 import SplitButton from "./SplitButton";
 
 function Matches() {
 
   const { user } = useContext(UserContext);
 
-  const datetime = '2023-09-21T07:30:00.000Z';
+  // const datetime = '2023-09-21T07:30:00.000Z';
  
   if (!user || !user.matches) {
     return <div>Loading...</div>;
@@ -26,6 +27,7 @@ function Matches() {
  }
 
  console.log("Club object:", user)
+ console.log("matches", user.matches)
 
  //for each match get the opponent name that is equal to recevier_id
  //grab info about the opponent and the name
@@ -36,17 +38,15 @@ function Matches() {
 return (
   <div className="App"> 
           {user.matches.map((match) => {
-
-            // user.opponents.find()
+      const formattedDatetime = format(new Date(match.datetime), 'MM/dd/yyyy, HH:mm')
 
    return <MatchCard
         key={match.id}
         club={match.club.club_name}
         id={match.id}
-        // datetime={match.datetime}
-        datetime={match.datetime}
-        //want to show name of opponent
-        // formattedDateTime={formattedDatetime(match.datetime)}
+        datetime={formattedDatetime}
+        //want to show name of opponent?
+        // formattedDateTime={formattedDatetime}
         skill_level={match.skill_level}
         phone={match.phone}
         status={match.status}

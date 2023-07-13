@@ -49,6 +49,7 @@ function NewMatchForm(){
 
     console.log("skill", skill)
       console.log("datetime", typeof(datetime))
+      console.log("user obj", user)
       console.log("user.opponents", user.opponents);
 console.log("receiver_id", typeof(receiver_id))
 
@@ -85,12 +86,10 @@ console.log("receiver_id", typeof(receiver_id))
         onChange={(e) => setOpponent(parseInt(e.target.value, 10))}
         > 
         <option value="">Select a user</option>
-          {user.opponents.map((user, index) => (
+          {user.opponents.map((opponent, index) => (
         <option key={index} value={user.id}>
-          {user.name}
-          {user.avatar_url ? (
-          <img src={user.avatar_url} alt="Opponent avatar"/> 
-          ) : null }
+          {opponent.name}
+          {opponent.avatar_url ? <img src={opponent.avatar_url} alt="Opponent avatar"/> : null }
           </option>
       ))}
          </select> 
