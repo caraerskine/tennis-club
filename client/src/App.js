@@ -12,6 +12,7 @@ import NewMatchForm from './components/NewMatchForm';
 import RejectedMatches from './components/RejectedMatches'
 import CompletedMatches from './components/CompletedMatches'
 import PendingMatches from './components/PendingMatches'
+import AcceptedMatches from './components/AcceptedMatches'
 import EditMatchForm from './components/EditMatchForm';
 import './App.css';
 
@@ -37,9 +38,11 @@ function App() {
 
               <Route path="/matches/:id" element={<EditMatchForm />} />
 
-              <Route path="/matches/pending-matches" element={<PendingMatches />} />  
+              <Route path="/matches/accepted" element={<AcceptedMatches />} />  
 
-              <Route path="/matches/rejected-matches" element={<RejectedMatches />} />  
+              <Route path="/matches/pending" element={<PendingMatches />} />  
+
+              <Route path="/matches/rejected" element={<RejectedMatches />} />  
 
               <Route path="/matches/completed" element={<CompletedMatches />} />            
 

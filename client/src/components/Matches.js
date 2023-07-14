@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { format } from 'date-fns' 
 import SplitButton from "./SplitButton";
 
+
 function Matches() {
 
   const { user } = useContext(UserContext);
@@ -42,7 +43,7 @@ return (
 
           {user.matches.map((match) => {
             const compositeKey = `${match.id}-${match.phone}`;
-            const formattedDatetime = format(new Date(match.datetime), 'MM/dd/yyyy, HH:mm')
+            const formattedDatetime = format(new Date(match.datetime), 'MM/dd/yyyy, hh:mm a')
             console.log("formattedDatetime:", formattedDatetime);
          
    return <MatchCard

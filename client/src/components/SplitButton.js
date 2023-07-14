@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { UserContext } from "../context/user";
+// import { UserContext } from "../context/user";
 import { useNavigate } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -14,8 +14,15 @@ import MenuList from '@mui/material/MenuList';
 
 function SplitButton() {
 
-  const { user } = useContext(UserContext);
-  const options = ['Completed Matches', 'Accepted Matches', 'Pending Matches', 'Rejected Matches'];
+  // const { user } = useContext(UserContext);
+  // const options = ['Completed Matches', 'Accepted Matches', 'Pending Matches', 'Rejected Matches'];
+  const options = [
+    { label: 'Completed Matches', route: '/matches/completed' },
+    { label: 'Accepted Matches', route: '/matches/accepted' },
+    { label: 'Pending Matches', route: '/matches/pending' },
+    { label: 'Rejected Matches', route: '/matches/rejected' },
+  ];
+
   const navigate = useNavigate()
 
   const [open, setOpen] = React.useState(false);
@@ -23,14 +30,15 @@ function SplitButton() {
   const [selectedIndex, setSelectedIndex] = React.useState(1);
 
   const handleClick = () => {
-    console.info(`You clicked ${options[selectedIndex]}`);
+    console.info(`You clicked ${options[selectedIndex].label}`);
   };
 
   const handleMenuItemClick = (event, index) => {
     setSelectedIndex(index);
     setOpen(false);
 
-    const route = `/${options[index].toLowerCase().replace(" ", "-")}`;
+    const route = options[index].route;
+    // const route = `/${options[index].toLowerCase().replace(" ", "-")}`;
     navigate(route);
   };
 
@@ -49,7 +57,7 @@ function SplitButton() {
   return(
   <React.Fragment>
       <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button">
-        <Button onClick={handleClick}>{options[selectedIndex]}</Button>
+        <Button onClick={handleClick}>{options[selectedIndex].label}</Button>
         <Button
           size="small"
           aria-controls={open ? 'split-button-menu' : undefined}
@@ -84,12 +92,12 @@ function SplitButton() {
                 <MenuList id="split-button-menu" autoFocusItem>
                   {options.map((option, index) => (
                     <MenuItem
-                      key={option}
+                      key={option.label}
                       disabled={index === 2}
                       selected={index === selectedIndex}
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
-                     {option}
+                     {option.label}
                     </MenuItem>
                   ))}
                 </MenuList>
