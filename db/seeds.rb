@@ -6,7 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Club.destroy_all
+User.destroy_all
+Club.destroy_all
 Match.destroy_all
 
 puts "seeding clubs 🎾..."

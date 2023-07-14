@@ -34,6 +34,7 @@ function SignUp() {
             <input 
                 type="text" 
                 id="name"
+                placeholder="Type in here…"
                 value={form.name} 
                 onChange={handleUpdate}
         />
@@ -43,6 +44,7 @@ function SignUp() {
             <input 
                 type="text" 
                 id="avatar_url"
+                placeholder="https://…"
                 value={form.avatar_url} 
                 onChange={handleUpdate}
         />
@@ -52,6 +54,7 @@ function SignUp() {
             <input 
                 type="text" 
                 id="username"
+                placeholder="Type in here…"
                 value={form.username} 
                 onChange={handleUpdate}
         />   
@@ -61,6 +64,7 @@ function SignUp() {
             <input 
                 type="email" 
                 id="email"
+                placeholder="example@test.com…"
                 value={form.email} 
                 onChange={handleUpdate}
             />
@@ -70,6 +74,7 @@ function SignUp() {
           <input 
                 type="password" 
                 id="password"
+                placeholder="8-20 characters…"
                 value={form.password} 
                 onChange={handleUpdate}
           />
@@ -79,12 +84,13 @@ function SignUp() {
           <input 
                 type="password" 
                 id="password_confirmation"
+                placeholder="passwords must match"
                 value={form.password_confirmation} 
                 onChange={handleUpdate}
           />
           <br></br>
           <br></br>
-          <div>Checking...</div>
+          {/* <div>Checking...</div> */}
           <input type="submit"/>
           </form>
             <ul>

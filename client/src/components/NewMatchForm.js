@@ -67,7 +67,7 @@ console.log("receiver_id", typeof(receiver_id))
     <br/>
     <form onSubmit={handleSubmit}>
           <br/>
-        {/* <label>Date and Time: </label> */}
+        <label>Date and Time: </label>
         <input 
             type="datetime-local"
             id="datetime"
@@ -78,7 +78,7 @@ console.log("receiver_id", typeof(receiver_id))
         <br/>
         <br/>
 
-        {/* <label>Choose Opponent:</label> */}
+        <label>Choose Opponent:</label>
         <select 
         id="opponent" 
         name="opponent" 
@@ -86,7 +86,7 @@ console.log("receiver_id", typeof(receiver_id))
         onChange={(e) => setOpponent(parseInt(e.target.value, 10))}
         > 
         <option value="">Select an opponent</option>
-          {user.opponents.map((opponent, index) => (
+          {user.opponents && user.opponents.map((opponent, index) => (
         <option key={opponent.avatar_url.substring(0,5)} value={opponent.id}>
           {opponent.name}
           {opponent.avatar_url ? <img src={opponent.avatar_url} alt="Opponent avatar"/> : null }
@@ -95,7 +95,7 @@ console.log("receiver_id", typeof(receiver_id))
          </select> 
         <br/>
         <br/>
-        {/* <label>Skill Level: </label> */}
+        <label>Skill Level: </label>
         <select
             id="skill_level"
             value={skill ? "intermediate" : "beginner"}
@@ -106,7 +106,7 @@ console.log("receiver_id", typeof(receiver_id))
         </select> 
         <br/>
         <br/>
-        {/* <label>Phone Number: </label> */}
+        <label>Phone Number: </label>
         <input 
             type="tel"
             id="phone"
