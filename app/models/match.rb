@@ -13,9 +13,9 @@ class Match < ApplicationRecord
     scope :completed, -> { where(status: 'completed') }
     scope :accepted, -> { where(status: 'accepted') }
 
-    # def self.with_clubs
-    #     includes(:club)
-    # end
+    def self.with_clubs
+        includes(:club)
+    end
 
 end
 

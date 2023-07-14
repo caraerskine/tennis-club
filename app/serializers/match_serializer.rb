@@ -10,9 +10,9 @@ class MatchSerializer < ActiveModel::Serializer
     object.club.match
   end
 
-  def club_name
-    object.club.club_name
-  end
+  # def club_name
+  #   object.club.club_name
+  # end
 
 end
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { Fragment, useContext, useState } from 'react'
 import { UserContext } from '../context/user'
 import { useParams } from 'react-router-dom'
 import { MatchesContext } from '../context/matches'
@@ -46,11 +46,11 @@ function NewMatchForm(){
     }
 
 
-    console.log("skill", skill)
-      console.log("datetime", typeof(datetime))
-      console.log("user object", user)
+    // console.log("skill", skill)
+    //   console.log("datetime", typeof(datetime))
+    //   console.log("user object", user)
       console.log("user.opponents", user.opponents);
-console.log("receiver_id", typeof(receiver_id))
+// console.log("receiver_id", typeof(receiver_id))
 
 //status should be automatically set to pending when match is created
 //and then it can change to 'accepted' or 'rejected'
@@ -86,11 +86,14 @@ console.log("receiver_id", typeof(receiver_id))
         onChange={(e) => setOpponent(parseInt(e.target.value, 10))}
         > 
         <option value="">Select an opponent</option>
-          {user.opponents && user.opponents.map((opponent, index) => (
-        <option key={opponent.avatar_url.substring(0,5)} value={opponent.id}>
-          {opponent.name}
-          {opponent.avatar_url ? <img src={opponent.avatar_url} alt="Opponent avatar"/> : null }
-          </option>
+          {user.opponents && 
+          user.opponents.map((opponent) => (
+            <Fragment key={opponent.id}>
+              <option value={opponent.id}>
+                {opponent.name}
+                {opponent.avatar_url && <img src={opponent.avatar_url} alt="Opponent avatar"/>}
+              </option>
+           </Fragment>
       ))}
          </select> 
         <br/>

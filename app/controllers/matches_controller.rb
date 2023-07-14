@@ -1,6 +1,7 @@
 class MatchesController < ApplicationController
 
     def create
+        puts "Match Params: #{match_params}"
         match = @current_user.matches.create!(match_params)
         render json: match, status: :created
     end
@@ -21,15 +22,15 @@ class MatchesController < ApplicationController
     #     render json: @matches.to_json(include: { club: { only: :club_name } })
     #   end
       
-    def index
-        match = @current_user.includes(:club).where(user_id: user.id)
-        render json: match, each_serializer: ClubMatchSerializer, include: ['club']
-    end
+    # def index
+    #     match = @current_user.includes(:club).where(user_id: user.id)
+    #     render json: match, each_serializer: ClubMatchSerializer, include: ['club']
+    # end
       
    #og index
-    # def index
-    #     render json: @current_user.matches
-    # end
+    def index
+        render json: @current_user.matches
+    end
   
     def show
         match = @current_user.matches.find(params[:id])

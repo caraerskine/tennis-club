@@ -58,11 +58,13 @@ status = ["pending", "accepted", "completed"]
  end
 
  def random_num_users(current)
-    for _ in 1..5
-        number = rand(1..5)
+    for _ in 1..6
+        number = rand(1..6)
         return number unless number == current
       end
  end
+
+#this used to be 1..6
 
  user = User.find(rand(1..5))
 
