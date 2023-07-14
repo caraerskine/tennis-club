@@ -18,11 +18,11 @@ club3 = {club_name: 'Queens Tennis Club', street: '12th Ave.', description: 'by 
 club4 = {club_name: 'Bronx Tennis Club', street: '161st St.', description: 'next to Yankee Stadium', club_img: 'https://nypost.com/wp-content/uploads/sites/2/2016/08/tennis_hudson1a.jpg?quality=80&strip=all'}
 club5 = {club_name: 'Staten Island Tennis Club', street: 'Marine Ave.', description: 'near the fire station', club_img: 'https://assets.website-files.com/6238f3c220d25d1180edadee/623e4007ffc9ced479f6b31c_AdobeStock_23409792.jpeg'}
 
-avatar1 = 'https://cdn0.scrvt.com/c2465e9022ba946df66d1244a69b1c75/90cf1c7c5746317d/311a7d67b222/v/0ab0eb8f2720/boris-becker.jpg'
-avatar2 = 'https://media.npr.org/assets/img/2022/06/14/gettyimages-1231196817-9f4221e92b6331e592eeb14218f66d87e3648e3d-s1100-c50.jpg'
-avatar3 = 'https://cdn.britannica.com/85/205585-050-94EFDBDB/Pete-Sampras-men-singles-championship-Wimbledon-sets-1998.jpg'
-avatar4 = 'https://www.womenshistory.org/sites/default/files/styles/main_image/public/images/2021-06/Billie%20Jean%20King%20Square.png'
-avatar5 = 'https://www.shropshirestar.com/resizer/53axozaMoK6NaYciz9Q9Ys8x58Q=/1200x0/cloudfront-us-east-1.images.arcpublishing.com/mna/WHIBRN5KU5GNXMWC3DNIRJ65KQ.jpg'
+avatar1 = 'https://tinyurl.com/2p8ebv2y'
+avatar2 = 'https://tinyurl.com/25ayv67w'
+avatar3 = 'https://tinyurl.com/4b8cvfhu'
+avatar4 = 'https://tinyurl.com/yvew8zt5'
+avatar5 = 'https://tinyurl.com/ynycecnk'
 
 users = ["Steffi", "Serena", "Boris", "Pete", "Billie"]
 clubs = [club1, club2, club3, club4, club5]
@@ -50,7 +50,9 @@ puts "clubs seeded!"
 
 status = ["pending", "accepted", "completed"]
 
-(7..36).each do |i|
+(1..30).each do |i|
+
+#change to 7..36 after you fix it
 
  def random_num_clubs
         number = rand(1..5)
@@ -58,12 +60,13 @@ status = ["pending", "accepted", "completed"]
  end
 
  def random_num_users(current)
-    for _ in 1..6
-        number = rand(1..6)
+    for _ in 1..5
+        number = rand(1..5)
         return number unless number == current
       end
  end
 
+ #pop back in after i create myself and re-seed
 #this used to be 1..6
 
  user = User.find(rand(1..5))
