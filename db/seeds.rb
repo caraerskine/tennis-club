@@ -20,9 +20,9 @@ club5 = {club_name: 'Staten Island Tennis Club', street: 'Marine Ave.', descript
 
 avatar1 = 'https://cdn0.scrvt.com/c2465e9022ba946df66d1244a69b1c75/90cf1c7c5746317d/311a7d67b222/v/0ab0eb8f2720/boris-becker.jpg'
 avatar2 = 'https://media.npr.org/assets/img/2022/06/14/gettyimages-1231196817-9f4221e92b6331e592eeb14218f66d87e3648e3d-s1100-c50.jpg'
-avatar3 = 'https://cdn0.scrvt.com/c2465e9022ba946df66d1244a69b1c75/9faaf8cc82fe6a1e/97a72de7832c/v/a1355696f1a7/p_0300_15_A8_009_o2.jpg'
+avatar3 = 'https://cdn.britannica.com/85/205585-050-94EFDBDB/Pete-Sampras-men-singles-championship-Wimbledon-sets-1998.jpg'
 avatar4 = 'https://www.womenshistory.org/sites/default/files/styles/main_image/public/images/2021-06/Billie%20Jean%20King%20Square.png'
-avatar5 = 'https://cdn0.scrvt.com/c2465e9022ba946df66d1244a69b1c75/a86fddef3d67e7f7/2c595f2bee0f/v/dbc12aaf1cf8/p_0300_14_E5_005_o2.jpg'
+avatar5 = 'https://www.shropshirestar.com/resizer/53axozaMoK6NaYciz9Q9Ys8x58Q=/1200x0/cloudfront-us-east-1.images.arcpublishing.com/mna/WHIBRN5KU5GNXMWC3DNIRJ65KQ.jpg'
 
 users = ["Steffi", "Serena", "Boris", "Pete", "Billie"]
 clubs = [club1, club2, club3, club4, club5]
@@ -45,6 +45,7 @@ avatar_imgs = [avatar1, avatar2, avatar3, avatar4, avatar5]
     )
 
 end
+
 puts "clubs seeded!"
 
 status = ["pending", "accepted", "completed"]
@@ -57,13 +58,13 @@ status = ["pending", "accepted", "completed"]
  end
 
  def random_num_users(current)
-    for _ in 1..6
-        number = rand(1..6)
+    for _ in 1..5
+        number = rand(1..5)
         return number unless number == current
       end
  end
 
- user = User.find(rand(1..6))
+ user = User.find(rand(1..5))
 
     current_match = Match.create!(
         user_id: user.id,
@@ -87,3 +88,4 @@ puts "done seeding 🎾!"
 
 
 # avatar_url: Faker::Avatar.image,
+#said it could not fund user 6 so i did 5 on randum_num
