@@ -39,7 +39,7 @@ function NewMatchForm(){
             datetime: formattedDatetime(datetime),
             skill_level: skill,
             phone: phone,
-            club_id: id,
+            club_id: "1",
             sender_id: user.id,
             receiver_id: receiverId
         })
@@ -50,6 +50,8 @@ function NewMatchForm(){
     //   console.log("datetime", typeof(datetime))
     //   console.log("user object", user)
       console.log("user.opponents", user.opponents);
+      console.log(onAddMatch, "oAm func")
+  
 // console.log("receiver_id", typeof(receiver_id))
 
 //status should be automatically set to pending when match is created
@@ -91,7 +93,7 @@ function NewMatchForm(){
             <Fragment key={opponent.id}>
               <option value={opponent.id}>
                 {opponent.name}
-                {opponent.avatar_url && <img src={opponent.avatar_url} alt="Opponent avatar"/>}
+                {/* {opponent.avatar_url && <img src={opponent.avatar_url} alt="Opponent avatar"/>} */}
               </option>
            </Fragment>
       ))}

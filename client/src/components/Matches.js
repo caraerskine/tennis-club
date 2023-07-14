@@ -9,8 +9,6 @@ function Matches() {
 
   const { user } = useContext(UserContext);
 
-
- 
   if (!user || !user.matches) {
     return <div>Loading...</div>;
   }
@@ -37,13 +35,19 @@ console.log("User:", user)
 
 return (
   <div className="App"> 
-          {user.matches.map((match) => {
-            
-   const formattedDatetime = format(new Date(match.datetime), 'MM/dd/yyyy, HH:mm')
+  <br></br>
+  <br></br>
 
+  <SplitButton />
+
+          {user.matches.map((match) => {
+            const compositeKey = `${match.id}-${match.phone}`;
+            const formattedDatetime = format(new Date(match.datetime), 'MM/dd/yyyy, HH:mm')
+            console.log("formattedDatetime:", formattedDatetime);
+         
    return <MatchCard
-        key={match.created_at}
-        // club={match.club.club_name}
+        key={compositeKey}
+        club={match.club ? match.club.club_name : ""}
         id={match.id}
         datetime={formattedDatetime}
         skill_level={match.skill_level}
@@ -52,7 +56,7 @@ return (
         avatar={user.avatar_url}
       />
   })}
-          <SplitButton />
+          
   </div>
 
   );

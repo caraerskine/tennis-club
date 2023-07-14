@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { format } from 'date-fns';
 
 function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
+  console.log("datetime:", datetime);
 
   const styles = {
     container: {
@@ -19,8 +20,6 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
     },
   };
 
-
-  const formattedDatetime = format(new Date(datetime), 'MM/dd/yyyy hh:mm a');
 
   return (
         <div style={styles.container}>
@@ -36,7 +35,7 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
                 {club ? club.club_name : ""}
               </Typography>
               <Typography>
-                {formattedDatetime}
+                {datetime}
               </Typography>
               <Typography>
                 {skill_level ? "beginner" : "intermediate"}
