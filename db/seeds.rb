@@ -87,10 +87,28 @@ status = ["pending", "accepted", "completed"]
 
 end
 
+# to create some new ones just for Cara
+# user = User.find(6)
+# clubs = Club.all.sample(10)
+
+# (1..10).each do |_|
+#   current_match = Match.create!(
+#     user_id: user.id,
+#     club_id: clubs.sample.id,
+#     sender_id: user.id,
+#     receiver_id: random_num_users(user.id),
+#     status: status.sample,
+#     datetime: Time.at(rand * Time.now.to_i).to_s,
+#     phone: Faker::PhoneNumber.cell_phone,
+#     skill_level: true
+#   )
+
+#   puts current_match
+# end
+
 
 
 puts "done seeding 🎾!"
 
 
-# avatar_url: Faker::Avatar.image,
-#said it could not fund user 6 so i did 5 on randum_num
+

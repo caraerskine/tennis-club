@@ -1,10 +1,23 @@
 class MatchesController < ApplicationController
 
+    #OG
+    # def create
+    #     puts "Match Params: #{match_params}"
+    #     match = @current_user.matches.create!(match_params)
+    #     render json: match, status: :created
+    # end
+
     def create
         puts "Match Params: #{match_params}"
         match = @current_user.matches.create!(match_params)
-        render json: match, status: :created
-    end
+        match.club_id = params[:club_id] # Use the correct attribute for club_id
+      
+        if match.save
+          render json: match, status: :created
+        else
+          render json: { errors: match.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
 
     # def create
     #     match = @current_user.matches.build(match_params)
