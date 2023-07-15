@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.destroy_all
-Club.destroy_all
-Match.destroy_all
+# User.destroy_all
+# Club.destroy_all
+# Match.destroy_all
 
 puts "seeding clubs 🎾..."
 
@@ -52,7 +52,7 @@ status = ["pending", "accepted", "completed"]
 
 (1..30).each do |i|
 
-#change to 7..36 after you fix it
+# change to 7..36 after you fix it
 
  def random_num_clubs
         number = rand(1..5)
@@ -88,23 +88,32 @@ status = ["pending", "accepted", "completed"]
 end
 
 # to create some new ones just for Cara
-# user = User.find(6)
-# clubs = Club.all.sample(10)
 
-# (1..10).each do |_|
-#   current_match = Match.create!(
-#     user_id: user.id,
-#     club_id: clubs.sample.id,
-#     sender_id: user.id,
-#     receiver_id: random_num_users(user.id),
-#     status: status.sample,
-#     datetime: Time.at(rand * Time.now.to_i).to_s,
-#     phone: Faker::PhoneNumber.cell_phone,
-#     skill_level: true
-#   )
+user = User.find(6)
+clubs = Club.all.sample(10)
+matches = Match.all
 
-#   puts current_match
-# end
+status_options = ['pending', 'accepted', 'rejected', 'completed']
+
+matches.each do |match|
+    match.update(status: status_options.sample)
+  end
+  
+
+(1..10).each do |_|
+  current_match = Match.create!(
+    user_id: user.id,
+    club_id: clubs.sample.id,
+    sender_id: user.id,
+    receiver_id: random_num_users(user.id),
+    status: status_options.sample,
+    datetime: Time.at(rand * Time.now.to_i).to_s,
+    phone: Faker::PhoneNumber.cell_phone,
+    skill_level: true
+  )
+
+  puts current_match
+end
 
 
 

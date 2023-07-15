@@ -8,9 +8,9 @@ class MatchesController < ApplicationController
     # end
 
     def create
-        puts "Match Params: #{match_params}"
-        match = @current_user.matches.create!(match_params)
-        match.club_id = params[:club_id] # Use the correct attribute for club_id
+        # byebug
+        match = @current_user.matches.create(match_params)
+        # match.club_id = params[:club_id] # Use the correct attribute for club_id
       
         if match.save
           render json: match, status: :created
@@ -29,7 +29,7 @@ class MatchesController < ApplicationController
     #     end
     #   end
 
-    #index method it suggested to get club_name to show up on match card
+    #index method suggested to get club_name to show up on match card
     # def index
     #     @matches = Match.includes(:club).all
     #     render json: @matches.to_json(include: { club: { only: :club_name } })
