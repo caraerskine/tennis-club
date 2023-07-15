@@ -31,7 +31,7 @@ const styles = {
         />
         <CardContent>
             <Typography gutterBottom variant="h6" component="div">
-                {club_name} 
+                {club_name}
               </Typography>
               <Typography>
                 {street}, {description}

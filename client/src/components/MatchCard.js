@@ -19,7 +19,7 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
     },
   };
 
-  //new Date 
+  //trying to show club_name on MatchCard
 
   return (
         <div style={styles.container}>
@@ -32,7 +32,7 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
             />
             <CardContent>
               <Typography gutterBottom variant="h6" component="div">
-                {club ? club.club_name : ""}
+                {club}, {id}
               </Typography>
               <Typography>
                 {new Date(datetime).toDateString()}
@@ -64,3 +64,6 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
 export default MatchCard;
 
 //have logic show a "leave a comment shows up" when the match is in completed status
+
+//{club ? club.club_name : ""} 
+//{club_name} 

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { UserContext } from "../context/user";
 import MatchCard from './MatchCard'
 import { Link } from 'react-router-dom'
-import { format } from 'date-fns' 
+// import { format } from 'date-fns' 
 import SplitButton from "./SplitButton";
 
 function Matches() {
@@ -47,7 +47,8 @@ return (
          
    return <MatchCard
         key={compositeKey}
-        club={match.club ? match.club.club_name : ""}
+        club={match.club_name}
+        // club={match.club ? match.club.club_name : ""}
         id={match.id}
         datetime={match.datetime}
         skill_level={match.skill_level}
