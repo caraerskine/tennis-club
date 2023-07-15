@@ -13,6 +13,7 @@ function AllClubs(){
     const displayClubs = clubs.map((club) => 
       <ClubCard 
         key={club.id} 
+        id={club.id}
         club_img={club.club_img}
         club_name={club.club_name} 
         street={club.street} 

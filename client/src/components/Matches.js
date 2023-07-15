@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import { format } from 'date-fns' 
 import SplitButton from "./SplitButton";
 
-
 function Matches() {
 
   const { user } = useContext(UserContext);
@@ -33,7 +32,7 @@ console.log("User:", user)
  //set recevier id and set opponent name
  //use association belongs to the user and the receiver (both users)
  //how do i get the user that hthe match belogns to to belong to two different users
-
+// debugger
 return (
   <div className="App"> 
   <br></br>
@@ -43,14 +42,14 @@ return (
 
           {user.matches.map((match) => {
             const compositeKey = `${match.id}-${match.phone}`;
-            const formattedDatetime = format(new Date(match.datetime), 'MM/dd/yyyy, hh:mm a')
-            console.log("formattedDatetime:", formattedDatetime);
+            // const formattedDatetime = format(new Date(match.datetime), 'MM/dd/yyyy, hh:mm a')
+            // console.log("formattedDatetime:", formattedDatetime);
          
    return <MatchCard
         key={compositeKey}
         club={match.club ? match.club.club_name : ""}
         id={match.id}
-        datetime={formattedDatetime}
+        datetime={match.datetime}
         skill_level={match.skill_level}
         phone={match.phone}
         status={match.status}

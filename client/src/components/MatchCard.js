@@ -3,7 +3,6 @@ import { Card, CardContent, CardMedia, CardActions } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
-import { format } from 'date-fns';
 
 function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
   console.log("datetime:", datetime);
@@ -20,6 +19,7 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
     },
   };
 
+  //new Date 
 
   return (
         <div style={styles.container}>
@@ -35,7 +35,7 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
                 {club ? club.club_name : ""}
               </Typography>
               <Typography>
-                {datetime}
+                {new Date(datetime).toDateString()}
               </Typography>
               <Typography>
                 {skill_level ? "beginner" : "intermediate"}

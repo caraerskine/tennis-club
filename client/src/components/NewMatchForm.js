@@ -39,7 +39,7 @@ function NewMatchForm(){
             datetime: formattedDatetime(datetime),
             skill_level: skill,
             phone: phone,
-            club_id: "1",
+            club_id: id, 
             sender_id: user.id,
             receiver_id: receiverId
         })
