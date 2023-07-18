@@ -11,6 +11,7 @@ function EditMatchForm() {
     const { onEditMatch } = useContext(MatchesContext)
     const navigate = useNavigate()
 
+
     const obj = {
         datetime: "", 
         skill_level: "", 
@@ -27,9 +28,12 @@ function EditMatchForm() {
         let m;
         if (Array.isArray(user.matches)) {
       m = user.matches.find((e) => {
-        return e.id === parseInt(id, 10)
-    })};
-      
+        // return e.id === parseInt(id, 10)
+        //but isnt it an integer anyway why do we Parse here
+        return e.id === id
+      });
+    }
+
         m ? setMyMatch(m) : setMyMatch(obj);
     }, [user, id]);
 
@@ -87,8 +91,10 @@ function EditMatchForm() {
                   {/* <label>Skill Level: </label> */}
                 <select
                     id="skill_level"
-                    value={myMatch.skill_level || ''}
+                    // value={myMatch.skill_level || ''}
+                    value={myMatch.skill_level}
                     onChange={updateMyMatch}>
+                        <option value={""}>select a skill level:</option>
                         <option value={"beginner"}>beginner</option>
                         <option value={"intermediate"}>intermediate</option>
                 </select> <br/>

@@ -45,9 +45,26 @@ class MatchesController < ApplicationController
     # end
       
    #og index
+    # def index
+    #     render json: @current_user.matches
+    # end
+
     def index
-        render json: @current_user.matches
-    end
+        matches = @current_user.matches.map do |match|
+          {
+            id: match.id,
+            datetime: match.datetime,
+            phone: match.phone,
+            club_id: match.club_id,
+            receiver_id: match.receiver_id,
+            sender_id: match.sender_id,
+            skill_level: match.skill_level,
+            skill_level_string: match.skill_level? ? 'intermediate' : 'beginner'
+          }
+        end
+    
+        render json: matches
+      end
   
     def show
         match = @current_user.matches.find(params[:id])

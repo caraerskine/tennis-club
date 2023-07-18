@@ -81,6 +81,7 @@ fetch(`/matches/${editedMatch.id}`, {
       setUser({...user, matches: newMatches});
       alert("match updated!");
       setErrors([]);
+      setTimeout(navigate("/matches"), 1000)
     }
   });
 };
