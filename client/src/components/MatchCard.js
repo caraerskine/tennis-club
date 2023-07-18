@@ -1,18 +1,28 @@
-import React from "react";
+import React, {useContext, useState, useEffect} from "react";
 import { Card, CardContent, CardMedia, CardActions } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
 import CommentSection from './CommentSection';
+import { UserContext } from '../context/user'
 
 function MatchCard( {avatar, skill_level, id, club, datetime, phone, status, comments} ) {
   
   // console.log("datetime", new Date(datetime).toDateString());
+  const {user} = useContext(UserContext)
+  const [receiverData, setReceiverData] = useState(null);
 
   const handleSaveComment = (comment) => {
     // Logic to save the comment to the backend or update the match's comment field.
     console.log('Comment:', comment);
   };
+
+      // useEffect(() => {
+      //   const receiverComment = comments && comments.find((comment) => comment.user.id !== user.id);
+      //   const receiverInfo = receiverComment ? receiverComment.user : null;
+      //   setReceiverData(receiverInfo);
+      // }, [comments, user.id]);
+
 
   const styles = {
     container: {
@@ -24,6 +34,16 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status, com
     card: {
       maxWidth: 600,
     },
+    statusColors: {
+      completed: "purple",
+      rejected: "red",
+      pending: "#efcc00",
+      accepted: "green",
+    },
+  };
+
+  const getStatusColor = (status) => {
+    return styles.statusColors[status] || "black"; // Default to black for unknown statuses
   };
 
 
@@ -50,16 +70,18 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status, com
                   {skill_level ? "intermediate" : "beginner"}
                 </Typography>
                 <Typography>
-                  {phone}
+                  {/* {phone} */}
+                  {/* {receiverData ? receiverData.phone : "Opponent phone not available"} */}
+                  {/* {receiverData && receiverData.phone} */}
                 </Typography>
-                <Typography>
+                <Typography style={{ color: getStatusColor(status) }}>
                   {status}
                 </Typography>
               
                 <>
-                  {status === 'completed' && (               
-                    <CommentSection matchId={id} comments={comments} onSaveComment={handleSaveComment} />
-                  )}
+                    {status === 'completed' && (               
+                      <CommentSection matchId={id} comments={comments} onSaveComment={handleSaveComment} />
+                    )}
                 </>
               
               <Typography variant="body2" color="text.secondary"></Typography>

@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="ca9BShzw7J080Vqpb4vu" name="Page-1">
-        <mxGraphModel dx="914" dy="629" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1469" dy="297" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -63,7 +63,7 @@
                 <mxCell id="17" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=11;" parent="1" source="18" target="29" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="33" style="edgeStyle=none;html=1;entryX=0.163;entryY=0.008;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="18" target="32">
+                <mxCell id="33" style="edgeStyle=none;html=1;entryX=0.163;entryY=0.008;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="18" target="32" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="18" value="Matches&amp;nbsp;&lt;br&gt;maps over clubs so you can go to Match Form add a match and then post it to Match Board" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
@@ -99,14 +99,22 @@
                 <mxCell id="28" value="ClubCard&lt;br&gt;shows each individual club" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
                     <mxGeometry x="130" y="830" width="120" height="60" as="geometry"/>
                 </mxCell>
+                <mxCell id="35" style="edgeStyle=none;html=1;" edge="1" parent="1" source="29">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="350" y="1050" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
                 <mxCell id="29" value="MatchCard&lt;br&gt;shows each individual match&lt;br&gt;&lt;br&gt;has area for comments? State for comments would be needed as well" style="whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
                     <mxGeometry x="290" y="900" width="160" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="30" value="Phase 5 flow chart&lt;br&gt;Tennis Club Booking App&lt;br&gt;Capstone&amp;nbsp;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" parent="1" vertex="1">
                     <mxGeometry x="20" y="40" width="130" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="32" value="SplitButton&lt;br&gt;matches drop down&amp;nbsp;&lt;br&gt;&quot;pending accepted rejected completed&quot;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="32" value="SplitButton&lt;br&gt;matches drop down&amp;nbsp;&lt;br&gt;&quot;pending accepted rejected completed&quot;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="486" y="910" width="130" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="CommentSection&lt;br&gt;has state for comments for completed match" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="270" y="1054" width="120" height="80" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
