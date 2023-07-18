@@ -65,6 +65,7 @@ class MatchesController < ApplicationController
     
         render json: matches
       end
+
   
     def show
         match = @current_user.matches.find(params[:id])
@@ -72,11 +73,14 @@ class MatchesController < ApplicationController
     end
     
     def update
+        # byebug
         match = @current_user.matches.find(params[:id])
         match.update!(match_params)
         render json: match
     end
-    #need toggle here too
+    #need toggle here too?
+    #when I dropped in byebug skill_level cant be blank
+    #phone must be in xxx-xxx-xxxx format
 
     def destroy
         match = @current_user.matches.find(params[:id])
