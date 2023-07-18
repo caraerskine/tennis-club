@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { useNavigate } from 'react-router-dom'
+import React from "react";
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -9,7 +8,6 @@ import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
-
 
 function SplitButton( { selectedStatus, setSelectedStatus } ) {
 
@@ -21,23 +19,18 @@ function SplitButton( { selectedStatus, setSelectedStatus } ) {
     { label: 'Rejected Matches' }
   ];
 
-  // const navigate = useNavigate()
-
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-  // const [selectedIndex, setSelectedIndex] = React.useState(1);
 
   const handleClick = () => {
     console.info(`You clicked ${selectedStatus}`);
   };
 
-  const handleMenuItemClick = (event, index) => {
+  const handleMenuItemClick = (index) => {
     setSelectedStatus(options[index].label);
     setOpen(false);
-
-    // const selectedLabel = options[index].label;
-    // setSelectedStatus(selectedLabel);
-
+    console.log("options", options)
+  };
    
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -92,7 +85,7 @@ function SplitButton( { selectedStatus, setSelectedStatus } ) {
                       key={option.label}
                       disabled={index === 2}
                       selected={option.label === selectedStatus}
-                      onClick={(event) => handleMenuItemClick(event, index)}
+                      onClick={() => handleMenuItemClick(index)}
                     >
                      {option.label}
                     </MenuItem>
@@ -107,17 +100,7 @@ function SplitButton( { selectedStatus, setSelectedStatus } ) {
   );
  }
 
- return (
-    <>
-      Return ???
-    </>
- )
-}
+
+
 
 export default SplitButton
-
- // don't think i am using now but check 
-  //   const route = options[index].route;
-  //   // const route = `/${options[index].toLowerCase().replace(" ", "-")}`;
-  //   navigate(route);
-  // };
