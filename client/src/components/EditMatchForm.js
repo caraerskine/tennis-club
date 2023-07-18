@@ -4,13 +4,11 @@ import { UserContext } from '../context/user'
 import { useNavigate, useParams } from 'react-router-dom'
 import { MatchesContext } from '../context/matches'
 
-
 function EditMatchForm() {
     const { id } = useParams()   
     const {user, setUser, errors} = useContext(UserContext)
     const { onEditMatch } = useContext(MatchesContext)
     const navigate = useNavigate()
-
 
     const obj = {
         datetime: "", 
@@ -25,17 +23,11 @@ function EditMatchForm() {
     const [myMatch, setMyMatch] = useState(obj)
 
     useEffect(() => {
-        let m;
-        if (Array.isArray(user.matches)) {
-      m = user.matches.find((e) => {
-        // return e.id === parseInt(id, 10)
-        //but isnt it an integer anyway why do we Parse here
-        return e.id === id
-      });
-    }
-
-        m ? setMyMatch(m) : setMyMatch(obj);
-    }, [user, id]);
+        let m = user.matches.find((e) => {        
+          return e.id === parseInt(id, 10)})
+  
+          m ? setMyMatch(m) : setMyMatch(obj)
+      }, [user, id])
 
     console.log("m", typeof(m))
 
@@ -79,7 +71,7 @@ function EditMatchForm() {
         return ( 
             <form onSubmit={handleSubmit}>
                 <p>Edit match</p>
-                {/* <label>Datetime: </label> */}
+                <label>Datetime: </label>
                 <input 
                     type="datetime-local"
                     id="datetime"
@@ -88,10 +80,9 @@ function EditMatchForm() {
                     placeholder="09/21/2023, 7:30"  
                 /> <br/>
                    <br/>
-                  {/* <label>Skill Level: </label> */}
+                  <label>Skill Level: </label>
                 <select
                     id="skill_level"
-                    // value={myMatch.skill_level || ''}
                     value={myMatch.skill_level}
                     onChange={updateMyMatch}>
                         <option value={""}>select a skill level:</option>
@@ -99,7 +90,7 @@ function EditMatchForm() {
                         <option value={"intermediate"}>intermediate</option>
                 </select> <br/>
                 <br/>    
-                {/* <label>Phone:</label> */}
+                <label>Phone:</label>
                 <input 
                       type="text"
                       id="phone"
