@@ -64,6 +64,7 @@ return (
           phone={match.phone}
           status={match.status}
           avatar={user.avatar_url}
+          comments={match.comments}
       />
     })}  
   </div>

@@ -3,9 +3,16 @@ import { Card, CardContent, CardMedia, CardActions } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
+import CommentSection from './CommentSection';
 
-function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
-  console.log("datetime", new Date(datetime).toDateString());
+function MatchCard( {avatar, skill_level, id, club, datetime, phone, status, comments} ) {
+  
+  // console.log("datetime", new Date(datetime).toDateString());
+
+  const handleSaveComment = (comment) => {
+    // Logic to save the comment to the backend or update the match's comment field.
+    console.log('Comment:', comment);
+  };
 
   const styles = {
     container: {
@@ -19,10 +26,9 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
     },
   };
 
-  //trying to show club_name on MatchCard
 
   return (
-        <div style={styles.container}>
+        <div className= "match-card" style={styles.container}>
           <Card style={styles.card}>
             <CardMedia
               component="div"
@@ -31,24 +37,31 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
               title="user avatar"
             />
             <CardContent>
-              <Typography gutterBottom variant="h6" component="div">
-                {club}
-              </Typography>
-              <Typography>
-                {new Date(datetime).toLocaleTimeString()}
-              </Typography>
-              <Typography>
-                {new Date(datetime).toDateString()}
-              </Typography>
-              <Typography>
-                {skill_level ? "intermediate" : "beginner"}
-              </Typography>
-              <Typography>
-                {phone}
-              </Typography>
-              <Typography>
-                {status}
-              </Typography>
+                <Typography gutterBottom variant="h6" component="div">
+                  {club}
+                </Typography>
+                <Typography>
+                  {new Date(datetime).toLocaleTimeString()}
+                </Typography>
+                <Typography>
+                  {new Date(datetime).toDateString()}
+                </Typography>
+                <Typography>
+                  {skill_level ? "intermediate" : "beginner"}
+                </Typography>
+                <Typography>
+                  {phone}
+                </Typography>
+                <Typography>
+                  {status}
+                </Typography>
+              
+                <>
+                  {status === 'completed' && (               
+                    <CommentSection matchId={id} comments={comments} onSaveComment={handleSaveComment} />
+                  )}
+                </>
+              
               <Typography variant="body2" color="text.secondary"></Typography>
             </CardContent>
             <CardActions>
@@ -65,3 +78,5 @@ export default MatchCard;
 
 //can we show opponent phone on matchcard (you know your own phone #)
 //can we show opponent name and/or avatar on matchcard
+
+//comments used to be a prop coming in ad passed down

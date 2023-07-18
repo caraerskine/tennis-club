@@ -8,7 +8,6 @@ function Home() {
 
     const { user } = useContext(UserContext)
 
-    //map over matches to get completed matches, pending matches and accepted matches
     console.log("user.matches", user.matches)
 
 
@@ -52,11 +51,11 @@ function Home() {
                     />
                 </Stack>
                 <br></br>
-                    <ol>
+                    {/* <ol>
                         {renderMatchesByStatus('completed')}
                         {renderMatchesByStatus('pending')}
                         {renderMatchesByStatus('accepted')}
-                    </ol>
+                    </ol> */}
             </div>
 
     )    
@@ -101,4 +100,6 @@ Clubs: {user.clubs.length}
 //if I can see all matches by status in Matches
 //Home should show me my profile, and I can edit it? Button for that?
 //Home could list matches by type and provide count?
+//Home could show date joined, and total matches?
+
 //

@@ -13,10 +13,10 @@ function SplitButton( { selectedStatus, setSelectedStatus } ) {
 
   const options = [
     { label: 'All Matches' },
-    { label: 'Completed Matches' },
     { label: 'Accepted Matches' },
     { label: 'Pending Matches' },
-    { label: 'Rejected Matches' }
+    { label: 'Rejected Matches' },
+    { label: 'Completed Matches' }
   ];
 
   const [open, setOpen] = React.useState(false);

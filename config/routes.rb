@@ -8,19 +8,10 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/me', to: 'users#show'
 
-  #matches ctrllr
-  #need completed, pending and accepted custom routes ?
-  #http://localhost:4000/rejected-matches
-  #hmmmm
-  get '/matches/pending', to: 'matches#pending'
-  get '/matches/completed', to: 'matches#completed'
-  get '/matches/accepted', to: 'matches#accepted'
-  get '/matches/rejected', to: 'matches#rejected'
-
-
-  #clubs ctrllr
-  #have resources so have crud
-
+  #matches crtllr
+  # get '/matches/:matchId/comments' 
+  post '/matches/:id/comments', to: 'comments#create'
+  #or matchID ?? in /  / 
 
   #have resources for have full crud capability on these
   resources :comments

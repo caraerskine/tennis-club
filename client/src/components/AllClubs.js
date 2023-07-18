@@ -1,5 +1,4 @@
 import { React, useContext } from 'react'
-import { UserContext } from '../context/user'
 import { ClubsContext } from '../context/clubs'
 import ClubCard from './ClubCard'
 
