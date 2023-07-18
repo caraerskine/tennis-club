@@ -8,26 +8,30 @@ class MatchesController < ApplicationController
     # end
 
     def create
-        # byebug
-        match = @current_user.matches.create(match_params)
-        # match.club_id = params[:club_id] # Use the correct attribute for club_id
-      
-        if match.save
+            # byebug
+             skill_level = match_params[:skill_level] == "true"
+
+            match = @current_user.matches.create({
+              datetime: match_params[:datetime], 
+              phone: match_params[:phone], 
+              club_id: match_params[:club_id], 
+              receiver_id: match_params[:receiver_id], 
+              sender_id: match_params[:sender_id], 
+              skill_level: match_params[:skill_level]
+            })
+          
+            if match_params[:skill_level] == "false"
+                match.skill_level = false
+            end
+
+        if match
           render json: match, status: :created
         else
           render json: { errors: match.errors.full_messages }, status: :unprocessable_entity
         end
       end
 
-    # def create
-    #     match = @current_user.matches.build(match_params)
-    
-    #     if match.save
-    #       render json: match, status: :created
-    #     else
-    #       render json: { errors: match.errors }, status: :unprocessable_entity
-    #     end
-    #   end
+  
 
     #index method suggested to get club_name to show up on match card
     # def index
@@ -55,6 +59,7 @@ class MatchesController < ApplicationController
         match.update!(match_params)
         render json: match
     end
+    #need toggle here too
 
     def destroy
         match = @current_user.matches.find(params[:id])

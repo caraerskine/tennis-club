@@ -1,11 +1,8 @@
 class ClubMatchSerializer < ActiveModel::Serializer
-  attributes :id, :phone, :skill_level, :user_id, :user, :name_of_club
-  belongs_to :club
-  
-  def name_of_club
-      object.club.club_name
-  end
+  attributes :id, :skill_level, :user_id, :user
 
 end
 
 #redundant club_id and datetime
+#took :phone out
+

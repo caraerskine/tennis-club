@@ -44,11 +44,12 @@ return (
             const compositeKey = `${match.id}-${match.phone}`;
             // const formattedDatetime = format(new Date(match.datetime), 'MM/dd/yyyy, hh:mm a')
             // console.log("formattedDatetime:", formattedDatetime);
+
+            //filter before I map and filter it by pending, accepted, etc. 
          
    return <MatchCard
         key={compositeKey}
         club={match.club_name}
-        // club={match.club ? match.club.club_name : ""}
         id={match.id}
         datetime={match.datetime}
         skill_level={match.skill_level}

@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
 
 function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
-  console.log("datetime:", datetime);
+  console.log("datetime", new Date(datetime).toDateString());
 
   const styles = {
     container: {
@@ -32,20 +32,20 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
             />
             <CardContent>
               <Typography gutterBottom variant="h6" component="div">
-                {club}, {id}
+                {club}
+              </Typography>
+              <Typography>
+                {new Date(datetime).toLocaleTimeString()}
               </Typography>
               <Typography>
                 {new Date(datetime).toDateString()}
               </Typography>
               <Typography>
-                {skill_level ? "beginner" : "intermediate"}
+                {skill_level ? "intermediate" : "beginner"}
               </Typography>
               <Typography>
                 {phone}
               </Typography>
-              {/* <Typography>
-                {opponent}
-              </Typography> */}
               <Typography>
                 {status}
               </Typography>
@@ -63,7 +63,5 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status} ) {
 
 export default MatchCard;
 
-//have logic show a "leave a comment shows up" when the match is in completed status
-
-//{club ? club.club_name : ""} 
-//{club_name} 
+//can we show opponent phone on matchcard (you know your own phone #)
+//can we show opponent name and/or avatar on matchcard

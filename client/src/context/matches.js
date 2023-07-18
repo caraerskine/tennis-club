@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from './user';
+import { useNavigate } from 'react-router-dom';
 
 const MatchesContext = React.createContext();
 
@@ -9,6 +10,7 @@ function MatchesProvider({ children }){
     //if correct user load their matches
 
     const { user, setErrors, setUser } = useContext(UserContext);
+    const navigate = useNavigate()
 
     // useEffect(() => {
     //  fetch('/matches')
@@ -44,7 +46,13 @@ const onAddMatch = (match) => {
           });
           alert("Match added!");
           setErrors([]);
+          setTimeout(navigate("/matches"), 1000)
         }
+      })
+        .catch((error) => {
+        // Handle network or unexpected errors
+        console.error("Error adding match:", error);
+        alert("An error occurred while adding the match. Please try again later.");
       });
   };
 

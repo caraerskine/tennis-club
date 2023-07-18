@@ -32,12 +32,14 @@ function NewMatchForm(){
         e.preventDefault();
         
         console.log("skill", skill)
+        console.log("datetime", datetime);
+        console.log("phone", phone);
         const selectedOpponent = user.opponents.find((opponentItem) => opponentItem.id === parseInt(opponent, 10) && opponentItem.id !== user.id);
         const receiverId = selectedOpponent ? selectedOpponent.id : 0;
         
         onAddMatch({
             datetime: formattedDatetime(datetime),
-            skill_level: skill,
+            skill_level: skill === "intermediate",
             phone: phone,
             club_id: id, 
             sender_id: user.id,
@@ -46,11 +48,9 @@ function NewMatchForm(){
     }
 
 
-    // console.log("skill", skill)
-    //   console.log("datetime", typeof(datetime))
-    //   console.log("user object", user)
+    
       console.log("user.opponents", user.opponents);
-      console.log(onAddMatch, "oAm func")
+
   
 // console.log("receiver_id", typeof(receiver_id))
 
@@ -82,10 +82,10 @@ function NewMatchForm(){
 
         <label>Choose Opponent:</label>
         <select 
-        id="opponent" 
-        name="opponent" 
-        value={opponent} 
-        onChange={(e) => setOpponent(parseInt(e.target.value, 10))}
+          id="opponent" 
+          name="opponent" 
+          value={opponent} 
+          onChange={(e) => setOpponent(parseInt(e.target.value, 10))}
         > 
         <option value="">Select an opponent</option>
           {user.opponents && 
@@ -97,18 +97,18 @@ function NewMatchForm(){
               </option>
            </Fragment>
       ))}
-         </select> 
-        <br/>
-        <br/>
+        </select>
+        <br />
+        <br />
         <label>Skill Level: </label>
         <select
             id="skill_level"
-            value={skill ? "intermediate" : "beginner"}
-            onChange={(e) => setSkill(e.target.value === "beginner" ? false : true)}
-            >
-                <option value={"beginner"}>beginner</option>
-                <option value={"intermediate"}>intermediate</option>
-        </select> 
+            value={skill}
+            onChange={(e) => setSkill(e.target.value)}>              
+              <option value={""}>select a skill level:</option>
+              <option value={"beginner"}>beginner</option>
+              <option value={"intermediate"}>intermediate</option>
+        </select>
         <br/>
         <br/>
         <label>Phone Number: </label>
@@ -116,8 +116,6 @@ function NewMatchForm(){
             type="tel"
             id="phone"
             name="phone"
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" 
-            required
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder="555-555-5555…"

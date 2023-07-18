@@ -7,11 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-Club.destroy_all
+# Club.destroy_all
 Match.destroy_all
 
 puts "seeding users 🎾..."
-# puts "seeding users and matches 🎾..."
 
 club1 = {club_name: 'Manhattan Tennis Club', street: '42nd St.', description: 'behind Grand Central Station', club_img: 'https://i0.wp.com/thecitylife.org/wp-content/uploads/2023/06/52991725163_90da35260a_b.jpg?fit=1024%2C767&ssl=1'}
 club2 = {club_name: 'Brooklyn Tennis Club', street: 'Flatbush Ave.', description: 'near Prospect Park', club_img: 'https://nypost.com/wp-content/uploads/sites/2/2021/10/brooklyn-tennis-court.jpg?quality=75&strip=all'}
@@ -28,99 +27,61 @@ avatar5 = 'https://tinyurl.com/ynycecnk'
 users = ["Steffi", "Serena", "Boris", "Pete", "Billie"]
 clubs = [club1, club2, club3, club4, club5]
 avatar_imgs = [avatar1, avatar2, avatar3, avatar4, avatar5]
-
+status_options = ["pending", "accepted", "rejected", "completed"]
 
 (1..5).each do |i|
-    password = Faker::Internet.password(min_length: 8, max_length: 20)
+    # password = Faker::Internet.password(min_length: 8, max_length: 20)
 
-    User.create(
+    user = User.create(
         name: users[i-1],
         avatar_url: avatar_imgs[i-1],
         username: Faker::Internet.username,
-        email: Faker::Internet.email,
-        password: password,
-        password_confirmation: password
+        email: "caraerskine@gmail.com",
+        password: "12345678",
+        password_confirmation: "12345678"
     )
 
-    Club.create(
-        clubs[i-1],
-    )
+    # club = Club.create(
+    #     clubs[i-1],
+    # )
+
+    puts "User #{user.id} created!"
+
+    # def random_num_clubs
+    #     number = rand(1..5)
+    #     return number 
+    # end
+
+    # def random_num_users(current)
+    #     for _ in 1..5
+    #         number = rand(1..5)
+    #         return number unless number == current
+    #     end
+    # end
 
 end
 
-puts "clubs seeded!"
+    User.all.each do |user|
+        club = Club.all.sample
+        receiver = User.where.not(id: user.id).sample
 
-status = ["pending", "accepted", "rejected", "completed"]
+        #  byebug
+        (1..5).each do |_|
+            if receiver
+                current_match = Match.create!(
+                    user_id: user.id,
+                    club_id: club.id,
+                    sender_id: user.id,
+                    receiver_id: receiver.id,
+                    status: status_options.sample,
+                    datetime: Time.at(rand * Time.now.to_i).to_s,
+                    phone: Faker::PhoneNumber.cell_phone,
+                    skill_level: true
+                )
 
-(1..30).each do |i|
-
-# change to 7..36 after you fix it
-
- def random_num_clubs
-        number = rand(1..5)
-        return number 
- end
-
- def random_num_users(current)
-    for _ in 1..5
-        number = rand(1..5)
-        return number unless number == current
-      end
- end
-
- #pop back in after i create myself and re-seed
-#this used to be 1..6
-
- user = User.find(rand(1..5))
-
-    current_match = Match.create!(
-        user_id: user.id,
-        club_id: random_num_clubs,
-        sender_id: user.id,
-        receiver_id: random_num_users(user.id),
-        status: status[rand(0..3)],
-        datetime: Time.at(rand * Time.now.to_i).to_s,
-        phone: Faker::PhoneNumber.cell_phone,
-        skill_level: true
-
-    )
-
-    puts current_match
-
-end
-
-# to create some new ones just for Cara
-
-# user = User.find_by(id: 6)
-# clubs = Club.all.sample(10)
-# matches = Match.all
-
-# status_options = ['pending', 'accepted', 'rejected', 'completed']
-
-# matches.each do |match|
-#     match.update(status: status_options.sample)
-#   end
-  
-
-# (1..10).each do |_|
-#   current_match = Match.create!(
-#     user_id: user.id,
-#     club_id: clubs.sample.id,
-#     sender_id: user.id,
-#     receiver_id: random_num_users(user.id),
-#     status: status_options.sample,
-#     datetime: Time.at(rand * Time.now.to_i).to_s,
-#     phone: Faker::PhoneNumber.cell_phone,
-#     skill_level: true
-#   )
-
-#   puts current_match
-# end
-
-
+                puts "Match #{current_match.id} created!"
+            end
+        end
+    end
 
 puts "done seeding 🎾!"
-
-
-# end 
-# puts "Users and matches seeded! 🎾"
