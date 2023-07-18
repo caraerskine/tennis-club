@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-// import { UserContext } from "../context/user";
 import { useNavigate } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -12,36 +11,34 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 
 
-function SplitButton() {
+function SplitButton( { selectedStatus, setSelectedStatus } ) {
 
-  // const { user } = useContext(UserContext);
-  // const options = ['Completed Matches', 'Accepted Matches', 'Pending Matches', 'Rejected Matches'];
   const options = [
-    { label: 'Completed Matches', route: '/matches/completed' },
-    { label: 'Accepted Matches', route: '/matches/accepted' },
-    { label: 'Pending Matches', route: '/matches/pending' },
-    { label: 'Rejected Matches', route: '/matches/rejected' },
+    { label: 'All Matches' },
+    { label: 'Completed Matches' },
+    { label: 'Accepted Matches' },
+    { label: 'Pending Matches' },
+    { label: 'Rejected Matches' }
   ];
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  // const [selectedIndex, setSelectedIndex] = React.useState(1);
 
   const handleClick = () => {
-    console.info(`You clicked ${options[selectedIndex].label}`);
+    console.info(`You clicked ${selectedStatus}`);
   };
 
   const handleMenuItemClick = (event, index) => {
-    setSelectedIndex(index);
+    setSelectedStatus(options[index].label);
     setOpen(false);
 
-    const route = options[index].route;
-    // const route = `/${options[index].toLowerCase().replace(" ", "-")}`;
-    navigate(route);
-  };
+    // const selectedLabel = options[index].label;
+    // setSelectedStatus(selectedLabel);
 
+   
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -57,7 +54,7 @@ function SplitButton() {
   return(
   <React.Fragment>
       <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button">
-        <Button onClick={handleClick}>{options[selectedIndex].label}</Button>
+        <Button onClick={handleClick}>{selectedStatus}</Button>
         <Button
           size="small"
           aria-controls={open ? 'split-button-menu' : undefined}
@@ -94,7 +91,7 @@ function SplitButton() {
                     <MenuItem
                       key={option.label}
                       disabled={index === 2}
-                      selected={index === selectedIndex}
+                      selected={option.label === selectedStatus}
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
                      {option.label}
@@ -108,7 +105,19 @@ function SplitButton() {
       </Popper>
     </React.Fragment>
   );
+ }
+
+ return (
+    <>
+      Return ???
+    </>
+ )
 }
 
-
 export default SplitButton
+
+ // don't think i am using now but check 
+  //   const route = options[index].route;
+  //   // const route = `/${options[index].toLowerCase().replace(" ", "-")}`;
+  //   navigate(route);
+  // };

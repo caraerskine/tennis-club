@@ -9,10 +9,10 @@ import Logout from './components/Logout'
 import AllClubs from './components/AllClubs'
 import Matches from './components/Matches';
 import NewMatchForm from './components/NewMatchForm';
-import RejectedMatches from './components/RejectedMatches'
-import CompletedMatches from './components/CompletedMatches'
-import PendingMatches from './components/PendingMatches'
-import AcceptedMatches from './components/AcceptedMatches'
+// import RejectedMatches from './components/RejectedMatches'
+// import CompletedMatches from './components/CompletedMatches'
+// import PendingMatches from './components/PendingMatches'
+// import AcceptedMatches from './components/AcceptedMatches'
 import EditMatchForm from './components/EditMatchForm';
 import './App.css';
 
@@ -37,14 +37,14 @@ function App() {
               <Route path="/matches" element={<Matches />} />
 
               <Route path="/matches/:id" element={<EditMatchForm />} />
-
+{/* 
               <Route path="/matches/accepted" element={<AcceptedMatches />} />  
 
               <Route path="/matches/pending" element={<PendingMatches />} />  
 
               <Route path="/matches/rejected" element={<RejectedMatches />} />  
 
-              <Route path="/matches/completed" element={<CompletedMatches />} />            
+              <Route path="/matches/completed" element={<CompletedMatches />} />             */}
 
               <Route path="/about" element={<About />} />
 

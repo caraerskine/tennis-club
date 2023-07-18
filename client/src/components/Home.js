@@ -3,35 +3,27 @@ import { UserContext } from '../context/user'
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import Typography from "@mui/material/Typography";
-// import { MatchesContext } from '../context/matches';
-// import { format } from 'date-fns';
 
 function Home() {
 
-    //get matches from matches.js, right?
-
     const { user } = useContext(UserContext)
-    // const { matches } = useContext(MatchesContext)
-
 
     //map over matches to get completed matches, pending matches and accepted matches
-console.log("user.matches", user.matches)
+    console.log("user.matches", user.matches)
 
 
     const renderMatchesByStatus = (status) => {
         console.log('Status:', status);
-  console.log('All Matches:', user.matches);
-        const filteredMatches = user.matches.filter((match) => match.status === status);
+        console.log('All Matches:', user.matches);
+            const filteredMatches = user.matches.filter((match) => match.status === status);
         console.log('Filtered Matches:', filteredMatches);
 
         if (filteredMatches.length === 0) {
           return <Typography>No {status} matches found.</Typography>;
         }
        
-        
-
     return (
-            <div key={user.created_at} >
+            <div key = {compositeKey} >
                 <Typography variant="h6">{status} matches:</Typography>
                 {filteredMatches.map((match) => (
                     <div key={match.created_at}>
@@ -44,6 +36,9 @@ console.log("user.matches", user.matches)
             </div>
         )
     } 
+
+     const compositeKey = `${user.avatar_url}-${user.username}`
+     //can't make a unique key says I have two of the same (?) but how?
 
     if (user) {
         return(
@@ -101,3 +96,9 @@ Completed Matches: {user.matches.completed}
 <Typography>
 Clubs: {user.clubs.length}
 </Typography> */}
+
+
+//if I can see all matches by status in Matches
+//Home should show me my profile, and I can edit it? Button for that?
+//Home could list matches by type and provide count?
+//
