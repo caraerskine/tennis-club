@@ -1,12 +1,5 @@
 class MatchesController < ApplicationController
 
-    #OG
-    # def create
-    #     puts "Match Params: #{match_params}"
-    #     match = @current_user.matches.create!(match_params)
-    #     render json: match, status: :created
-    # end
-
     def create
             # byebug
              skill_level = match_params[:skill_level] == "true"
@@ -73,14 +66,10 @@ class MatchesController < ApplicationController
     end
     
     def update
-        # byebug
         match = @current_user.matches.find(params[:id])
         match.update!(match_params)
         render json: match
     end
-    #need toggle here too?
-    #when I dropped in byebug skill_level cant be blank
-    #phone must be in xxx-xxx-xxxx format
 
     def destroy
         match = @current_user.matches.find(params[:id])
@@ -92,29 +81,27 @@ class MatchesController < ApplicationController
 
     #if a current_user has a match that has not yet been accepted by the receiver or rejected it is pending
     #user_id and #sender_id
-    def pending
-        @pending_matches = Match.where(sender_id: current_user.id, status: 'pending')
-    end
+    # def pending
+    #     @pending_matches = Match.where(sender_id: current_user.id, status: 'pending')
+    # end
 
 #if a current_user has a match that has been accepted by the receiver
     #user_id and #sender_id    
-    def accepted
-        @accepted_matches = Match.where(receiver_id: current_user.id, status: 'accepted')
-    end
+    # def accepted
+    #     @accepted_matches = Match.where(receiver_id: current_user.id, status: 'accepted')
+    # end
 
     #if a current_user has a match that has been completed    
     #user_id and #sender_id
-    def completed
-        @completed_matches = Match.where(receiver_id: current_user.id, status: 'completed')
-    end
+    # def completed
+    #     @completed_matches = Match.where(receiver_id: current_user.id, status: 'completed')
+    # end
 
      #if a current_user has a match that has been rejected   
     #user_id and #sender_id
-    def rejected
-        @rejected_matches = Match.where(receiver_id: current_user.id, status: 'rejected')
-    end
-      
-
+    # def rejected
+    #     @rejected_matches = Match.where(receiver_id: current_user.id, status: 'rejected')
+    # end
 
     private
 
