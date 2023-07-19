@@ -26,7 +26,7 @@ function MatchesProvider({ children }){
     //     })
     // }, [])
 
-console.log("user Obj", user)
+// console.log("user Obj", user)
 
 const onAddMatch = (match) => {
     fetch("/matches", {

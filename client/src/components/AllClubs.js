@@ -20,7 +20,7 @@ function AllClubs(){
       />
     )
 
-    console.log("dispClubs", displayClubs)
+    // console.log("dispClubs", displayClubs)
 
 return (
   <div className="App" >

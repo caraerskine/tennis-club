@@ -34,7 +34,7 @@ function EditMatchForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         onEditMatch(myMatch)
-        console.log(myMatch, "onEditMatch is happening")
+        // console.log(myMatch, "onEditMatch is happening")
     }
 
     function updateMyMatch(e){

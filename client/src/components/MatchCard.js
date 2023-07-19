@@ -46,7 +46,6 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status, com
     return styles.statusColors[status] || "black"; // Default to black for unknown statuses
   };
 
-
   return (
         <div className= "match-card" style={styles.container}>
           <Card style={styles.card}>

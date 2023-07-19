@@ -9,9 +9,7 @@ Rails.application.routes.draw do
   get '/me', to: 'users#show'
 
   #matches crtllr
-  # get '/matches/:matchId/comments' 
-  post '/matches/:id/comments', to: 'comments#create'
-  #or matchID ?? in /  / 
+  get '/matches/:id/comments', to: "matches#comments" 
 
   #have resources for have full crud capability on these
   resources :comments

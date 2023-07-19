@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../context/user';
 
 
@@ -7,9 +7,26 @@ function CommentSection({ matchId, comments }) {
     const [localComments, setLocalComments] = useState([]);
     const [newComment, setNewComment] = useState('');
 
+    useEffect(() => {
+       const id = matchId
+        fetch(`/matches/${id}/comments`)
+        .then((response) => {
+            if (!response.ok) {
+            throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log("data", data)
+            setLocalComments(data.comments.slice(-maxCommentCount));           
+        })
+        .catch((error) => console.error('Error fetching comments:', error));
+    }, [matchId]);
+
+   
   const handleCommentChange = (e) => {
     setNewComment(e.target.value);
-    console.log('handleAddcomment')
+    // console.log('handleAddcomment')
   };
 
   const maxCommentCount = 6;
@@ -22,12 +39,10 @@ function CommentSection({ matchId, comments }) {
         user_id: user.id, 
       };
 
-      console.log('new comment data', newCommentData);
-      console.log("matchId is:", matchId)
+    //   console.log('new comment data', newCommentData);
+    //   console.log("matchId is:", matchId)
 
-    
-
-    fetch(`/matches/${matchId}/comments`, {
+    fetch(`/comments`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -39,34 +54,36 @@ function CommentSection({ matchId, comments }) {
               throw new Error("Network response was not ok");
             }
             return response.json();
-          })
+        })
         .then((data) => {
-            console.log('API Response:', data); 
-            const updatedComments = [...localComments, { ...data, user: user }].slice(-maxCommentCount);
-            setLocalComments((prevComments) => [...prevComments, { ...data, user: user }]); 
+            // console.log('API Response:', data); 
+            const updatedComments = [...localComments, data].slice(-maxCommentCount);
             setLocalComments(updatedComments);           
             alert ("comment added!");
             setNewComment('');
-            console.log('New Comment:', data); 
-      })
+            // console.log('New Comment:', data); 
+        })
         .catch((error) => console.error('Error adding comment:', error));
         setLocalComments([]); 
-  };
+  }
+
+//I don't understand what this is for 
 
 
 
-  console.log('Props - matchId:', matchId);
-  console.log('Props - comments:', comments);
-  console.log('Local Comments:', localComments);
-  console.log('User:', user);
+
+//   console.log('Props - matchId:', matchId);
+//   console.log('Props - comments:', comments);
+//   console.log('Local Comments:', localComments);
+//   console.log('User:', user);
 
   return (
 
     <div className="comment-section">
             {Array.isArray(localComments) && 
                 localComments.map((comment) => (
-            <div key={comment.match_id} className="comment">    
-               <strong>{comment.user && comment.user?.username}</strong> says "{comment && comment.content}"
+            <div key={comment.id} className="comment">    
+               <strong>{comment.name}</strong> says "{comment.content}"
             </div>
     ))}
 

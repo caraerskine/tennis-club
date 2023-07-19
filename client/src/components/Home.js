@@ -8,7 +8,7 @@ function Home() {
 
     const { user } = useContext(UserContext)
 
-    console.log("user.matches", user.matches)
+    // console.log("user.matches", user.matches)
 
 
     const renderMatchesByStatus = (status) => {

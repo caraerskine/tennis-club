@@ -31,9 +31,9 @@ function NewMatchForm(){
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        console.log("skill", skill)
-        console.log("datetime", datetime);
-        console.log("phone", phone);
+        // console.log("skill", skill)
+        // console.log("datetime", datetime);
+        // console.log("phone", phone);
         const selectedOpponent = user.opponents.find((opponentItem) => opponentItem.id === parseInt(opponent, 10) && opponentItem.id !== user.id);
         const receiverId = selectedOpponent ? selectedOpponent.id : 0;
         
@@ -49,7 +49,7 @@ function NewMatchForm(){
 
 
     
-      console.log("user.opponents", user.opponents);
+      // console.log("user.opponents", user.opponents);
 
   
 // console.log("receiver_id", typeof(receiver_id))

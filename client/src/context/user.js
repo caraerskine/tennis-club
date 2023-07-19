@@ -19,7 +19,7 @@ function UserProvider({ children }) {
       const fetchUser = async (url, method, body = false) => {
         setLoginError([])
         setSignUpError([])
-        console.log("body", body)
+        // console.log("body", body)
         
         const messages = (url, err) => {
           if (url === "/login"){
@@ -45,13 +45,13 @@ function UserProvider({ children }) {
          
     
           if (response.ok) {
-            console.log("data", data)
+            // console.log("data", data)
             setUser(data);
             navigate('/');
             //takes user to their home page with their avatar which is '/'
             //or should it take them to /matches
 
-            console.log("responseOkUser", data)
+            // console.log("responseOkUser", data)
     
           } else if (response.status === 401) {
 
@@ -59,7 +59,7 @@ function UserProvider({ children }) {
             
             messages(url, err)
 
-            console.log("response401User", data)
+            // console.log("response401User", data)
           }
 
         // } else if (response.status === 401) {
@@ -79,11 +79,11 @@ function UserProvider({ children }) {
           let message = [<li>Server Unresponsive</li>]
              
             messages(url, message)
-            console.log("catchBlock", error)
+            // console.log("catchBlock", error)
         }
       };
 
-  console.log("user dot js", user)
+  // console.log("user dot js", user)
 
     const logout = () => {
         setUser(false)

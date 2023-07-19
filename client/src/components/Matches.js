@@ -23,9 +23,9 @@ function Matches() {
     </div>
   );
  }
-console.log("User:", user)
- console.log("Club object:", user)
- console.log("matches", user.matches)
+// console.log("User:", user)
+//  console.log("Club object:", user)
+//  console.log("matches", user.matches)
  
   const statusMapping = {
     completed: "Completed Matches",
@@ -38,8 +38,8 @@ console.log("User:", user)
     ? user.matches
     : user.matches.filter((match) => statusMapping[match.status].toLowerCase() === selectedStatus.toLowerCase());
 
-    console.log("selectedStatus:", selectedStatus);
-    console.log("filteredTennisMatches:", filteredTennisMatches);
+    // console.log("selectedStatus:", selectedStatus);
+    // console.log("filteredTennisMatches:", filteredTennisMatches);
 
 return (
   <div className="App"> 
@@ -53,9 +53,10 @@ return (
         {filteredTennisMatches.map((match) => {
             const compositeKey = `${match.id}-${match.phone}`;
 
+// console.log("match", match)
+
 
     return  <MatchCard
-          // key={match.id}
           key={compositeKey}
           club={match.club_name}
           id={match.id}

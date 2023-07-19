@@ -58,6 +58,12 @@ class MatchesController < ApplicationController
         head :no_content
     end
 
+    def comments
+      # byebug
+      match = @current_user.matches.find(params[:id])
+      render json: match, serializer: MatchCommentSerializer
+    end 
+
 
     private
 

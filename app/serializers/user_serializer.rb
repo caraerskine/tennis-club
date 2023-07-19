@@ -15,22 +15,15 @@ class UserSerializer < ActiveModel::Serializer
       match_serialized
     end
   end
+   
+  def comments
+    object.comments.map do |comment|
+      comment_serialized = comment.serializable_hash
+      comment_serialized['name'] = comment.user.name
+      comment_serialized
+    end
+  end
 
-  #to get opponents
-    # User.all.filterOut.object.id
-    #for each user filter out the object id
-    #object id is your user who is logged in
-    #object.id is user_id
-    #map over each user
-    #serializable hash where you include the attributes you want the oppoenent to have like
-    #name, avatar_url, username, id
-    #has access to "current_user" object
-    #object and the things you are ssrlzing is the same in slrzr
-
-    #object is the user sent from the user rcontroller below
-
-    #how 
-    
     def opponents
       User.where.not(id: object.id).map do |user|
         {
