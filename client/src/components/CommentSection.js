@@ -7,9 +7,8 @@ function CommentSection({ matchId, comments }) {
     const [localComments, setLocalComments] = useState([]);
     const [newComment, setNewComment] = useState('');
 
-;
-  const handleCommentChange = (event) => {
-    setNewComment(event.target.value);
+  const handleCommentChange = (e) => {
+    setNewComment(e.target.value);
     console.log('handleAddcomment')
   };
 
@@ -21,6 +20,7 @@ function CommentSection({ matchId, comments }) {
       };
 
       console.log('new comment data', newCommentData);
+      console.log("matchId is:", matchId)
 
     fetch(`/matches/${matchId}/comments`, {
         method: "POST",
@@ -29,32 +29,38 @@ function CommentSection({ matchId, comments }) {
         },
         body: JSON.stringify(newCommentData),
     })
-        .then((response) => response.json())
+        .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
         .then((data) => {
             console.log('API Response:', data); 
-            setLocalComments((prevComments) => [...prevComments, data.comment]);
+            setLocalComments((prevComments) => [...prevComments, data]);
             alert ("comment added!");
             setNewComment('');
             console.log('New Comment:', data); 
       })
-      .catch((error) => console.error('Error adding comment:', error));
+        .catch((error) => console.error('Error adding comment:', error));
+        setLocalComments([]); 
   };
+
+
+
   console.log('Props - matchId:', matchId);
   console.log('Props - comments:', comments);
   console.log('Local Comments:', localComments);
   console.log('User:', user);
- 
-
-// used to have span tags 
-//it was just comments ??
 
   return (
+
     <div className="comment-section">
-            {localComments && localComments.map((comment) => (
+            {Array.isArray(localComments) && 
+                localComments.map((comment) => (
             <div key={comment.match_id} className="comment">
-                {comment.content}
-                {comment.user}
-                {/* {comment.user && comment.user.username} */}
+                {comment && comment.content}
+                {comment.user && comment.user?.username}
             </div>
     ))}
 
@@ -68,10 +74,17 @@ function CommentSection({ matchId, comments }) {
         />
         <button onClick={handleAddComment}>Submit</button>
       </div>
+
+
     )}
+
+
   </div>
+
 );
-}
+
+    }
+
 
 export default CommentSection;
 
@@ -81,3 +94,6 @@ export default CommentSection;
 
 // previois part of 49 
 //(user.id === senderId || user.id === receiverId) &&
+
+// key={comment.match_id} className="comment"
+//used to be in div line 55
