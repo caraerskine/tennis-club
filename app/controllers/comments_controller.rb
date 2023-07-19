@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
         comment = match.comments.new(comment_params)
         comment.user_id = @current_user.id 
     
-        if 
+        if comment.save
           render json: comment, status: :created
         else
           render json: { errors: comment.errors.full_messages }, status: :unprocessable_entity

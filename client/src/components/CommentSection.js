@@ -12,7 +12,10 @@ function CommentSection({ matchId, comments }) {
     console.log('handleAddcomment')
   };
 
-  const handleAddComment = () => {
+  const maxCommentCount = 6;
+
+  const handleAddComment = (e) => {
+    e.preventDefault();
     const newCommentData = {
         content: newComment,
         match_id: matchId,
@@ -21,6 +24,8 @@ function CommentSection({ matchId, comments }) {
 
       console.log('new comment data', newCommentData);
       console.log("matchId is:", matchId)
+
+    
 
     fetch(`/matches/${matchId}/comments`, {
         method: "POST",
@@ -37,7 +42,9 @@ function CommentSection({ matchId, comments }) {
           })
         .then((data) => {
             console.log('API Response:', data); 
-            setLocalComments((prevComments) => [...prevComments, data]);
+            const updatedComments = [...localComments, { ...data, user: user }].slice(-maxCommentCount);
+            setLocalComments((prevComments) => [...prevComments, { ...data, user: user }]); 
+            setLocalComments(updatedComments);           
             alert ("comment added!");
             setNewComment('');
             console.log('New Comment:', data); 
@@ -58,42 +65,24 @@ function CommentSection({ matchId, comments }) {
     <div className="comment-section">
             {Array.isArray(localComments) && 
                 localComments.map((comment) => (
-            <div key={comment.match_id} className="comment">
-                {comment && comment.content}
-                {comment.user && comment.user?.username}
+            <div key={comment.match_id} className="comment">    
+               <strong>{comment.user && comment.user?.username}</strong> says "{comment && comment.content}"
             </div>
     ))}
 
-    {user &&  (
-      <div className="add-comment">
-        <input
-          type="text"
-          value={newComment}
-          onChange={handleCommentChange}
-          placeholder="Leave a comment..."
-        />
-        <button onClick={handleAddComment}>Submit</button>
-      </div>
-
-
-    )}
-
-
-  </div>
-
-);
-
-    }
-
+        {user &&  (
+            <div className="add-comment">
+                <input
+                    type="text"
+                    value={newComment}
+                    onChange={handleCommentChange}
+                    placeholder="Leave a comment..."
+                />
+                <button onClick={handleAddComment}>Submit</button>
+            </div>
+        )}
+    </div>
+    );    
+  }
 
 export default CommentSection;
-
-
-
-//line 50 used to be comments.senderId
-
-// previois part of 49 
-//(user.id === senderId || user.id === receiverId) &&
-
-// key={comment.match_id} className="comment"
-//used to be in div line 55

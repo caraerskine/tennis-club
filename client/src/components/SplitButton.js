@@ -26,11 +26,27 @@ function SplitButton( { selectedStatus, setSelectedStatus } ) {
     console.info(`You clicked ${selectedStatus}`);
   };
 
-  const handleMenuItemClick = (index) => {
-    setSelectedStatus(options[index].label);
+  // const handleMenuItemClick = (index) => {
+  //   setSelectedStatus(options[index].label);
+  //   setOpen(false);
+  //   console.log("options", options)
+  // };
+
+  // const handleMenuItemClick = (label) => {
+  //   setSelectedStatus(label);
+  //   setOpen(false);
+  //   console.log("label", label)
+  // };
+
+  const handleMenuItemClick = (label) => {
+    if (label === "All Matches") {
+      // Handle the logic to display all matches
+    } else {
+      setSelectedStatus(label);
+    }
     setOpen(false);
-    console.log("options", options)
   };
+  
    
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -80,12 +96,13 @@ function SplitButton( { selectedStatus, setSelectedStatus } ) {
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList id="split-button-menu" autoFocusItem>
-                  {options.map((option, index) => (
+                  {options.map((option) => (
                     <MenuItem
                       key={option.label}
-                      disabled={index === 2}
+                      // disabled={index === 2}
+                      // disabled={option.label === "Pending Matches"}
                       selected={option.label === selectedStatus}
-                      onClick={() => handleMenuItemClick(index)}
+                      onClick={() => handleMenuItemClick(option.label)}
                     >
                      {option.label}
                     </MenuItem>
