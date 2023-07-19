@@ -65,11 +65,25 @@ class MatchesController < ApplicationController
     end 
 
 
+    #mailer method
+    def create
+      @match = Match.new(match_params)
+
+      if @match.save
+        MatchMailer.new_match_notification('caraerskine@gmail.com', @match).deliver_now
+        redirect_to @match, notice: 'Match was successfully created.'
+      else
+        render :new
+      end
+    end
+
+
     private
 
     def match_params
-        params.require(:match).permit(:datetime, :phone, :club_id, :id, :skill_level, :receiver_id, :sender_id)
+        params.require(:match).permit(:name, :email, :datetime, :phone, :club_id, :id, :skill_level, :receiver_id, :sender_id)
     end
-  
-
+    
 end
+
+
