@@ -56,4 +56,4 @@ export default CommentBar;
 
 //and then that can map over the comments which are then proivded to the comments section
 
-//user has matche
+//user has matches

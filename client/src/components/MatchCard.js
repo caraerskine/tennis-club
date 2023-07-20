@@ -3,7 +3,7 @@ import { Card, CardContent, CardMedia, CardActions } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
-import CommentSection from './CommentSection';
+// import CommentSection from './CommentSection';
 import { UserContext } from '../context/user'
 
 function MatchCard( {avatar, skill_level, id, club, datetime, phone, status, comments} ) {
@@ -77,11 +77,11 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status, com
                   {status}
                 </Typography>
               
-                <>
+                {/* <>
                     {status === 'completed' && (               
                       <CommentSection matchId={id} comments={comments} onSaveComment={handleSaveComment} />
                     )}
-                </>
+                </> */}
               
               <Typography variant="body2" color="text.secondary"></Typography>
             </CardContent>

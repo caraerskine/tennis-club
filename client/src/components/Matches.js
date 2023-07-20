@@ -3,6 +3,7 @@ import { UserContext } from "../context/user";
 import MatchCard from './MatchCard'
 import { Link } from 'react-router-dom'
 import SplitButton from "./SplitButton";
+import CommentSection from "./CommentSection";
 
 function Matches() {
 
@@ -60,12 +61,15 @@ return (
         {filteredTennisMatches.map((match) => {
             const compositeKey = `${match.id}-${match.phone}`;
 
-
+        
     //should I be saving the attrs below into a variable and then passing that into MatchCard instead
     //would that look better?
 
      
-    return  <MatchCard
+    return  (
+    <React.Fragment key={compositeKey}>
+
+      <MatchCard
           key={compositeKey}
           club={match.club_name}
           id={match.id}
@@ -76,10 +80,28 @@ return (
           avatar={user.avatar_url}
           comments={match.comments}
       />
-    })}  
-  </div>
+
+        {match.status === 'completed' && (               
+          <CommentSection matchId={match.id} comments={match.comments} />
+       )}
+
+    </React.Fragment>
+    );  
+  })} 
+  </div> 
   );
 }
 
 
 export default Matches
+
+//I need to map over the users matches
+//serialize comments to each match
+//are comments available to each match?
+
+//provide that match to each match card
+//so does this need to be a child of MatchCard ?
+
+//and then that can map over the comments which are then proivded to the comments section
+
+//user has matches
