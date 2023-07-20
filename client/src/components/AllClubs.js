@@ -8,7 +8,6 @@ function AllClubs(){
 
     console.log("clubs", clubs)
 
-  
     const displayClubs = clubs.map((club) => 
       <ClubCard 
         key={club.id} 
@@ -24,6 +23,8 @@ function AllClubs(){
 
 return (
   <div className="App" >
+    <br></br>
+    <h3>Access to clubs in all 5 boroughs!</h3>
     {displayClubs}
   </div>
   );

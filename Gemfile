@@ -54,3 +54,9 @@ group :test do
 end
 
 gem "active_model_serializers", "~> 0.10.12"
+
+#from Benny re: letter_opener
+# group :development do
+#   gem 'letter_opener'
+# end
+

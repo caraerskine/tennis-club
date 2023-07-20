@@ -13,7 +13,10 @@ Rails.application.configure do
 
   # Mailer Settings
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  #uncomment :smtp if you take :letter_opener and :true lines outand vice versa
   config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
