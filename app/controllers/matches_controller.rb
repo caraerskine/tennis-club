@@ -93,7 +93,7 @@ class MatchesController < ApplicationController
     private
 
     def match_params
-        params.require(:match).permit(:name, :email, :datetime, :phone, :club_id, :id, :skill_level, :receiver_id, :sender_id)
+        params.require(:match).permit(:email, :datetime, :phone, :club_id, :id, :skill_level, :receiver_id, :sender_id)
     end
     
 end

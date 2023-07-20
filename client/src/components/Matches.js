@@ -10,8 +10,14 @@ function Matches() {
   const [selectedStatus, setSelectedStatus] = useState("All matches");
 
   if (!user || !user.matches) {
-    return <div>Loading...</div>;
-  }
+    return (
+   
+      <ul>
+        <h4>Please login to see your matches!</h4>
+      </ul>
+ 
+ 
+ )}
 
   if (user.matches.length === 0) {
     return (
