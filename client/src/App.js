@@ -10,6 +10,7 @@ import AllClubs from './components/AllClubs'
 import Matches from './components/Matches';
 import NewMatchForm from './components/NewMatchForm';
 import EditMatchForm from './components/EditMatchForm';
+import CommentBar from './components/CommentBar';
 import './App.css';
 
 

@@ -8,8 +8,6 @@ function Home() {
 
     const { user } = useContext(UserContext)
 
-    // console.log("user.matches", user.matches)
-
 
     const renderMatchesByStatus = (status) => {
         console.log('Status:', status);
@@ -52,9 +50,9 @@ function Home() {
                 </Stack>
                 <br></br>
                     {/* <ol>
-                        {renderMatchesByStatus('completed')}
+                        {{renderMatchesByStatus('completed')}
                         {renderMatchesByStatus('pending')}
-                        {renderMatchesByStatus('accepted')}
+                        {renderMatchesByStatus('accepted')}}
                     </ol> */}
             </div>
 

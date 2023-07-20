@@ -1,5 +1,7 @@
+my_email = ENV['MY_EMAIL']
+
 class MatchMailer < ApplicationMailer
-    default from: 'caraerskine@gmail.com'
+    default from: my_email
 
     def new_match_notification(receiver_email, match)
       # @match = match_params[:match]

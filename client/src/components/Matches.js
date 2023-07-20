@@ -45,17 +45,20 @@ return (
   <div className="App"> 
     <br></br>
     <br></br>
-    <SplitButton  
-      selectedStatus={selectedStatus} 
-      setSelectedStatus={setSelectedStatus} 
-    />
+
+      <SplitButton  
+        selectedStatus={selectedStatus} 
+        setSelectedStatus={setSelectedStatus} 
+      />
        
         {filteredTennisMatches.map((match) => {
             const compositeKey = `${match.id}-${match.phone}`;
 
-// console.log("match", match)
 
+    //should I be saving the attrs below into a variable and then passing that into MatchCard instead
+    //would that look better?
 
+     
     return  <MatchCard
           key={compositeKey}
           club={match.club_name}

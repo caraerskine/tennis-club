@@ -1,5 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../context/user';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import Typography from "@mui/material/Typography";
 
 
 function CommentSection({ matchId, comments }) {
@@ -7,21 +10,21 @@ function CommentSection({ matchId, comments }) {
     const [localComments, setLocalComments] = useState([]);
     const [newComment, setNewComment] = useState('');
 
-    useEffect(() => {
-       const id = matchId
-        fetch(`/matches/${id}/comments`)
-        .then((response) => {
-            if (!response.ok) {
-            throw new Error("Network response was not ok");
-            }
-            return response.json();
-        })
-        .then((data) => {
-            console.log("data", data)
-            setLocalComments(data.comments.slice(-maxCommentCount));           
-        })
-        .catch((error) => console.error('Error fetching comments:', error));
-    }, [matchId]);
+    // useEffect(() => {
+    //    const id = matchId
+    //     fetch(`/matches/${id}/comments`)
+    //     .then((response) => {
+    //         if (!response.ok) {
+    //         throw new Error("Network response was not ok");
+    //         }
+    //         return response.json();
+    //     })
+    //     .then((data) => {
+    //         console.log("data", data)
+    //         setLocalComments(data.comments.slice(-maxCommentCount));           
+    //     })
+    //     .catch((error) => console.error('Error fetching comments:', error));
+    // }, [matchId]);
 
    
   const handleCommentChange = (e) => {
@@ -29,8 +32,12 @@ function CommentSection({ matchId, comments }) {
     // console.log('handleAddcomment')
   };
 
+//to max out the comments so the card does not look funny
   const maxCommentCount = 6;
 
+
+  //hits the comment controller between a match and a user
+  //when you update state you are updating the user's matches comments when you update that comment
   const handleAddComment = (e) => {
     e.preventDefault();
     const newCommentData = {
@@ -66,11 +73,6 @@ function CommentSection({ matchId, comments }) {
         .catch((error) => console.error('Error adding comment:', error));
         setLocalComments([]); 
   }
-
-//I don't understand what this is for 
-
-
-
 
 //   console.log('Props - matchId:', matchId);
 //   console.log('Props - comments:', comments);

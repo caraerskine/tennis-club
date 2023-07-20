@@ -1,9 +1,10 @@
 class MatchesController < ApplicationController
 
     def create
+      puts "regular match"
              skill_level = match_params[:skill_level] == "true"
 
-            match = @current_user.matches.create({
+            @match = @current_user.matches.create({
               datetime: match_params[:datetime], 
               phone: match_params[:phone], 
               club_id: match_params[:club_id], 
@@ -13,13 +14,15 @@ class MatchesController < ApplicationController
             })
           
             if match_params[:skill_level] == "false"
-                match.skill_level = false
+                @match.skill_level = false
             end
 
-        if match
-          render json: match, status: :created
+        if @match
+          receiver_email = ENV['MY_EMAIL']
+          MatchMailer.new_match_notification(receiver_email, @match).deliver_now
+          render json: @match, status: :created
         else
-          render json: { errors: match.errors.full_messages }, status: :unprocessable_entity
+          render json: { errors: @match.errors.full_messages }, status: :unprocessable_entity
         end
       end
 
@@ -65,17 +68,25 @@ class MatchesController < ApplicationController
     end 
 
 
-    #mailer method
-    def create
-      @match = Match.new(match_params)
-
-      if @match.save
-        MatchMailer.new_match_notification('caraerskine@gmail.com', @match).deliver_now
-        redirect_to @match, notice: 'Match was successfully created.'
-      else
-        render :new
-      end
+    #new method for comments for matches
+    def index
+      match = @current_user.matches.where(status: 'completed')
+      render json: match, each_serializer: MatchSerializer
     end
+    
+
+    #mailer method
+    # def create
+    #   puts "create match in mailer"
+    #   @match = Match.new(match_params)
+
+    #   if @match.save
+    #     MatchMailer.new_match_notification('caraerskine@gmail.com', @match).deliver_now
+    #     redirect_to @match, notice: 'Match was successfully created.'
+    #   else
+    #     render :new
+    #   end
+    # end
 
 
     private

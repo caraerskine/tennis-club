@@ -26,28 +26,14 @@ function SplitButton( { selectedStatus, setSelectedStatus } ) {
     console.info(`You clicked ${selectedStatus}`);
   };
 
-  // const handleMenuItemClick = (index) => {
-  //   setSelectedStatus(options[index].label);
-  //   setOpen(false);
-  //   console.log("options", options)
-  // };
-
-  // const handleMenuItemClick = (label) => {
-  //   setSelectedStatus(label);
-  //   setOpen(false);
-  //   console.log("label", label)
-  // };
-
   const handleMenuItemClick = (label) => {
-    if (label === "All Matches") {
-      // Handle the logic to display all matches
+    if (label === "All Matches") {   
     } else {
       setSelectedStatus(label);
     }
     setOpen(false);
   };
   
-   
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -99,8 +85,6 @@ function SplitButton( { selectedStatus, setSelectedStatus } ) {
                   {options.map((option) => (
                     <MenuItem
                       key={option.label}
-                      // disabled={index === 2}
-                      // disabled={option.label === "Pending Matches"}
                       selected={option.label === selectedStatus}
                       onClick={() => handleMenuItemClick(option.label)}
                     >
