@@ -6,35 +6,14 @@ import Typography from "@mui/material/Typography";
 
 
 function CommentSection({ matchId, comments }) {
-    const { user } = useContext(UserContext);
-    const [localComments, setLocalComments] = useState([]);
+    const { user, setUser } = useContext(UserContext);
     const [newComment, setNewComment] = useState('');
 
-    // useEffect(() => {
-    //    const id = matchId
-    //     fetch(`/matches/${id}/comments`)
-    //     .then((response) => {
-    //         if (!response.ok) {
-    //         throw new Error("Network response was not ok");
-    //         }
-    //         return response.json();
-    //     })
-    //     .then((data) => {
-    //         console.log("data", data)
-    //         setLocalComments(data.comments.slice(-maxCommentCount));           
-    //     })
-    //     .catch((error) => console.error('Error fetching comments:', error));
-    // }, [matchId]);
-
-   
   const handleCommentChange = (e) => {
     setNewComment(e.target.value);
-    // console.log('handleAddcomment')
   };
 
-//to max out the comments so the card does not look funny
   const maxCommentCount = 6;
-
 
   //hits the comment controller between a match and a user
   //when you update state you are updating the user's matches comments when you update that comment
@@ -45,17 +24,14 @@ function CommentSection({ matchId, comments }) {
         match_id: matchId,
         user_id: user.id, 
       };
-
-    //   console.log('new comment data', newCommentData);
-    //   console.log("matchId is:", matchId)
-
+    
     fetch(`/comments`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(newCommentData),
-    })
+       })
         .then((response) => {
             if (!response.ok) {
               throw new Error("Network response was not ok");
@@ -63,27 +39,27 @@ function CommentSection({ matchId, comments }) {
             return response.json();
         })
         .then((data) => {
-            // console.log('API Response:', data); 
-            const updatedComments = [...localComments, data].slice(-maxCommentCount);
-            setLocalComments(updatedComments);           
+            console.log('API Response:', data); 
+            const updatedMatches = user.matches.map((match) => {
+              if (match.id === matchId){
+                return {...match, comments:[...match.comments, data]}
+              } else return match
+        }) 
+            const updatedUser = {...user, matches: updatedMatches}; 
+            setUser(updatedUser);           
             alert ("comment added!");
             setNewComment('');
-            // console.log('New Comment:', data); 
+            console.log('New Comment:', data); 
         })
-        .catch((error) => console.error('Error adding comment:', error));
-        setLocalComments([]); 
-  }
+        .catch((error) => console.error('Error adding comment:', error));  
+    }
 
-//   console.log('Props - matchId:', matchId);
-//   console.log('Props - comments:', comments);
-//   console.log('Local Comments:', localComments);
-//   console.log('User:', user);
+    console.log("user", user)
 
   return (
-
     <div className="comment-section">
-            {Array.isArray(localComments) && 
-                localComments.map((comment) => (
+            {Array.isArray(comments) && 
+                comments.slice(-maxCommentCount).map((comment) => (
             <div key={comment.id} className="comment">    
                <strong>{comment.name}</strong> says "{comment.content}"
             </div>

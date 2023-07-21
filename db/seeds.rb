@@ -7,67 +7,60 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-# Club.destroy_all
+Club.destroy_all
 Match.destroy_all
 
-puts "seeding users 🎾..."
 
-club1 = {club_name: 'Manhattan Tennis Club', street: '42nd St.', description: 'behind Grand Central Station', club_img: 'https://i0.wp.com/thecitylife.org/wp-content/uploads/2023/06/52991725163_90da35260a_b.jpg?fit=1024%2C767&ssl=1'}
-club2 = {club_name: 'Brooklyn Tennis Club', street: 'Flatbush Ave.', description: 'near Prospect Park', club_img: 'https://nypost.com/wp-content/uploads/sites/2/2021/10/brooklyn-tennis-court.jpg?quality=75&strip=all'}
-club3 = {club_name: 'Queens Tennis Club', street: '12th Ave.', description: 'by the grocery store', club_img: 'https://images.squarespace-cdn.com/content/v1/5b9ffe0f1137a680c2c08250/1629407688846-TD5ROZ5ULC4GGNVUCXD8/kith.jpeg?format=1000w'}
-club4 = {club_name: 'Bronx Tennis Club', street: '161st St.', description: 'next to Yankee Stadium', club_img: 'https://nypost.com/wp-content/uploads/sites/2/2016/08/tennis_hudson1a.jpg?quality=80&strip=all'}
+clubs_data =[
+club1 = {club_name: 'Manhattan Tennis Club', street: '42nd St.', description: 'behind Grand Central Station', club_img: 'https://i0.wp.com/thecitylife.org/wp-content/uploads/2023/06/52991725163_90da35260a_b.jpg?fit=1024%2C767&ssl=1'},
+club2 = {club_name: 'Brooklyn Tennis Club', street: 'Flatbush Ave.', description: 'near Prospect Park', club_img: 'https://nypost.com/wp-content/uploads/sites/2/2021/10/brooklyn-tennis-court.jpg?quality=75&strip=all'},
+club3 = {club_name: 'Queens Tennis Club', street: '12th Ave.', description: 'by the grocery store', club_img: 'https://images.squarespace-cdn.com/content/v1/5b9ffe0f1137a680c2c08250/1629407688846-TD5ROZ5ULC4GGNVUCXD8/kith.jpeg?format=1000w'},
+club4 = {club_name: 'Bronx Tennis Club', street: '161st St.', description: 'next to Yankee Stadium', club_img: 'https://nypost.com/wp-content/uploads/sites/2/2016/08/tennis_hudson1a.jpg?quality=80&strip=all'},
 club5 = {club_name: 'Staten Island Tennis Club', street: 'Marine Ave.', description: 'near the fire station', club_img: 'https://assets.website-files.com/6238f3c220d25d1180edadee/623e4007ffc9ced479f6b31c_AdobeStock_23409792.jpeg'}
+]
 
-avatar1 = 'https://tinyurl.com/2p8ebv2y'
-avatar2 = 'https://tinyurl.com/25ayv67w'
-avatar3 = 'https://tinyurl.com/4b8cvfhu'
-avatar4 = 'https://tinyurl.com/yvew8zt5'
-avatar5 = 'https://tinyurl.com/ynycecnk'
+clubs = clubs_data.map { |club_data| Club.create!(club_data) }
+
+puts "seeding clubs...🎾"
+
+avatar_imgs = [
+  'https://tinyurl.com/2p8ebv2y',
+  'https://tinyurl.com/25ayv67w',
+  'https://tinyurl.com/4b8cvfhu',
+  'https://tinyurl.com/yvew8zt5',
+  'https://tinyurl.com/ynycecnk'
+]
+
 
 users = ["Steffi", "Serena", "Boris", "Pete", "Billie"]
-clubs = [club1, club2, club3, club4, club5]
-avatar_imgs = [avatar1, avatar2, avatar3, avatar4, avatar5]
 status_options = ["pending", "accepted", "rejected", "completed"]
 
-(1..5).each do |i|
-    # password = Faker::Internet.password(min_length: 8, max_length: 20)
 
-    user = User.create(
-        name: users[i-1],
-        avatar_url: avatar_imgs[i-1],
-        username: Faker::Internet.username,
-        email: "caraerskine@gmail.com",
-        password: "12345678",
-        password_confirmation: "12345678"
-    )
-
-    # club = Club.create(
-    #     clubs[i-1],
-    # )
-
+users.each_with_index do |user_name, i|
+    user = User.create!(
+      name: user_name,
+      avatar_url: avatar_imgs[i],
+      username: user_name,
+      email: "tennisprojectdev@gmail.com",
+      password: "12345678",
+      password_confirmation: "12345678"
+   )
+  
     puts "User #{user.id} created!"
+    puts "seeding users 🎾..."
 
-    # def random_num_clubs
-    #     number = rand(1..5)
-    #     return number 
-    # end
-
-    # def random_num_users(current)
-    #     for _ in 1..5
-    #         number = rand(1..5)
-    #         return number unless number == current
-    #     end
-    # end
-
-end
-
-    User.all.each do |user|
-        club = Club.all.sample
-        receiver = User.where.not(id: user.id).sample
-
-        #  byebug
         (1..5).each do |_|
-            if receiver
+            receiver = User.where.not(id: user.id).sample
+
+        # byebug
+        while receiver.nil? && User.count > 1
+            receiver = User.where.not(id: user.id).sample
+        end
+        
+      
+        if receiver
+                club = clubs.sample
+
                 current_match = Match.create!(
                     user_id: user.id,
                     club_id: club.id,
@@ -79,9 +72,44 @@ end
                     skill_level: true
                 )
 
+                if current_match.status == 'completed'
+                    (1..3).each do |_| 
+                        current_match.comments.create!(
+                            user_id: user.id, 
+                            content: Faker::Lorem.words(number: 3).join(" ")
+                        )
+                    end 
+                end
+
                 puts "Match #{current_match.id} created!"
             end
         end
     end
 
 puts "done seeding 🎾!"
+
+
+
+
+# Match.all.each{|match| pp [match.user_id, match.sender_id, match.receiver_id]
+
+#     [2, 2, 1]
+#     [2, 2, 1]
+#     [2, 2, 1]
+#     [2, 2, 1]
+#     [2, 2, 1]
+#     [3, 3, 1]
+#     [3, 3, 1]
+#     [3, 3, 2]
+#     [3, 3, 2]
+#     [3, 3, 2]
+#     [4, 4, 3]
+#     [4, 4, 2]
+#     [4, 4, 3]
+#     [4, 4, 2]
+#     [4, 4, 3]
+#     [5, 5, 1]
+#     [5, 5, 1]
+#     [5, 5, 1]
+#     [5, 5, 1]
+#     [5, 5, 1]

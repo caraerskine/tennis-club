@@ -3,7 +3,6 @@ import { UserContext } from "../context/user";
 import MatchCard from './MatchCard'
 import { Link } from 'react-router-dom'
 import SplitButton from "./SplitButton";
-import CommentSection from "./CommentSection";
 
 function Matches() {
 
@@ -12,25 +11,25 @@ function Matches() {
 
   if (!user || !user.matches) {
     return (
-   
       <ul>
         <h4>Please login to see your matches!</h4>
       </ul>
- 
- 
- )}
+    )
+  };
+
 
   if (user.matches.length === 0) {
     return (
-    <div>
-      <h4>{user.name}, it looks like you don't have any matches scheduled yet.</h4>
-          <Link to={`/clubs`}>
-            <button>Add a Match to a Club</button>
-          </Link>
-    </div>
-  );
- }
-// console.log("User:", user)
+      <div>
+        <h4>{user.name}, it looks like you don't have any matches scheduled yet.</h4>
+            <Link to={`/clubs`}>
+              <button>Add a Match to a Club</button>
+            </Link>
+      </div>
+    );
+   }
+
+console.log("User:", user)
 //  console.log("Club object:", user)
 //  console.log("matches", user.matches)
  
@@ -41,57 +40,52 @@ function Matches() {
     rejected: "Rejected Matches",
   };
 
+  //for splitbutton
+  
   const filteredTennisMatches = selectedStatus === "All matches"
     ? user.matches
     : user.matches.filter((match) => statusMapping[match.status].toLowerCase() === selectedStatus.toLowerCase());
+//     if (user && user.matches) {
+// } else {
+//        <p>Loading what is going on...</p>
+//   console.log("User matches data not available.");
+//     console.log("user:", user);
+//     console.log("user.matches:", user.matches);
+//     console.log("selectedStatus:", selectedStatus);
+//     console.log("statusMapping[match.status]:", statusMapping[match.status]);
+//     console.log("filteredTennisMatches:", filteredTennisMatches);
+// }
 
-    // console.log("selectedStatus:", selectedStatus);
-    // console.log("filteredTennisMatches:", filteredTennisMatches);
-
-return (
-  <div className="App"> 
-    <br></br>
-    <br></br>
-
-      <SplitButton  
-        selectedStatus={selectedStatus} 
-        setSelectedStatus={setSelectedStatus} 
-      />
-       
+    return (
+      <div className="App"> 
+        <br></br>
+        <br></br>
+    
+        <SplitButton  
+          selectedStatus={selectedStatus} 
+          setSelectedStatus={setSelectedStatus} 
+        />
+           
         {filteredTennisMatches.map((match) => {
-            const compositeKey = `${match.id}-${match.phone}`;
-
-        
-    //should I be saving the attrs below into a variable and then passing that into MatchCard instead
-    //would that look better?
-
-     
-    return  (
-    <React.Fragment key={compositeKey}>
-
-      <MatchCard
-          key={compositeKey}
-          club={match.club_name}
-          id={match.id}
-          datetime={match.datetime}
-          skill_level={match.skill_level}
-          phone={match.phone}
-          status={match.status}
-          avatar={user.avatar_url}
-          comments={match.comments}
-      />
-
-        {match.status === 'completed' && (               
-          <CommentSection matchId={match.id} comments={match.comments} />
-       )}
-
-    </React.Fragment>
-    );  
-  })} 
-  </div> 
-  );
-}
-
+          const compositeKey = `${match.id}-${match.phone}`;
+    
+          return (
+            <MatchCard
+              key={compositeKey}
+              club={match.club_name}
+              id={match.id}
+              datetime={match.datetime}
+              skill_level={match.skill_level}
+              phone={match.phone}
+              status={match.status}
+              avatar={user.avatar_url}
+              comments={match.comments}
+            />
+          );
+        })}
+      </div> 
+    );
+  }
 
 export default Matches
 
@@ -105,3 +99,7 @@ export default Matches
 //and then that can map over the comments which are then proivded to the comments section
 
 //user has matches
+
+
+// key={compositeKey}
+  

@@ -1,29 +1,37 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :avatar_url, :username, :email, :opponents
+  attributes :id, :name, :avatar_url, :username, :email, :opponents, :matches
 
-  has_many :matches
+  # has_many :matches
   has_many :clubs, through: :matches
 
   def clubs_uniq
     object.clubs.uniq 
   end
 
+  #this is the good method probably
   def matches
-    object.sent_matches + object.received_matches.map do |match|
+    # byebug
+    m = object.sent_matches + object.received_matches
+      matches = m.map do |match|
       match_serialized = match.serializable_hash
       match_serialized['club'] = match.club
-      match_serialized
-    end
-  end
-   
-  def comments
-    object.comments.map do |comment|
-      comment_serialized = comment.serializable_hash
-      comment_serialized['name'] = comment.user.name
-      comment_serialized
-    end
-  end
+      # byebug
+      if match.comments.count > 0 
 
+        match_serialized['comments'] = match.comments.map do |comment|
+          comment_serialized = comment.serializable_hash
+          comment_serialized['name'] = comment.user.name
+          comment_serialized
+        end 
+      else 
+        match_serialized['comments'] = []
+      end
+      match_serialized
+    end 
+      # byebug
+      matches
+  end
+  
     def opponents
       User.where.not(id: object.id).map do |user|
         {

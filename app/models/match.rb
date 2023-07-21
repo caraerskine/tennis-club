@@ -1,4 +1,6 @@
 class Match < ApplicationRecord
+    #7/20 
+    validate :user_and_sender_id_are_same
 
     validates :skill_level, :phone, presence: true
     validates :phone, presence: true, format: { with: /\A(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\z/, message: "must be in the format XXX-XXX-XXXX" }
@@ -21,6 +23,13 @@ class Match < ApplicationRecord
     def self.with_clubs
         includes(:club)
     end
+
+    private
+    def user_and_sender_id_are_same
+        if user_id != sender_id
+          errors.add(:base, "user_id and sender_id must be the same")
+        end
+    end 
 
 end
 

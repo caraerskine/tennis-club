@@ -1,16 +1,24 @@
 class MatchSerializer < ActiveModel::Serializer
-  attributes :id, :sender_id, :receiver_id, :datetime, :skill_level, :phone, :user_id, :club_id, :status, :club_name
+  attributes :id, :sender_id, :receiver_id, :datetime, :skill_level, :phone, :user_id, :club_id, :status, :club_name, :comments
 
-  has_many :comments
-  #added this today
+  # has_many :comments
+  #added this today 7/19
 
   def club_name
     object.club.club_name
   end
 
+  def comments
+    comments = object.comments&.slice(-6,6)&.map do |comment|
+      comment_serialized = comment.serializable_hash
+      comment_serialized['name'] = comment.user.name
+      comment_serialized
+    end
+      # byebug
+      comments
+  end
+
 end
-
-
 
 
 #add club_name > maybe redundant????

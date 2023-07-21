@@ -3,26 +3,18 @@ import { Card, CardContent, CardMedia, CardActions } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
-// import CommentSection from './CommentSection';
+import CommentSection from './CommentSection';
 import { UserContext } from '../context/user'
 
 function MatchCard( {avatar, skill_level, id, club, datetime, phone, status, comments} ) {
   
-  // console.log("datetime", new Date(datetime).toDateString());
+
   const {user} = useContext(UserContext)
   const [receiverData, setReceiverData] = useState(null);
 
-  const handleSaveComment = (comment) => {
-    // Logic to save the comment to the backend or update the match's comment field.
-    console.log('Comment:', comment);
-  };
+ 
 
-      // useEffect(() => {
-      //   const receiverComment = comments && comments.find((comment) => comment.user.id !== user.id);
-      //   const receiverInfo = receiverComment ? receiverComment.user : null;
-      //   setReceiverData(receiverInfo);
-      // }, [comments, user.id]);
-
+      // console.log(comments)
 
   const styles = {
     container: {
@@ -77,11 +69,11 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status, com
                   {status}
                 </Typography>
               
-                {/* <>
-                    {status === 'completed' && (               
-                      <CommentSection matchId={id} comments={comments} onSaveComment={handleSaveComment} />
+                <>
+                    {status && status.toLowerCase() === 'completed' && comments && (               
+                      <CommentSection matchId={id} comments={comments} />
                     )}
-                </> */}
+                </> 
               
               <Typography variant="body2" color="text.secondary"></Typography>
             </CardContent>
@@ -101,3 +93,10 @@ export default MatchCard;
 //can we show opponent name and/or avatar on matchcard
 
 //comments used to be a prop coming in ad passed down
+
+
+// <div className="comments">  
+// {comments.map((comment) => (
+//   <div key={comment.id}>{comment.content}</div>
+// ))}
+// </div>

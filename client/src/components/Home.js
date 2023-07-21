@@ -12,14 +12,19 @@ function Home() {
 
 if (user) {
 
-    // Count the number of matches at each club
-    const clubMatchesCount = clubs.reduce((countMap, club) => {
-        countMap[club.club_name] = user.matches.filter((match) => match.club_id === club.id).length;
-        return countMap;
-      }, {});
+    // Count the number of matches at each club 
+    //was reading club_id as null so I commented out
+
+    // const clubMatchesCount = clubs.reduce((countMap, club) => {
+    //     countMap[club.club_name] = user.matches.filter((match) => match.club_id === club.id).length;
+    //     return countMap;
+    //   }, {});
+
+      console.log("user", user)
   
       // Convert the count object to an array of objects for easier mapping
-      const clubMatches = Object.entries(clubMatchesCount).map(([clubName, count]) => ({ clubName, count }));
+      //null
+    //   const clubMatches = Object.entries(clubMatchesCount).map(([clubName, count]) => ({ clubName, count }));
   
       const totalMatches = user.matches.length;
 
@@ -29,36 +34,9 @@ if (user) {
             greetingMessage = 'You really love tennis!';
         } else {
             greetingMessage = 'You should be playing more!';
-        }
-    // const renderMatchesByStatus = (status) => {
-    //     console.log('Status:', status);
-    //     console.log('All Matches:', user.matches);
-
-    // const numMatches = user.matches.filter((match) => match.status === 'pending').length;
-    // console.log('Filtered Matches:', numMatches);
-
-    // const clubNames = user.clubs.map((club) => club.club_name)
-    // console.log('Filtered Clubs:', clubNames);
-
-    //     if (filteredMatches.length === 0) {
-    //       return <Typography>No {status} matches found.</Typography>;
-    //     }
-       
-            // <div key = {compositeKey} >
-            //     <Typography variant="h6">{status} matches:</Typography>
-            //     {filteredMatches.map((match) => (
-            //         <div key={match.created_at}>
-            //             {match.receiver && (
-            //                 <Avatar alt="Receiver Avatar" src={match.receiver.avatar_url} />
-            //             )}
-            //      <Typography>opponent phone: {match.phone}</Typography>
-            //       </div>
-            // ))}
-            // </div>
-    
+        }    
 
      const compositeKey = `${user.avatar_url}-${user.username}`
-     //can't make a unique key says I have two of the same (?) but how?
 
         return(
             <div>
@@ -78,13 +56,13 @@ if (user) {
                          Hi {user.name}, you have {totalMatches} total matches.<br></br>
                          {greetingMessage}
                     </h4>
-                    <ol  style={{ listStyle: 'none', padding: 0 }} >
+                    {/* <ol  style={{ listStyle: 'none', padding: 0 }} >
                            {clubMatches.map(({ clubName, count }) => (
                             <li key={clubName}>
                                 {count} matches @ {clubName}
                              </li>
                      ))}
-                    </ol>
+                    </ol> */}
                             {/* Hi {user.name}, you have {numMatches} <br></br>
                             matches at {clubNames.join(',')}. */}
                 </Stack>
