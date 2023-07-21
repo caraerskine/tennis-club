@@ -10,7 +10,7 @@ function About() {
           <br></br>
             Book all your tennis matches here at NYC area tennis clubs.<br></br>
           <br></br>
-            It is only $5 to join the booking service via Stripe. <br></br>
+            {/* It is only $5 to join the booking service via Stripe. <br></br> */}
           <br></br>
             It is a great way to stay active and make new friends.<br></br>
           <br></br>

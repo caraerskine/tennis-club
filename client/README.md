@@ -3,18 +3,18 @@ NYC Tennis Match Booking App
 
 This is an SPA to schedule tennis matches at various clubs all over New York City!
 
-The cost of this booking app is a $5 one-time flat fee. It is payable through
-the Stripe API. For purposes of the App, this is in testing mode and is functional,
-but no money is exchanged and all account information is "blank" in test mode.
-
-The app has 5 navigation buttons at the top: about, home, clubs, matches.  
+The app has navigation at the top: about, home, clubs, matches, sign-up, login, logout.
 The site is secure and requires a login to see your individual matches. 
 Users can sign up and create a profile with a picture, username and more.
-All users can see all 5 area tennis clubs. 
-You can add a match to a club, delete a match, and edit your match. 
-You can invite another user to play a tennis match, these match invites are handled with ActionMailer.
-You can see if your match is pending, accepted, or rejected and sort accordingly.
-You and your tennis match partner can leave comments on a completed match.
+
+All users can see all 5 area tennis clubs, but you must be logged in to
+see your matches.
+
+Users can: 
+    -add a match to a club, delete a match, and edit your match. 
+    -invite another user to play a tennis match, these match invites are handled with ActionMailer.
+    -see if your match is pending, accepted, or rejected and sort accordingly.
+    -can leave comments on a completed match with your tennis partner
 
 
 GOALS ACHIEVED
