@@ -50,17 +50,46 @@ class MatchesController < ApplicationController
         render json: match
     end
     
-    def update
-        match = @current_user.matches.find(params[:id])
-        match.update!(match_params)
-        render json: match
-    end
+    #og
+    # def update
+    #     match = @current_user.matches.find(params[:id])
+    #     match.update!(match_params)
+    #     render json: match
+    # end
 
+    #modified to allow sender and reciever to update shared match
+    def update
+      match = Match.find(params[:id])
+      if match.user_id == @current_user.id || match.receiver_id == @current_user.id
+        if match.update(match_params)
+          render json: match, status: :ok
+        else
+          render json: { error: 'Failed to update match' }, status: :unprocessable_entity
+        end
+      else
+        head :forbidden # or you can return an error message or redirect
+      end
+    end
+    
+    #og
+    # def destroy
+    #   # byebug
+    #     match = @current_user.matches.find(params[:id])
+    #     match.destroy
+    #     head :no_content
+    # end
+
+    #modified to allow sender and reciever to delete match
     def destroy
-        match = @current_user.matches.find(params[:id])
+      match = Match.find(params[:id])
+      if match.user_id == @current_user.id || match.receiver_id == @current_user.id
         match.destroy
         head :no_content
+      else
+        head :forbidden # or you can return an error message or redirect
+      end
     end
+    
 
     def comments
       # byebug

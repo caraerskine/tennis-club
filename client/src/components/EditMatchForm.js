@@ -44,7 +44,6 @@ function EditMatchForm() {
 
     function handleDelete(e){
         e.preventDefault()
-        
         fetch(`/matches/${id}`, {
             method: "DELETE",
         })
@@ -56,10 +55,15 @@ function EditMatchForm() {
                 setUser({...user, matches: updatedMatches})
                 alert("match deleted!")
                 navigate(`/matches`)
-            }
-        })
-        
-    }
+            } else {
+                // Handle non-successful response
+                console.log("Delete failed. Status:", response.status);
+              }
+            })
+            .catch(error => {
+              console.error("Delete error:", error);
+            });
+          }
 
     if (!user){
         return <h3>Please log in to view matches</h3>
@@ -68,6 +72,7 @@ function EditMatchForm() {
     if (myMatch === null) {
         return <p>Loading...</p>
     }
+
         return ( 
             <form onSubmit={handleSubmit}>
                 <p>Edit match</p>
