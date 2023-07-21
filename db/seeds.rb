@@ -9,7 +9,9 @@
 User.destroy_all
 Club.destroy_all
 Match.destroy_all
+Comment.destroy_all
 
+puts "seeding clubs...🎾"
 
 clubs_data =[
 club1 = {club_name: 'Manhattan Tennis Club', street: '42nd St.', description: 'behind Grand Central Station', club_img: 'https://i0.wp.com/thecitylife.org/wp-content/uploads/2023/06/52991725163_90da35260a_b.jpg?fit=1024%2C767&ssl=1'},
@@ -21,7 +23,7 @@ club5 = {club_name: 'Staten Island Tennis Club', street: 'Marine Ave.', descript
 
 clubs = clubs_data.map { |club_data| Club.create!(club_data) }
 
-puts "seeding clubs...🎾"
+puts "clubs seeded...🎾"
 
 avatar_imgs = [
   'https://tinyurl.com/2p8ebv2y',
@@ -37,6 +39,7 @@ status_options = ["pending", "accepted", "rejected", "completed"]
 
 
 users.each_with_index do |user_name, i|
+    puts "seeding users 🎾..."
     user = User.create!(
       name: user_name,
       avatar_url: avatar_imgs[i],
@@ -47,7 +50,8 @@ users.each_with_index do |user_name, i|
    )
   
     puts "User #{user.id} created!"
-    puts "seeding users 🎾..."
+    puts "users seeded 🎾..."
+    puts "seeding matches and comments 🎾..."
 
         (1..5).each do |_|
             receiver = User.where.not(id: user.id).sample
