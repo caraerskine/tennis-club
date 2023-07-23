@@ -20,6 +20,8 @@ gem 'faker'
 
 # Gemfile
 gem 'dotenv-rails', groups: [:development, :test]
+# gem 'dotenv-rails', require: 'dotenv/rails-now'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
