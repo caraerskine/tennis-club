@@ -18,9 +18,10 @@ class MatchesController < ApplicationController
             end
 
         if @match
-        #   receiver_email = ENV['MY_EMAIL']
-        #   MatchMailer.new_match_notification(receiver_email, @match).deliver_now
+          receiver_email = ENV['MY_EMAIL']
+          MatchMailer.new_match_notification(receiver_email, @match).deliver_now
           # byebug
+          #checking to see if match_mailer is messing it up
           render json: @match, status: :created
         else
           render json: { errors: @match.errors.full_messages }, status: :unprocessable_entity
