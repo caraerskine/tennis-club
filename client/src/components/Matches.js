@@ -8,14 +8,16 @@ function Matches() {
 
   const { user } = useContext(UserContext);
   const [selectedStatus, setSelectedStatus] = useState("All Matches");
-  const [filteredTennisMatches, setFilteredTennisMatches] = useState(user.matches)
+  const [filteredTennisMatches, setFilteredTennisMatches] = useState(user.matches || [])
   //made above state for Usereffect
   // === chceks both strings
   // == checss same value
+console.log("user dot matches", user.matches)
+
 
   useEffect(() => {
     setFilteredTennisMatches( selectedStatus === "All Matches" 
-    ? user.matches 
+    ? user.matches || []
     : user.matches.filter((match) => statusMapping[match.status].toLowerCase() === selectedStatus.toLowerCase()));
   }, [selectedStatus])
 
@@ -39,6 +41,7 @@ function Matches() {
       </div>
     );
    }
+
 
 console.log("User:", user)
 //  console.log("Club object:", user)
