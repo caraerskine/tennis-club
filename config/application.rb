@@ -1,13 +1,6 @@
 # config/application.rb
 require 'dotenv/load'
-
-
-# config/application.rb
-require 'dotenv/load'
 puts "MY_EMAIL: #{ENV['MY_EMAIL']}"
-
-
-
 
 require_relative "boot"
 

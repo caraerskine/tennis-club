@@ -20,7 +20,7 @@ gem 'faker'
 
 # Gemfile
 gem 'dotenv-rails', groups: [:development, :test]
-# gem 'dotenv-rails', require: 'dotenv/rails-now'
+gem 'dotenv', '~> 2.8', require: 'dotenv/load'
 
 
 # Use Active Storage variant
