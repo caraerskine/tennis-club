@@ -26,11 +26,16 @@ function SplitButton( { selectedStatus, setSelectedStatus } ) {
     console.info(`You clicked ${selectedStatus}`);
   };
 
+  // const handleMenuItemClick = (label) => {
+  //   if (label === "All Matches") {   
+  //   } else {
+  //     setSelectedStatus(label);
+  //   }
+  //   setOpen(false);
+  // };
+
   const handleMenuItemClick = (label) => {
-    if (label === "All Matches") {   
-    } else {
       setSelectedStatus(label);
-    }
     setOpen(false);
   };
   
@@ -100,6 +105,7 @@ function SplitButton( { selectedStatus, setSelectedStatus } ) {
     </React.Fragment>
   );
  }
+
 
 
 

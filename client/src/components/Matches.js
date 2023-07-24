@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/user";
 import MatchCard from './MatchCard'
 import { Link } from 'react-router-dom'
@@ -7,7 +7,18 @@ import SplitButton from "./SplitButton";
 function Matches() {
 
   const { user } = useContext(UserContext);
-  const [selectedStatus, setSelectedStatus] = useState("All matches");
+  const [selectedStatus, setSelectedStatus] = useState("All Matches");
+  const [filteredTennisMatches, setFilteredTennisMatches] = useState(user.matches)
+  //made above state for Usereffect
+  // === chceks both strings
+  // == checss same value
+
+  useEffect(() => {
+    setFilteredTennisMatches( selectedStatus === "All Matches" 
+    ? user.matches 
+    : user.matches.filter((match) => statusMapping[match.status].toLowerCase() === selectedStatus.toLowerCase()));
+  }, [selectedStatus])
+
 
   if (!user || !user.matches) {
     return (
@@ -41,19 +52,20 @@ console.log("User:", user)
   };
 
   //for splitbutton
+  //put my selctedStatus logic into useEffect
+
+ 
   
-  const filteredTennisMatches = selectedStatus === "All matches"
-    ? user.matches
-    : user.matches.filter((match) => statusMapping[match.status].toLowerCase() === selectedStatus.toLowerCase());
+  
 //     if (user && user.matches) {
 // } else {
 //        <p>Loading what is going on...</p>
 //   console.log("User matches data not available.");
 //     console.log("user:", user);
 //     console.log("user.matches:", user.matches);
-//     console.log("selectedStatus:", selectedStatus);
+    console.log("selectedStatus:", selectedStatus);
 //     console.log("statusMapping[match.status]:", statusMapping[match.status]);
-//     console.log("filteredTennisMatches:", filteredTennisMatches);
+    console.log("filteredTennisMatches:", filteredTennisMatches);
 // }
 
     return (

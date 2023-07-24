@@ -50,7 +50,6 @@ const onAddMatch = (match) => {
         }
       })
         .catch((error) => {
-        // Handle network or unexpected errors
         console.error("Error adding match:", error);
         alert("An error occurred while adding the match. Please try again later.");
       });
