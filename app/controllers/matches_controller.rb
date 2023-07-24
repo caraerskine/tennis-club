@@ -17,7 +17,7 @@ class MatchesController < ApplicationController
                 @match.skill_level = false
             end
 
-        # if @match
+        if @match
         #   receiver_email = ENV['MY_EMAIL']
         #   MatchMailer.new_match_notification(receiver_email, @match).deliver_now
           # byebug
@@ -26,7 +26,7 @@ class MatchesController < ApplicationController
           render json: { errors: @match.errors.full_messages }, status: :unprocessable_entity
         end
       end
-      
+
 
     def index
         matches = @current_user.matches.map do |match|
