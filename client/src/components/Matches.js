@@ -19,7 +19,7 @@ console.log("user dot matches", user.matches)
     setFilteredTennisMatches( selectedStatus === "All Matches" 
     ? user.matches || []
     : user.matches.filter((match) => statusMapping[match.status].toLowerCase() === selectedStatus.toLowerCase()));
-  }, [selectedStatus])
+  }, [selectedStatus, user])
 
 
   if (!user || !user.matches) {

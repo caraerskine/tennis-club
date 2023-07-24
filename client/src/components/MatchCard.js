@@ -10,9 +10,9 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status, com
   
 
   const {user} = useContext(UserContext)
-  const [receiverData, setReceiverData] = useState(null);
 
- 
+  console.log ("comments", comments)
+  
 
       // console.log(comments)
 
@@ -60,20 +60,16 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status, com
                 <Typography>
                   {skill_level ? "intermediate" : "beginner"}
                 </Typography>
-                <Typography>
-                  {/* {phone} */}
-                  {/* {receiverData ? receiverData.phone : "Opponent phone not available"} */}
-                  {/* {receiverData && receiverData.phone} */}
-                </Typography>
                 <Typography style={{ color: getStatusColor(status) }}>
-                  {status}
+                  {status} {id}
                 </Typography>
               
                 <>
                     {status && status.toLowerCase() === 'completed' && comments && (               
-                      <CommentSection matchId={id} comments={comments} />
+                      <CommentSection matchId={id} comments={comments}  />
                     )}
                 </> 
+               
               
               <Typography variant="body2" color="text.secondary"></Typography>
             </CardContent>
@@ -84,8 +80,12 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status, com
             </CardActions>
           </Card>
         </div>
+        
   );
+  
 }
+
+
 
 export default MatchCard;
 
@@ -100,3 +100,7 @@ export default MatchCard;
 //   <div key={comment.id}>{comment.content}</div>
 // ))}
 // </div>
+
+//moved state from CommentSection for comments to this parent comp
+//moved handleAddComment up here as well
+//that means i have to pass both of them down

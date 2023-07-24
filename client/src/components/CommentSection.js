@@ -1,9 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../context/user';
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import Typography from "@mui/material/Typography";
-
 
 function CommentSection({ matchId, comments }) {
     const { user, setUser } = useContext(UserContext);
@@ -40,21 +36,26 @@ function CommentSection({ matchId, comments }) {
         })
         .then((data) => {
             console.log('API Response:', data); 
-            const updatedMatches = user.matches.map((match) => {
+           
+            const updatedMatches = user.matches.map((match) => {             
               if (match.id === matchId){
+                console.log(typeof(match.id), typeof(matchId))
+        
                 return {...match, comments:[...match.comments, data]}
               } else return match
-        }) 
+            }) 
+            console.log("updatedMatches", updatedMatches)
             const updatedUser = {...user, matches: updatedMatches}; 
+            console.log("updatedUser", updatedUser)
             setUser(updatedUser);           
             alert ("comment added!");
             setNewComment('');
-            console.log('New Comment:', data); 
         })
         .catch((error) => console.error('Error adding comment:', error));  
     }
 
     console.log("user", user)
+    console.log("comments", comments)
 
   return (
     <div className="comment-section">
