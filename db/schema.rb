@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2023_07_23_154920) do
     t.string "status"
     t.datetime "datetime"
     t.string "phone"
-    t.boolean "skill_level"
+    t.string "skill_level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

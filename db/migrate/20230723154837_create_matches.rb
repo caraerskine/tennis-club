@@ -8,7 +8,7 @@ class CreateMatches < ActiveRecord::Migration[6.1]
       t.string "status"
       t.datetime "datetime"
       t.string "phone"
-      t.boolean "skill_level"
+      t.string "skill_level"
       
       t.timestamps
     end

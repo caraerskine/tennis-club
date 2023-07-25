@@ -2,8 +2,7 @@ class MatchesController < ApplicationController
 
     def create
       puts "regular match"
-             skill_level = match_params[:skill_level] == "true"
-
+            # byebug
             @match = @current_user.matches.create({
               datetime: match_params[:datetime], 
               phone: match_params[:phone], 
@@ -12,11 +11,6 @@ class MatchesController < ApplicationController
               sender_id: match_params[:sender_id], 
               skill_level: match_params[:skill_level]
             })
-          
-            if match_params[:skill_level] == "false"
-                @match.skill_level = false
-            end
-
         if @match
           receiver_email = ENV['MY_EMAIL']
           MatchMailer.new_match_notification(receiver_email, @match).deliver_now
@@ -38,8 +32,7 @@ class MatchesController < ApplicationController
             club_id: match.club_id,
             receiver_id: match.receiver_id,
             sender_id: match.sender_id,
-            skill_level: match.skill_level,
-            skill_level_string: match.skill_level? ? 'intermediate' : 'beginner'
+            skill_level: match.skill_level
           }
         end
     
@@ -63,11 +56,13 @@ class MatchesController < ApplicationController
     def update
       match = Match.find(params[:id])
       if match.user_id == @current_user.id || match.receiver_id == @current_user.id
-        if match.update(match_params)
-          render json: match, status: :ok
+        match.update(match_params)
+        # byebug
+        if match 
+         render json: match, status: :ok         
         else
           render json: { error: 'Failed to update match' }, status: :unprocessable_entity
-        end
+        end     
       else
         head :forbidden # or you can return an error message or redirect
       end

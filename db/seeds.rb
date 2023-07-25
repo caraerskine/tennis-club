@@ -36,6 +36,7 @@ avatar_imgs = [
 
 users = ["Steffi", "Serena", "Boris", "Pete", "Billie"]
 status_options = ["pending", "accepted", "rejected", "completed"]
+skill_level_options = ["beginner", "intermediate", "pro"]
 
 
 users.each_with_index do |user_name, i|
@@ -73,7 +74,7 @@ users.each_with_index do |user_name, i|
                     status: status_options.sample,
                     datetime: Time.at(rand * Time.now.to_i).to_s,
                     phone: Faker::PhoneNumber.cell_phone,
-                    skill_level: true
+                    skill_level: skill_level_options.sample
                 )
 
                 if current_match.status == 'completed'
