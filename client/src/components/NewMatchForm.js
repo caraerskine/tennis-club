@@ -26,7 +26,13 @@ function NewMatchForm(){
    
     })};
   
-
+    if (!user) {
+      return (
+        <>
+          <p><strong>Please Login to add a match to a club!</strong></p>
+        </>
+      );
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -36,6 +42,9 @@ function NewMatchForm(){
         // console.log("phone", phone);
         const selectedOpponent = user.opponents.find((opponentItem) => opponentItem.id === parseInt(opponent, 10) && opponentItem.id !== user.id);
         const receiverId = selectedOpponent ? selectedOpponent.id : 0;
+
+       
+      
         
         onAddMatch({
             datetime: formattedDatetime(datetime),
