@@ -44,8 +44,3 @@ class UserSerializer < ActiveModel::Serializer
     end
   
 end
-
-# do i need opponents in here?
-
-
-#fancy srlze

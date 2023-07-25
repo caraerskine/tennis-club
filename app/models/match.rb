@@ -1,12 +1,12 @@
 class Match < ApplicationRecord
-    #7/20 
-    validate :user_and_sender_id_are_same
+
+    validates :user_and_sender_id_are_same
 
     validates :skill_level, :phone, presence: true
+
     validates :phone, presence: true, format: { with: /\A(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\z/, message: "must be in the format XXX-XXX-XXXX" }
 
 #regex needs forward slash at beginning and end, those are greyed out in regex builder
-
     belongs_to :club
     belongs_to :user
     has_many :comments
