@@ -11,7 +11,7 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status, com
 
   const {user} = useContext(UserContext)
 
-  console.log ("comments", comments)
+  // console.log ("comments", comments)
   
 
       // console.log(comments)
@@ -58,7 +58,7 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status, com
                   {new Date(datetime).toDateString()}
                 </Typography>
                 <Typography>
-                  {skill_level ? "intermediate" : "beginner"}
+                  {skill_level}
                 </Typography>
                 <Typography style={{ color: getStatusColor(status) }}>
                   {status} {id}

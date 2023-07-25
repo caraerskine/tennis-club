@@ -12,14 +12,20 @@ function Matches() {
   //made above state for Usereffect
   // === chceks both strings
   // == checss same value
-console.log("user dot matches", user.matches)
+// console.log("user dot matches", user.matches)
 
 
   useEffect(() => {
-    setFilteredTennisMatches( selectedStatus === "All Matches" 
-    ? user.matches || []
-    : user.matches.filter((match) => statusMapping[match.status].toLowerCase() === selectedStatus.toLowerCase()));
-  }, [selectedStatus, user])
+    setFilteredTennisMatches( 
+      selectedStatus === "All Matches" 
+        ? user.matches || []
+        : user.matches.filter((match) => {
+          console.log("match.status", match.status)
+          return (statusMapping[match.status].toLowerCase() === selectedStatus.toLowerCase()
+          );
+        })
+    );
+  }, [selectedStatus, user]);
 
 
   if (!user || !user.matches) {
@@ -43,7 +49,7 @@ console.log("user dot matches", user.matches)
    }
 
 
-console.log("User:", user)
+// console.log("User:", user)
 //  console.log("Club object:", user)
 //  console.log("matches", user.matches)
  
@@ -51,7 +57,7 @@ console.log("User:", user)
     completed: "Completed Matches",
     accepted: "Accepted Matches",
     pending: "Pending Matches",
-    rejected: "Rejected Matches",
+    rejected: "Rejected Matches"
   };
 
   //for splitbutton
@@ -66,9 +72,9 @@ console.log("User:", user)
 //   console.log("User matches data not available.");
 //     console.log("user:", user);
 //     console.log("user.matches:", user.matches);
-    console.log("selectedStatus:", selectedStatus);
+    // console.log("selectedStatus:", selectedStatus);
 //     console.log("statusMapping[match.status]:", statusMapping[match.status]);
-    console.log("filteredTennisMatches:", filteredTennisMatches);
+    // console.log("filteredTennisMatches:", filteredTennisMatches);
 // }
 
     return (

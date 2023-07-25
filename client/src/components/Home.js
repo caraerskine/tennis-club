@@ -19,7 +19,7 @@ if (user) {
         return countMap;
       }, {});
 
-      console.log("user", user)
+    //   console.log("user", user)
   
       // make the count object an array of objects for easier mapping
    

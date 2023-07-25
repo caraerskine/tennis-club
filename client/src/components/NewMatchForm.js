@@ -39,7 +39,7 @@ function NewMatchForm(){
         
         onAddMatch({
             datetime: formattedDatetime(datetime),
-            skill_level: skill === "intermediate",
+            skill_level: skill,
             phone: phone,
             club_id: id, 
             sender_id: user.id,
@@ -108,6 +108,7 @@ function NewMatchForm(){
               <option value={""}>select a skill level:</option>
               <option value={"beginner"}>beginner</option>
               <option value={"intermediate"}>intermediate</option>
+              <option value={"pro"}>pro</option>
         </select>
         <br/>
         <br/>
@@ -146,7 +147,7 @@ export default NewMatchForm
 
 //how do I have the club name on there as well? bc u click on a particular club card
 
-//shoudl skill_level be a boolean??
+
 
 
 //line 109 was prompting "oppoenent" instead of user see below

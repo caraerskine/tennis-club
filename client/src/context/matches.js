@@ -57,8 +57,13 @@ const onAddMatch = (match) => {
 
 
 // console.log("matches", matches)
+console.log("user in matches.js", user)
+
+//false is beginner
+//true is interm
 
 const onEditMatch = (editedMatch) => {
+  console.log("editedMatch from onEditMatch", editedMatch)
 fetch(`/matches/${editedMatch.id}`, {
   method: "PATCH",
   headers: { "Content-Type": "application/json" },
@@ -66,6 +71,7 @@ fetch(`/matches/${editedMatch.id}`, {
 })
   .then((response) => response.json())
   .then((editedMatchData) => {
+    console.log("editedMatchData", editedMatchData)
     if (editedMatchData.errors) {
       const errorLis = editedMatchData.errors.map((error) => <li>{error}</li>);
       setErrors(errorLis);

@@ -17,10 +17,12 @@ function EditMatchForm() {
         id: id
     }
     
-    console.log("the id", typeof(id))
-    console.log("the obj", obj)
+    // console.log("the id", typeof(id))
+    // console.log("the obj", obj)
 
     const [myMatch, setMyMatch] = useState(obj)
+
+
 
     useEffect(() => {
         let m = user.matches.find((e) => {        
@@ -29,10 +31,11 @@ function EditMatchForm() {
           m ? setMyMatch(m) : setMyMatch(obj)
       }, [user, id])
 
-    console.log("m", typeof(m))
+    // console.log("m", typeof(m))
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log("myMatch", myMatch)
         onEditMatch(myMatch)
         // console.log(myMatch, "onEditMatch is happening")
     }
@@ -93,6 +96,7 @@ function EditMatchForm() {
                         <option value={""}>select a skill level:</option>
                         <option value={"beginner"}>beginner</option>
                         <option value={"intermediate"}>intermediate</option>
+                        <option value={"pro"}>pro</option>
                 </select> <br/>
                 <br/>    
                 <label>Phone:</label>
