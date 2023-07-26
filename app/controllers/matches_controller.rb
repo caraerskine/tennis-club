@@ -61,7 +61,8 @@ class MatchesController < ApplicationController
         match.update(match_params)
         # byebug
         if match 
-         render json: match, status: :ok         
+          serialized_match = MatchSerializer.new(match, session: session[:user_id]).serializable_hash
+          render json: serialized_match, status: :ok         
         else
           render json: { error: 'Failed to update match' }, status: :unprocessable_entity
         end     
@@ -69,7 +70,9 @@ class MatchesController < ApplicationController
         head :forbidden # or you can return an error message or redirect
       end
     end
-    
+
+  
+      
     #og
     # def destroy
     #   # byebug
@@ -121,7 +124,7 @@ class MatchesController < ApplicationController
     private
 
     def match_params
-        params.require(:match).permit(:email, :datetime, :phone, :club_id, :id, :skill_level, :receiver_id, :sender_id)
+        params.require(:match).permit(:email, :datetime, :phone, :club_id, :id, :skill_level, :receiver_id, :sender_id, :status)
     end
     
 end

@@ -1,5 +1,6 @@
 class MatchSerializer < ActiveModel::Serializer
-  attributes :id, :sender_id, :receiver_id, :datetime, :skill_level, :phone, :user_id, :club_id, :status, :club_name, :comments
+  attributes :id, :sender_id, :receiver_id, :datetime, :skill_level, 
+  :phone, :user_id, :club_id, :status, :club_name, :comments, :opponent_pic
 
   # has_many :comments
   #added this today 7/19
@@ -16,6 +17,10 @@ class MatchSerializer < ActiveModel::Serializer
     end
       # byebug
       comments
+  end
+
+  def opponent_pic
+    User.find(instance_options[:session] == object.receiver_id ? object.sender_id : object.receiver_id).avatar_url || ""
   end
 
 end

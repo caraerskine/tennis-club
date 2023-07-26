@@ -5,14 +5,17 @@ import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
 import CommentSection from './CommentSection';
 import { UserContext } from '../context/user'
+import { MatchesContext } from "../context/matches";
 
-function MatchCard( {avatar, skill_level, id, club, datetime, phone, opponentPic, status, comments} ) {
+function MatchCard( {avatar, request, skill_level, id, club, datetime, phone, opponentPic, status, comments} ) {
   
   // const [opponentsAvatars, setOpponentsAvatars] = useState([]);
   //added this state to try and fetch the avatar_urls of opponents for respective card
 
   const {user} = useContext(UserContext)
+  const { onEditMatch } = useContext(MatchesContext)
   // const opponents = user.opponents || [];
+  const [choice, setChoice] = useState(false)
 
   const styles = {
     container: {
@@ -35,6 +38,16 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, opponentPic
   const getStatusColor = (status) => {
     return styles.statusColors[status] || "black"; // Default to black for unknown statuses
   };
+
+
+  function onAddChoice(e) {
+    e.preventDefault()
+    onEditMatch({
+      id: id,
+      status: choice,
+    })
+  }
+
 
   return (
         <div className= "match-card" style={styles.container}>
@@ -67,7 +80,23 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, opponentPic
                       <CommentSection matchId={id} comments={comments}  />
                     )}
                 </> 
-               
+                    
+                <>
+                      {status && status.toLowerCase() === 'pending' && request && (
+                        <div>
+                          <label>Choice:</label>
+                            <select
+                                value={choice}
+                                onChange={(e) => setChoice(e.target.value)}
+                            >              
+                                <option value={""}>select a choice:</option>
+                                <option value={"accepted"}>accept</option>
+                                <option value={"rejected"}>reject</option>
+                            </select>
+                                <button onClick={onAddChoice}>Submit</button>
+                        </div>
+                      )}      
+                </>
               
               <Typography variant="body2" color="text.secondary"></Typography>
             </CardContent>
@@ -83,22 +112,14 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, opponentPic
   
 }
 
-
-
 export default MatchCard;
 
-//can we show opponent phone on matchcard (you know your own phone #)
-//can we show opponent name and/or avatar on matchcard
-
-//comments used to be a prop coming in ad passed down
-
-
-// <div className="comments">  
-// {comments.map((comment) => (
-//   <div key={comment.id}>{comment.content}</div>
-// ))}
-// </div>
-
-//moved state from CommentSection for comments to this parent comp
-//moved handleAddComment up here as well
-//that means i have to pass both of them down
+  // <select
+  //           id="skill_level"
+  //           value={skill}
+  //           onChange={(e) => setSkill(e.target.value)}>              
+  //             <option value={""}>select a skill level:</option>
+  //             <option value={"beginner"}>beginner</option>
+  //             <option value={"intermediate"}>intermediate</option>
+  //             <option value={"pro"}>pro</option>
+  //       </select>

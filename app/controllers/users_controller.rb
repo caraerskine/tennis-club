@@ -6,6 +6,8 @@ skip_before_action :authorize, only: [:create]
     def create
         user = User.create(user_params)
         # byebug
+        # user.avatar_url ||= 'https://static01.nyt.com/images/2015/09/13/sports/DOG-slam/DOG-slam-articleLarge.jpg?quality=75&auto=webp&disable=upscale'
+        
         if user.valid?
             session[:user_id] = user.id
             render json: user, status: :created

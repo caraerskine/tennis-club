@@ -54,8 +54,6 @@ function CommentSection({ matchId, comments }) {
         .catch((error) => console.error('Error adding comment:', error));  
     }
 
-    // console.log("user", user)
-    // console.log("comments", comments)
 
   return (
     <div className="comment-section">

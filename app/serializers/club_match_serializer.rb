@@ -3,6 +3,4 @@ class ClubMatchSerializer < ActiveModel::Serializer
 
 end
 
-#redundant club_id and datetime
-#took :phone out
 

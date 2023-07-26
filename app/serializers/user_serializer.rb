@@ -16,9 +16,10 @@ class UserSerializer < ActiveModel::Serializer
       match_serialized = match.serializable_hash
       match_serialized['club'] = match.club
       # byebug
-      match_serialized['opponent_pic'] = User.find(match.receiver_id).avatar_url
-  
+      match_serialized['opponent_pic'] = User.find(object.id == match.receiver_id ? match.sender_id : match.receiver_id).avatar_url || ""
       if match.comments.count > 0 
+
+        #serialize sent matche and serialize received matches and + 
 
         match_serialized['comments'] = match.comments.map do |comment|
           comment_serialized = comment.serializable_hash
