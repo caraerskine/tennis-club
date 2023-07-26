@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   #users crtllr
   post '/signup', to: 'users#create'
   get '/me', to: 'users#show'
+  delete '/me', to: 'users#destroy'
+
 
   #matches crtllr
   get '/matches/:id/comments', to: "matches#comments" 

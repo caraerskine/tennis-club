@@ -3,12 +3,17 @@ import { UserContext } from '../context/user'
 import { ClubsContext } from '../context/clubs'
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
+import { NavLink } from "react-router-dom";
+import Button from "@mui/material/Button";
 // import Typography from "@mui/material/Typography";
 
 function Home() {
 
-    const { user } = useContext(UserContext)
+    const { user, id } = useContext(UserContext)
     const { clubs } = useContext(ClubsContext)
+
+    console.log("id value:", id);  
+    console.log("user for the new:", user);  
 
 if (user) {
 
@@ -35,6 +40,9 @@ if (user) {
             greetingMessage = 'You should be playing more!';
         }    
 
+        //I need to have a button that says "edit profile" and that will take the user
+        //to a form where they can edit their 'sign-up' info
+
      const compositeKey = `${user.avatar_url}-${user.username}`
 
         return(
@@ -60,11 +68,13 @@ if (user) {
                                 {count} matches @ {clubName}
                              </li>
                      ))}
-                    </ol>
-                            
+                     <br></br>
+                     </ol>
+                     <NavLink to={`/${user.id}`}>
+                        <Button>Edit your Profile</Button>
+                     </NavLink>
                 </Stack>
             </div>
-
     )    
   }
         
@@ -78,9 +88,5 @@ if (user) {
 
 export default Home
 
-
-{/* Hi {user.name}, you have {numMatches} <br></br>
-                            matches at {clubNames.join(',')}. */}
-
-                             {/* Hi {user.name}, you have {user.matches.length} total <br></br>
-                        matches at the following clubs: */}
+//this on line 73 seems right because it goes to pre-filled form
+//I cannot however get the changes to persist even tho i get a dialog box that says it was saved

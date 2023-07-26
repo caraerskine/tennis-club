@@ -16,7 +16,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 
 const pages = ['About', '', 'Clubs', 'Matches'];
-const settings = ['Logout', 'Login', 'Signup'];
+// const settings = ['Logout', 'Login', 'Signup'];
 
 
 function ResponsiveAppBar() {
@@ -26,9 +26,12 @@ function ResponsiveAppBar() {
   const navigate = useNavigate();
 
   const modifiedSettings = user
-  ? settings.filter((setting) => setting !== 'Login' && setting !== 'Signup')
-  : settings;
+  ? ["Logout"]
+  : ["Login", "Signup"]
 
+//if you are not logged in, there should not be a logout option
+
+//if you are destroyed logout should not show
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);

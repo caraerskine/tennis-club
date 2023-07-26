@@ -99,7 +99,7 @@ function Matches() {
               skill_level={match.skill_level}
               phone={match.phone}
               status={match.status}
-              avatar={user.avatar_url}
+              opponentPic={match.opponent_pic}
               comments={match.comments}
             />
           );

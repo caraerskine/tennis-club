@@ -57,10 +57,9 @@ const onAddMatch = (match) => {
 
 
 // console.log("matches", matches)
-console.log("user in matches.js", user)
+// console.log("user in matches.js", user)
 
-//false is beginner
-//true is interm
+
 
 const onEditMatch = (editedMatch) => {
   console.log("editedMatch from onEditMatch", editedMatch)

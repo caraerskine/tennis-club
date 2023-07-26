@@ -22,8 +22,6 @@ function EditMatchForm() {
 
     const [myMatch, setMyMatch] = useState(obj)
 
-
-
     useEffect(() => {
         let m = user.matches.find((e) => {        
           return e.id === parseInt(id, 10)})

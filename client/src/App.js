@@ -10,6 +10,7 @@ import AllClubs from './components/AllClubs'
 import Matches from './components/Matches';
 import NewMatchForm from './components/NewMatchForm';
 import EditMatchForm from './components/EditMatchForm';
+import EditProfileForm from './components/EditProfileForm';
 import './App.css';
 
 
@@ -33,6 +34,8 @@ function App() {
               <Route path="/matches" element={<Matches />} />
 
               <Route path="/matches/:id" element={<EditMatchForm />} />
+              
+              <Route path="/:id" element={<EditProfileForm />} />
 
               <Route path="/about" element={<About />} />
 

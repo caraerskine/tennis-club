@@ -26,8 +26,31 @@ skip_before_action :authorize, only: [:create]
         end    
     end
 
-    
+    # PATCH /me
+  def update
+    user = User.find_by(id: session[:user_id])
 
+    if user && user.update(user_params)
+      render json: user, status: :ok
+    else
+      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  # DELETE /me
+  def destroy
+    user = User.find_by(id: session[:user_id])
+
+    if user
+      user.destroy
+      session.destroy
+    #   session[:user_id] = nil # Clear the session after deleting the user
+      render json: { message: "User successfully deleted" }, status: :ok
+    else
+      render json: { errors: ["User not found"] }, status: :not_found
+    end
+  end
+  
 private
 
     def user_params
