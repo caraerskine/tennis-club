@@ -3,7 +3,8 @@ class MatchesController < ApplicationController
     def create
       puts "regular match"
             # byebug
-            @match = @current_user.matches.create({
+            #changed it to .new instead of .create
+            @match = @current_user.matches.new({
               datetime: match_params[:datetime], 
               phone: match_params[:phone], 
               club_id: match_params[:club_id], 
@@ -11,7 +12,8 @@ class MatchesController < ApplicationController
               sender_id: match_params[:sender_id], 
               skill_level: match_params[:skill_level]
             })
-        if @match
+        if @match.save
+          #changed it to .save to have error throw to user
           receiver_email = ENV['MY_EMAIL']
           MatchMailer.new_match_notification(receiver_email, @match).deliver_now
           # byebug

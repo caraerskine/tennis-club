@@ -2,8 +2,11 @@ class Match < ApplicationRecord
 
     validates :skill_level, :phone, presence: true
     validates :phone, presence: true, format: { with: /\A(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\z/, message: "must be in the format XXX-XXX-XXXX" }
+    validate :ensure_phone_number_present
     validate :user_and_sender_id_are_same
 #singular bc custom line 5 and trying to see if I need :phone on line 3
+#line 3 is presence validation, checks if present
+#line 4 is a format validation, dfined if present 
 
     belongs_to :club
     belongs_to :user
@@ -28,6 +31,14 @@ class Match < ApplicationRecord
           errors.add(:base, "user_id and sender_id must be the same")
         end
     end 
+
+    def ensure_phone_number_present
+        puts "validating phone present..."
+        unless phone.present?
+            # byebug
+          throw :abort # This will prevent the record from being saved
+        end
+    end
 
 end
 
