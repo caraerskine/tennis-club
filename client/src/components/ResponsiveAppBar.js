@@ -12,20 +12,23 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import { Link, useNavigate } from 'react-router-dom';
 
 
 const pages = ['About', '', 'Clubs', 'Matches'];
 const settings = ['Logout', 'Login', 'Signup'];
-//took out 'about' beause the logo goes there
-//history page, about me programming?
+
 
 function ResponsiveAppBar() {
 
   const {user} = useContext(UserContext)
 
   const navigate = useNavigate();
+
+  const modifiedSettings = user
+  ? settings.filter((setting) => setting !== 'Login' && setting !== 'Signup')
+  : settings;
+
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -52,7 +55,6 @@ function ResponsiveAppBar() {
     <AppBar position="static" sx={{ backgroundColor: '#dfff4f' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
@@ -110,7 +112,6 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
 
-          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           <Typography
             variant="h5"
             noWrap
@@ -166,7 +167,7 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => {
+              {modifiedSettings.map((setting) => {
                 return (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
                     <Link to={`/${setting}`} onClick={handleCloseUserMenu}>
@@ -175,6 +176,7 @@ function ResponsiveAppBar() {
                   </ MenuItem>
                 )}
               )}
+            
             </Menu>
           </Box>
         </Toolbar>
@@ -186,3 +188,44 @@ function ResponsiveAppBar() {
 
 export default ResponsiveAppBar;
 
+
+//untoucehd
+
+// onClose={handleCloseUserMenu}
+// >
+//   {settings.map((setting) => {
+//     return (
+//       <MenuItem key={setting} onClick={handleCloseUserMenu}>
+//         <Link to={`/${setting}`} onClick={handleCloseUserMenu}>
+//           <Typography textAlign="center">{setting}</Typography>
+//         </Link>
+//       </ MenuItem>
+//     )}
+//   )}
+
+
+
+// {user ? (
+//   settings.map((setting) => (
+//    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+//      {setting === 'Logout' ? (
+//        <Typography textAlign="center" onClick={handleCloseUserMenu}>
+//        {setting}
+//      </Typography>
+//      ) : (
+//      <Link to={`/${setting.toLowerCase()}`} onClick={handleCloseUserMenu}>
+//        <Typography textAlign="center">{setting}</Typography>
+//      </Link>
+//      )}
+//   </MenuItem>
+// ))
+// ) : (
+// [
+//  <MenuItem onClick={handleCloseUserMenu}>
+//    <Typography textAlign="center">Login</Typography>
+//  </MenuItem>,
+//  <MenuItem onClick={handleCloseUserMenu}>
+//    <Typography textAlign="center">Sign Up</Typography>
+//  </MenuItem>,
+//  ]
+// )}

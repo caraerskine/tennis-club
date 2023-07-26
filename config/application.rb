@@ -16,6 +16,7 @@ require "action_mailbox/engine"
 require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
+#I commented in the below (?) for sprockets? wtf
 # require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
