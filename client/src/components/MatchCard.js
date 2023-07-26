@@ -8,13 +8,11 @@ import { UserContext } from '../context/user'
 
 function MatchCard( {avatar, skill_level, id, club, datetime, phone, status, comments} ) {
   
+  // const [opponentsAvatars, setOpponentsAvatars] = useState([]);
+  //added this state to try and fetch the avatar_urls of opponents for respective card
 
-  const {user} = useContext(UserContext)
-
-  // console.log ("comments", comments)
-  
-
-      // console.log(comments)
+  const {user, opponents} = useContext(UserContext)
+  // const opponents = user.opponents || [];
 
   const styles = {
     container: {
@@ -44,7 +42,12 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status, com
             <CardMedia
               component="div"
               sx={{ height: 350 }}
-              image={avatar}
+              // image={avatar}
+              image={
+                opponents.length > 0 && user.opponents.includes(id)
+                  ? opponents[0] // Assuming there's only one opponent
+                  : avatar
+              }
               title="user avatar"
             />
             <CardContent>
@@ -60,6 +63,9 @@ function MatchCard( {avatar, skill_level, id, club, datetime, phone, status, com
                 <Typography>
                   {skill_level}
                 </Typography>
+                {/* <Typography>
+                  {user.opponent.avatar_url}
+                </Typography> */}
                 <Typography style={{ color: getStatusColor(status) }}>
                   {status} {id}
                 </Typography>

@@ -9,6 +9,7 @@ function UserProvider({ children }) {
     const [errors, setErrors] = useState([]);
     const [loginError, setLoginError] = useState([]);
     const [signUpError, setSignUpError] = useState([]);
+    const [opponents, setOpponents] = useState([]);
     const navigate = useNavigate()
 
 
@@ -83,6 +84,36 @@ function UserProvider({ children }) {
         }
       };
 
+      //new below
+
+      const fetchOpponentsData = async () => {
+        if (user && user.opponents) {
+          const opponentIds = user.opponents.map((opponent) => opponent.id);
+          const opponentsAvatarsPromises = opponentIds.map((opponentId) =>
+            fetch(`/users/${opponentId}`)
+              .then((response) => response.json())
+              .then((userData) => userData.avatar_url)
+              .catch((error) => {
+                console.error("Error fetching opponent avatar:", error);
+                return null;
+              })
+          );
+    
+          const opponentsAvatars = await Promise.all(opponentsAvatarsPromises);
+          setOpponents(opponentsAvatars);
+        }
+      };
+    
+      useEffect(() => {
+        fetchOpponentsData();
+      }, [user]);
+    
+//new above
+
+
+
+
+
   // console.log("user dot js", user)
 
     const logout = () => {
@@ -102,7 +133,8 @@ function UserProvider({ children }) {
             setLoginError,
             errors,
             setErrors,
-            logout
+            logout,
+            opponents
           }}
         >
           {children}

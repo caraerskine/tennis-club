@@ -1,9 +1,9 @@
 class Match < ApplicationRecord
 
-    validates :skill_level, presence: true
+    validates :skill_level, :phone, presence: true
     validates :phone, presence: true, format: { with: /\A(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\z/, message: "must be in the format XXX-XXX-XXXX" }
     validate :user_and_sender_id_are_same
-#singular bc custom line 5
+#singular bc custom line 5 and trying to see if I need :phone on line 3
 
     belongs_to :club
     belongs_to :user
