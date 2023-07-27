@@ -29,7 +29,6 @@ function EditMatchForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("myMatch", myMatch)
         onEditMatch(myMatch)
     }
 
@@ -37,7 +36,7 @@ function EditMatchForm() {
         const { id, value } = e.target;
         setMyMatch({...myMatch, [id]: value})
     }
-
+  
     function handleDelete(e){
         e.preventDefault()
         fetch(`/matches/${id}`, {
@@ -60,6 +59,10 @@ function EditMatchForm() {
             });
           }
 
+    function handleCancelEdit() {
+            navigate(`/matches`);
+    }
+
     if (!user){
         return <h3>Please log in to view matches</h3>
     } 
@@ -70,30 +73,34 @@ function EditMatchForm() {
 
         return ( 
             <form onSubmit={handleSubmit}>
-                <p>Edit match</p>
+                <br></br>
+                <br></br>
+                <strong>Edit match</strong>
+                <br></br>
+                <br></br>
                 <label>Datetime: </label>
-                <input 
-                    type="datetime-local"
-                    id="datetime"
-                    value={myMatch.datetime}
-                    onChange={updateMyMatch}
-                    placeholder="09/21/2023, 7:30"  
+                    <input 
+                        type="datetime-local"
+                        id="datetime"
+                        value={myMatch.datetime}
+                        onChange={updateMyMatch}
+                        placeholder="09/21/2023, 7:30"  
                 /> <br/>
                    <br/>
-                  <label>Skill Level: </label>
-                <select
-                    id="skill_level"
-                    value={myMatch.skill_level}
-                    onChange={updateMyMatch}>
-                        <option value={""}>select a skill level:</option>
-                        <option value={"beginner"}>beginner</option>
-                        <option value={"intermediate"}>intermediate</option>
-                        <option value={"pro"}>pro</option>
-                </select> <br/>
+                <label>Skill Level: </label>
+                    <select
+                        id="skill_level"
+                        value={myMatch.skill_level}
+                        onChange={updateMyMatch}>
+                            <option value={""}>select a skill level:</option>
+                            <option value={"beginner"}>beginner</option>
+                            <option value={"intermediate"}>intermediate</option>
+                            <option value={"pro"}>pro</option>
+                    </select> <br/>
                 <br/>    
                 <label>Phone:</label>
-                <input 
-                      type="text"
+                    <input 
+                    type="text"
                       id="phone"
                       value={myMatch.phone}
                       onChange={updateMyMatch}
@@ -101,9 +108,15 @@ function EditMatchForm() {
                 />
                 <br/>
                 <br/>
+                <br></br>
                 <button type="submit">Save edited match</button>
+                <br></br>
+                <br></br>
+                <button onClick={handleCancelEdit}>Cancel edit</button>
+                <br></br>
+                <br></br>
                 <button onClick={handleDelete}>Delete match</button>
-                
+    
                 {errors.map((error, index) => (
                 <p key={index} className="errors">
                   {error}

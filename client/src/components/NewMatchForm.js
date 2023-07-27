@@ -53,7 +53,7 @@ function NewMatchForm(){
   return (
    <>
    <br/>
-    Create a new match 🎾
+    <strong>Create a new match 🎾</strong>
     <br/>
     <form onSubmit={handleSubmit}>
           <br/>
@@ -67,7 +67,6 @@ function NewMatchForm(){
         /> 
         <br/>
         <br/>
-
         <label>Choose Opponent:</label>
         <select 
           id="opponent" 

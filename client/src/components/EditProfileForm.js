@@ -34,7 +34,6 @@ useEffect(() => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("myProfile", myProfile)
     onEditProfile(myProfile)
 }
 
@@ -43,8 +42,6 @@ function updateMyProfile(e){
     setMyProfile({...myProfile, [id]: value})
 }
 
-
-console.log("typeof", typeof(user))
 
 function handleDelete(e){
     e.preventDefault()
@@ -67,6 +64,10 @@ function handleDelete(e){
         });
       }
 
+      function handleCancelEditProfile() {
+        navigate(`/`);
+}
+
       if (!user){
         return <h3>Please sign-up to join NYC🎾TC</h3>
     } 
@@ -76,10 +77,14 @@ function handleDelete(e){
     }
 
   return (
-    <form onSubmit={handleSubmit}>
-                <p>Edit profile</p>
-                <label>Name: </label>
-                <input 
+      <form onSubmit={handleSubmit}>
+        <br></br>
+        <br></br>
+        <strong>Edit profile</strong>
+        <br></br>
+        <br></br>
+        <label>Name: </label>
+          <input 
                     type="text"
                     id="name"
                     value={myProfile.name}
@@ -138,9 +143,11 @@ function handleDelete(e){
           />
           <br></br>
           <br></br>
-          <div>Checking...</div>
           <br></br>
                 <button type="submit">Save edited profile</button>
+                <br></br>
+                <br></br>
+                <button onClick={handleCancelEditProfile}>Cancel edit</button>
                 <br></br>
                 <br></br>
                 <button onClick={handleDelete}>Delete profile</button>
