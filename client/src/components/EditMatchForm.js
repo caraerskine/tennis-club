@@ -116,10 +116,10 @@ function EditMatchForm() {
                 <button type="submit">Save edited match</button>
                 <br></br>
                 <br></br>
-                <button onClick={handleCancelEdit}>Cancel edit</button>
+                <button type="submit" onClick={handleCancelEdit}>Cancel edit</button>
                 <br></br>
                 <br></br>
-                <button onClick={handleDelete}>Delete match</button>
+                <button type="submit" onClick={handleDelete}>Delete match</button>
     
                 {errors.map((error, index) => (
                 <p key={index} className="errors">

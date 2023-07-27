@@ -13,7 +13,8 @@ Rails.application.configure do
 
   # Mailer Settings
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  #uncomment :smtp if you take :letter_opener and :true lines outand vice versa
+  #ben had me make this :4000 (?)above
+  #uncomment :smtp if you take :letter_opener and :true lines out and vice versa
   config.action_mailer.delivery_method = :smtp
   # config.action_mailer.delivery_method = :letter_opener
   # config.action_mailer.perform_deliveries = true
@@ -25,8 +26,6 @@ Rails.application.configure do
     password: ENV['APP_PASSWORD'],
     authentication: 'plain',
     enable_starttls_auto: true,
-    open_timeout:         5,
-    read_timeout:         5 
   }
   # Show full error reports.
   config.consider_all_requests_local = true

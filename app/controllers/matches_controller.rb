@@ -11,7 +11,13 @@ class MatchesController < ApplicationController
             })
         
         if @match.save       
-          receiver_email = ENV['MY_EMAIL']
+          # receiver_email = ENV['MY_EMAIL']
+          receiver_email = @match.receiver.email
+          # byebug
+          pp "gslfguseliruehs;hf", @match
+
+          #the line above, receiver_email should not be set to my ENV but rather the "m1.receiver.email"
+          #the current match's receiver_id and their email
           MatchMailer.new_match_notification(receiver_email, @match).deliver_now        
           render json: @match, status: :created
         else
@@ -19,6 +25,10 @@ class MatchesController < ApplicationController
         end
       end
 
+#receiver_id can be used to find user then get the email
+#m1 = Match.last
+#m1.receiver_id    gives me '4'
+#receiver_id is 4
 
     def index
         matches = @current_user.matches.map do |match|

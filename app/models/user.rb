@@ -6,6 +6,8 @@ class User < ApplicationRecord
     validates :username, uniqueness: true 
     validates :password, :password_confirmation, :username, presence: true
     validates :password, length: { minimum: 8, maximum: 20 }
+   
+    validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 
     has_many :matches, dependent: :destroy
     has_many :clubs, through: :matches

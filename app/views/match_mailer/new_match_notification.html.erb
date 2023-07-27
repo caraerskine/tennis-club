@@ -4,11 +4,15 @@
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 </head>
 <body>
+<h1>Hey Ben, I'll stop sending these if you let me graduate!</h1>
   <h1>New Tennis Match Notification</h1>
-  <p>Hello,</p>
+  <p>Hello, <%= @match.receiver.name %> </p>
   <p>A new tennis match has been scheduled. Here are the details:</p>
+  <p>Tennis Club: <%= @match.club.club_name %></p> 
+  <p>Opponent: <%= @match.sender.name %></p>
   <p>Match Date: <%= @match.datetime %></p>
   <p>Match Phone: <%= @match.phone %></p>
+  <p>Opponent pic: <img src="<%= @match.sender.avatar_url %>" alt="Opponent Avatar"></p>
   <p>We are excited you are part of NYC🎾TC!</p>
   <!-- Add more details from the @match instance variable as needed -->
 </body>

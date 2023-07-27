@@ -105,7 +105,7 @@ function handleDelete(e){
                 />
                 <br></br>
                 <br></br>
-                <p>Please enter your password to effect changes:</p>
+                <p>Please enter your password to make the changes:</p>
                 <label>Password:</label>
                 <input 
                     type="password" 
@@ -130,10 +130,10 @@ function handleDelete(e){
                 <button type="submit">Save edited profile</button>
                 <br></br>
                 <br></br>
-                <button onClick={handleCancelEditProfile}>Cancel edit</button>
+                <button type="submit" onClick={handleCancelEditProfile}>Cancel edit</button>
                 <br></br>
                 <br></br>
-                <button onClick={handleDelete}>Delete profile</button>
+                <button type="submit" onClick={handleDelete}>Delete profile</button>
                  
                 
                 {errors.map((error, index) => (

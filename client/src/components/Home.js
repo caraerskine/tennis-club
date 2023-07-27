@@ -12,9 +12,6 @@ function Home() {
     const { user, id } = useContext(UserContext)
     const { clubs } = useContext(ClubsContext)
 
-    console.log("id value:", id);  
-    console.log("user for the new:", user);  
-
 if (user) {
 
 
