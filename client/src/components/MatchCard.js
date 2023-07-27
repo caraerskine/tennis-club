@@ -69,7 +69,7 @@ function MatchCard( {avatar, request, skill_level, id, club, datetime, phone, op
                   {skill_level}
                 </Typography>
                 <Typography style={{ color: getStatusColor(status) }}>
-                  {status} {id}
+                  {status}
                 </Typography>
               
                 <>
