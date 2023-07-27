@@ -6,9 +6,21 @@ const MatchesContext = React.createContext();
 
 function MatchesProvider({ children }){
 
-  
     const { user, setErrors, setUser } = useContext(UserContext);
     const navigate = useNavigate()
+
+
+  const formattedDatetime = (date) => { 
+
+    return date.toLocaleString('en-US', {
+           
+       year: 'numeric',
+       month: '2-digit',
+       day: '2-digit',
+       hour: '2-digit',
+       minute: '2-digit',
+    
+     })};
 
 
 const onAddMatch = (match) => {
@@ -73,7 +85,8 @@ fetch(`/matches/${editedMatch.id}`, {
         <MatchesContext.Provider 
             value={{
                 onEditMatch,
-                onAddMatch
+                onAddMatch,
+                formattedDatetime
             }}
         >
             {children}

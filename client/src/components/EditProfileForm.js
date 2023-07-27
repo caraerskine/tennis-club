@@ -10,27 +10,9 @@ function EditProfileForm() {
     const {user, logout, errors, onEditProfile} = useContext(UserContext)
     const navigate = useNavigate()
 
-const formObj = {
-    name: "",
-    avatar_url: "",
-    username: "",
-    password: "",
-    password_confirmation: "",
-    email: ""
-}
+    const [myProfile, setMyProfile] = useState({...user, password: "", password_confirmation: ""})
 
-
-const [myProfile, setMyProfile] = useState(formObj)
-
-useEffect(() => {
-    if (id) {
-      const currentUser = user.id === parseInt(id) ? user : null;
-      setMyProfile(currentUser || formObj);
-    } else {
-      setMyProfile(formObj);
-    }
-  }, [user, id]);
-
+console.log("user", user)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -83,8 +65,8 @@ function handleDelete(e){
         <strong>Edit profile</strong>
         <br></br>
         <br></br>
-        <label>Name: </label>
-          <input 
+            <label>Name: </label>
+                <input 
                     type="text"
                     id="name"
                     value={myProfile.name}
@@ -123,6 +105,7 @@ function handleDelete(e){
                 />
                 <br></br>
                 <br></br>
+                <p>Please enter your password to effect changes:</p>
                 <label>Password:</label>
                 <input 
                     type="password" 

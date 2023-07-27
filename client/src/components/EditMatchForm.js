@@ -7,7 +7,7 @@ import { MatchesContext } from '../context/matches'
 function EditMatchForm() {
     const { id } = useParams()   
     const {user, setUser, errors} = useContext(UserContext)
-    const { onEditMatch } = useContext(MatchesContext)
+    const { onEditMatch,formattedDatetime } = useContext(MatchesContext)
     const navigate = useNavigate()
 
     const obj = {
@@ -17,18 +17,22 @@ function EditMatchForm() {
         id: id
     }
 
+
     const [myMatch, setMyMatch] = useState(obj)
 
     useEffect(() => {
         let m = user.matches.find((e) => {        
           return e.id === parseInt(id, 10)})
-  
-          m ? setMyMatch(m) : setMyMatch(obj)
+
+          const formattedDate = m.datetime.substring(0,16)
+
+          m ? setMyMatch({...m, datetime: formattedDate}) : setMyMatch(obj)
       }, [user, id])
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log("myMatch", myMatch)
         onEditMatch(myMatch)
     }
 

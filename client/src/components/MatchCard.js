@@ -45,6 +45,7 @@ function MatchCard( {avatar, request, skill_level, id, club, datetime, phone, op
     })
   }
 
+  console.log('datetime', datetime)
 
   return (
         <div className= "match-card" style={styles.container}>
@@ -60,7 +61,7 @@ function MatchCard( {avatar, request, skill_level, id, club, datetime, phone, op
                   {club}
                 </Typography>
                 <Typography>
-                  {new Date(datetime).toLocaleTimeString()}
+                  {new Date(datetime).toLocaleTimeString(undefined, { timeZone: 'UTC' })}
                 </Typography>
                 <Typography>
                   {new Date(datetime).toDateString()}

@@ -5,27 +5,17 @@ import { MatchesContext } from '../context/matches'
 
 
 function NewMatchForm(){
+
     const [datetime, setDatetime] = useState("2023-09-21T07:30");
     const [skill, setSkill] = useState(false)
     const [phone, setPhone] = useState("")
     const [opponent, setOpponent] = useState("")
     const { id } = useParams()
     const { errors, user } = useContext(UserContext)
-    const { onAddMatch } = useContext(MatchesContext)
+    const { onAddMatch, formattedDatetime } = useContext(MatchesContext)
 
+    // "yyyy-MM-ddThh:mm" 
 
- const formattedDatetime = (date) => { 
-
-   return date.toLocaleString('en-US', {
-          
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-   
-    })};
-  
     if (!user) {
       return (
         <>
