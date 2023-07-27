@@ -9,12 +9,9 @@ import { MatchesContext } from "../context/matches";
 
 function MatchCard( {avatar, request, skill_level, id, club, datetime, phone, opponentPic, status, comments} ) {
   
-  // const [opponentsAvatars, setOpponentsAvatars] = useState([]);
-  //added this state to try and fetch the avatar_urls of opponents for respective card
 
   const {user} = useContext(UserContext)
   const { onEditMatch } = useContext(MatchesContext)
-  // const opponents = user.opponents || [];
   const [choice, setChoice] = useState(false)
 
   const styles = {
@@ -36,7 +33,7 @@ function MatchCard( {avatar, request, skill_level, id, club, datetime, phone, op
   };
 
   const getStatusColor = (status) => {
-    return styles.statusColors[status] || "black"; // Default to black for unknown statuses
+    return styles.statusColors[status] || "black"; 
   };
 
 
@@ -114,12 +111,3 @@ function MatchCard( {avatar, request, skill_level, id, club, datetime, phone, op
 
 export default MatchCard;
 
-  // <select
-  //           id="skill_level"
-  //           value={skill}
-  //           onChange={(e) => setSkill(e.target.value)}>              
-  //             <option value={""}>select a skill level:</option>
-  //             <option value={"beginner"}>beginner</option>
-  //             <option value={"intermediate"}>intermediate</option>
-  //             <option value={"pro"}>pro</option>
-  //       </select>

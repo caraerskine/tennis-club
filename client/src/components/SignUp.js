@@ -90,7 +90,6 @@ function SignUp() {
           />
           <br></br>
           <br></br>
-          {/* <div>Checking...</div> */}
           <input type="submit"/>
           </form>
             <ul>
@@ -102,5 +101,3 @@ function SignUp() {
 }
 
 export default SignUp;
-
-//bcrypt will check via authroize that password and pasword conf are the same

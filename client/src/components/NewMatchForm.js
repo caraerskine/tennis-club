@@ -37,15 +37,9 @@ function NewMatchForm(){
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        // console.log("skill", skill)
-        // console.log("datetime", datetime);
-        // console.log("phone", phone);
         const selectedOpponent = user.opponents.find((opponentItem) => opponentItem.id === parseInt(opponent, 10) && opponentItem.id !== user.id);
         const receiverId = selectedOpponent ? selectedOpponent.id : 0;
 
-       
-      
-        
         onAddMatch({
             datetime: formattedDatetime(datetime),
             skill_level: skill,
@@ -55,21 +49,6 @@ function NewMatchForm(){
             receiver_id: receiverId
         })
     }
-
-
-    
-      // console.log("user.opponents", user.opponents);
-
-  
-// console.log("receiver_id", typeof(receiver_id))
-
-//status should be automatically set to pending when match is created
-//and then it can change to 'accepted' or 'rejected'
-//and when the match is completed it should be set to 'completed'-- vould
-//that be auto-set after the date and time of the match passes?
-
-
-
 
   return (
    <>
@@ -102,7 +81,6 @@ function NewMatchForm(){
             <Fragment key={opponent.id}>
               <option value={opponent.id}>
                 {opponent.name}
-                {/* {opponent.avatar_url && <img src={opponent.avatar_url} alt="Opponent avatar"/>} */}
               </option>
            </Fragment>
       ))}
@@ -146,35 +124,3 @@ function NewMatchForm(){
 
 export default NewMatchForm
 
-//sender_id, receiver_id, user_id and club_id
-
-//when I create the new match, how do i invite a user to play the match?
-
-//would there need to be a field for that? what would it be called?
-
-//how do i know what users are available to invite?
-
-//how do I have the club name on there as well? bc u click on a particular club card
-
-
-
-
-//line 109 was prompting "oppoenent" instead of user see below
-
-{/* <label>Choose Opponent:</label>
-<select
-  id="opponent"
-  name="opponent"
-  value={opponent}
-  onChange={(e) => setOpponent(e.target.value)}
->
-  <option value="">Select a user</option>
-  {user.opponents.map((opponent, index) => (
-    <option key={index} value={opponent.id}>
-      {opponent.name}
-      {opponent.avatar_url && (
-        <img src={opponent.avatar_url} alt="Opponent avatar" />
-      )}
-    </option>
-  ))}
-</select> */}

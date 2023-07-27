@@ -5,7 +5,7 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { NavLink } from "react-router-dom";
 import Button from "@mui/material/Button";
-// import Typography from "@mui/material/Typography";
+
 
 function Home() {
 
@@ -17,22 +17,17 @@ function Home() {
 
 if (user) {
 
-    // Count the number of matches at each club 
 
     const clubMatchesCount = clubs.reduce((countMap, club) => {
         countMap[club.club_name] = user.matches.filter((match) => match.club_id === club.id).length;
         return countMap;
       }, {});
 
-    //   console.log("user", user)
-  
-      // make the count object an array of objects for easier mapping
    
       const clubMatches = Object.entries(clubMatchesCount).map(([clubName, count]) => ({ clubName, count }));
   
       const totalMatches = user.matches.length;
 
-    // greeting message based on the number of matches
         let greetingMessage = '';
         if (totalMatches >= 5) {
             greetingMessage = 'You really love tennis!';
@@ -40,8 +35,6 @@ if (user) {
             greetingMessage = 'You should be playing more!';
         }    
 
-        //I need to have a button that says "edit profile" and that will take the user
-        //to a form where they can edit their 'sign-up' info
 
      const compositeKey = `${user.avatar_url}-${user.username}`
 
@@ -88,5 +81,3 @@ if (user) {
 
 export default Home
 
-//this on line 73 seems right because it goes to pre-filled form
-//I cannot however get the changes to persist even tho i get a dialog box that says it was saved

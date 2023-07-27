@@ -19,7 +19,6 @@ function AllClubs(){
       />
     )
 
-    // console.log("dispClubs", displayClubs)
 
 return (
   <div className="App" >

@@ -1,4 +1,4 @@
-Welcome to Public Tennis Club!
+Welcome to NYC Tennis Club!
 NYC Tennis Match Booking App
 
 This is an SPA to schedule tennis matches at various clubs all over New York City!
@@ -15,6 +15,7 @@ Users can:
     -invite another user to play a tennis match, these match invites are handled with ActionMailer.
     -see if your match is pending, accepted, or rejected and sort accordingly.
     -can leave comments on a completed match with your tennis partner
+    -can accept or reject a pending match
 
 
 GOALS ACHIEVED
@@ -47,5 +48,4 @@ Open a terminal window, cd into 'tennis-club' and run 'rails s'
 -You need React to run the front end from within the directory 
 Run npm install and npm run server 
 Open a second terminal window, cd into 'client' and run 'npm start'
-
 

@@ -6,27 +6,10 @@ const MatchesContext = React.createContext();
 
 function MatchesProvider({ children }){
 
-    //hit show all route and see who is logged in
-    //if correct user load their matches
-
+  
     const { user, setErrors, setUser } = useContext(UserContext);
     const navigate = useNavigate()
 
-    // useEffect(() => {
-    //  fetch('/matches')
-    //     .then(response => {
-    //         if (response.ok){
-    //          response.json().then(data => {
-    //             setMatches(data)
-    //         })
-    //     } else {
-    //         response.json().then(error => {
-    //         })
-    //     } 
-    //     })
-    // }, [])
-
-// console.log("user Obj", user)
 
 const onAddMatch = (match) => {
     fetch("/matches", {
@@ -54,11 +37,6 @@ const onAddMatch = (match) => {
         alert("An error occurred while adding the match. Please try again later.");
       });
   };
-
-
-// console.log("matches", matches)
-// console.log("user in matches.js", user)
-
 
 
 const onEditMatch = (editedMatch) => {
@@ -94,8 +72,6 @@ fetch(`/matches/${editedMatch.id}`, {
     return (
         <MatchesContext.Provider 
             value={{
-                // matches, 
-                // setMatches,
                 onEditMatch,
                 onAddMatch
             }}

@@ -16,9 +16,6 @@ function EditMatchForm() {
         phone: "",
         id: id
     }
-    
-    // console.log("the id", typeof(id))
-    // console.log("the obj", obj)
 
     const [myMatch, setMyMatch] = useState(obj)
 
@@ -29,13 +26,11 @@ function EditMatchForm() {
           m ? setMyMatch(m) : setMyMatch(obj)
       }, [user, id])
 
-    // console.log("m", typeof(m))
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("myMatch", myMatch)
         onEditMatch(myMatch)
-        // console.log(myMatch, "onEditMatch is happening")
     }
 
     function updateMyMatch(e){
@@ -57,7 +52,6 @@ function EditMatchForm() {
                 alert("match deleted!")
                 navigate(`/matches`)
             } else {
-                // Handle non-successful response
                 console.log("Delete failed. Status:", response.status);
               }
             })

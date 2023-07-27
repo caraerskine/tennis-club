@@ -16,8 +16,6 @@ import { Link, useNavigate } from 'react-router-dom';
 
 
 const pages = ['About', '', 'Clubs', 'Matches'];
-// const settings = ['Logout', 'Login', 'Signup'];
-
 
 function ResponsiveAppBar() {
 
@@ -28,10 +26,6 @@ function ResponsiveAppBar() {
   const modifiedSettings = user
   ? ["Logout"]
   : ["Login", "Signup"]
-
-//if you are not logged in, there should not be a logout option
-
-//if you are destroyed logout should not show
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -52,7 +46,6 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-//bug icon on line 53 has been commented out, not part of my styling
 
   return (
     <AppBar position="static" sx={{ backgroundColor: '#dfff4f' }}>
@@ -192,43 +185,3 @@ function ResponsiveAppBar() {
 export default ResponsiveAppBar;
 
 
-//untoucehd
-
-// onClose={handleCloseUserMenu}
-// >
-//   {settings.map((setting) => {
-//     return (
-//       <MenuItem key={setting} onClick={handleCloseUserMenu}>
-//         <Link to={`/${setting}`} onClick={handleCloseUserMenu}>
-//           <Typography textAlign="center">{setting}</Typography>
-//         </Link>
-//       </ MenuItem>
-//     )}
-//   )}
-
-
-
-// {user ? (
-//   settings.map((setting) => (
-//    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-//      {setting === 'Logout' ? (
-//        <Typography textAlign="center" onClick={handleCloseUserMenu}>
-//        {setting}
-//      </Typography>
-//      ) : (
-//      <Link to={`/${setting.toLowerCase()}`} onClick={handleCloseUserMenu}>
-//        <Typography textAlign="center">{setting}</Typography>
-//      </Link>
-//      )}
-//   </MenuItem>
-// ))
-// ) : (
-// [
-//  <MenuItem onClick={handleCloseUserMenu}>
-//    <Typography textAlign="center">Login</Typography>
-//  </MenuItem>,
-//  <MenuItem onClick={handleCloseUserMenu}>
-//    <Typography textAlign="center">Sign Up</Typography>
-//  </MenuItem>,
-//  ]
-// )}

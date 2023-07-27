@@ -19,7 +19,6 @@ function UserProvider({ children }) {
       const fetchUser = async (url, method, body = false) => {
         setLoginError([])
         setSignUpError([])
-        // console.log("body", body)
         
         const messages = (url, err) => {
           if (url === "/login"){
@@ -45,13 +44,8 @@ function UserProvider({ children }) {
          
     
           if (response.ok) {
-            // console.log("data", data)
             setUser(data);
             navigate('/');
-            //takes user to their home page with their avatar which is '/'
-            //or should it take them to /matches
-
-            // console.log("responseOkUser", data)
     
           } else if (response.status === 401) {
 
@@ -59,27 +53,13 @@ function UserProvider({ children }) {
             
             messages(url, err)
 
-            // console.log("response401User", data)
+            
           }
-
-        // } else if (response.status === 401) {
-        //   let err;
-        //   if (Array.isArray(data.errors)) {
-        //     err = data.errors.map((e, i) => <li key={i}>{e}</li>);
-        //   } else {
-        //     err = <li>{data.errors}</li>;
-        //   }
-          
-        //   messages(url, err);
-        //   console.log("response401User", data);
-        // }
     
       } catch (error) {
      
           let message = [<li>Server Unresponsive</li>]
-             
             messages(url, message)
-            // console.log("catchBlock", error)
         }
       };
 
@@ -107,11 +87,6 @@ fetch(`/users/${editedProfile.id}`, {
   });
 };
 
-
-
-
-
-  // console.log("user dot js", user)
 
     const logout = () => {
         setUser(false)

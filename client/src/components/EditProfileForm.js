@@ -24,7 +24,6 @@ const [myProfile, setMyProfile] = useState(formObj)
 
 useEffect(() => {
     if (id) {
-      // Check if id is defined before fetching the user profile
       const currentUser = user.id === parseInt(id) ? user : null;
       setMyProfile(currentUser || formObj);
     } else {
@@ -54,24 +53,12 @@ function handleDelete(e){
     })
     .then(response => {
         if (response.ok){
-              // Remove the profile from the user object
             const updatedUser = { ...user };
             delete updatedUser[id];
-            // setUser(updatedUser);
             logout();
             alert("Profile deleted!");
             setTimeout(navigate("/about"), 1000)
-            // let updatedProfile = user.filter((user) => {
-            //     return user.id != id
-            // })
-            // setUser(updatedProfile);
-            // alert("profile deleted!");
-            // navigate(`/`);
-            // setUser(null); // Set the user object to null
-            // alert("Profile deleted!");
-            // navigate(`/`);
         } else {
-            // Handle non-successful response
             console.log("Profile delete failed. Status:", response.status);
           }
         })
@@ -80,7 +67,6 @@ function handleDelete(e){
         });
       }
 
-//only upon refresh does it go to below
       if (!user){
         return <h3>Please sign-up to join NYC🎾TC</h3>
     } 
@@ -157,7 +143,6 @@ function handleDelete(e){
                 <button type="submit">Save edited profile</button>
                 <br></br>
                 <br></br>
-                {/* <button onClick={handleDelete}>Delete profile</button> */}
                 <button onClick={handleDelete}>Delete profile</button>
                  
                 

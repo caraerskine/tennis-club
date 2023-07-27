@@ -11,8 +11,6 @@ function CommentSection({ matchId, comments }) {
 
   const maxCommentCount = 6;
 
-  //hits the comment controller between a match and a user
-  //when you update state you are updating the user's matches comments when you update that comment
   const handleAddComment = (e) => {
     e.preventDefault();
     const newCommentData = {
