@@ -3,6 +3,10 @@
 You have a new match scheduled!
 Tennis Match Details:
 --------------------------
-Datetime: <%= @match.datetime %>
-Phone: <%= @match.phone %>
 
+Hello, <%= @match.receiver.name %> 
+A new tennis match has been scheduled. Here are the details:
+Tennis Club: <%= @match.club.club_name %>
+Opponent: <%= @match.sender.name %>
+Match Date: <%= @match.datetime %>
+Match Phone: <%= @match.phone %>
