@@ -13,7 +13,6 @@ Rails.application.configure do
 
   # Mailer Settings
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  #ben had me make this :4000 (?)above
   #uncomment :smtp if you take :letter_opener and :true lines out and vice versa
   config.action_mailer.delivery_method = :smtp
   # config.action_mailer.delivery_method = :letter_opener
