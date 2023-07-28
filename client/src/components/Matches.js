@@ -10,17 +10,39 @@ function Matches() {
   const [selectedStatus, setSelectedStatus] = useState("All Matches");
   const [filteredTennisMatches, setFilteredTennisMatches] = useState(user.matches || [])
 
+console.log('users matches', user.matches)
 
+const statusMapping = {
+  completed: "Completed Matches",
+  accepted: "Accepted Matches",
+  pending: "Pending Matches",
+  rejected: "Rejected Matches"
+};
+
+  // useEffect(() => {
+  //   setFilteredTennisMatches( 
+  //     selectedStatus === "All Matches" 
+  //       ? user.matches || []
+  //       : user.matches.filter((match) => {
+  //         console.log("match.status", match.status)
+  //         return (statusMapping[match.status].toLowerCase() === selectedStatus.toLowerCase()
+  //         );
+  //       })
+  //   );
+  // }, [selectedStatus, user]);
+
+  //fixed above to below 
+  //getting error on .toLowerCase directly on array of [statusMapping]
 
   useEffect(() => {
-    setFilteredTennisMatches( 
-      selectedStatus === "All Matches" 
+    setFilteredTennisMatches(
+      selectedStatus === "All Matches"
         ? user.matches || []
         : user.matches.filter((match) => {
-          console.log("match.status", match.status)
-          return (statusMapping[match.status].toLowerCase() === selectedStatus.toLowerCase()
-          );
-        })
+            console.log("match", match);
+            const statusValue = statusMapping[match.status];
+            return statusValue && statusValue.toLowerCase() === selectedStatus.toLowerCase();
+          })
     );
   }, [selectedStatus, user]);
 
@@ -45,12 +67,7 @@ function Matches() {
     );
    }
 
-  const statusMapping = {
-    completed: "Completed Matches",
-    accepted: "Accepted Matches",
-    pending: "Pending Matches",
-    rejected: "Rejected Matches"
-  };
+
 
 
     return (
